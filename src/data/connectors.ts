@@ -1,5 +1,5 @@
 // Generado a partir de los manifest.json públicos de github.com/Dgirto (catálogo de conectores de Ruvic AI).
-// Para añadir un conector, agrega un objeto con la misma forma y su captura en public/frames/.
+// Para añadir un conector, agrega un objeto con la misma forma y su logo en public/logos/<repo-en-minúsculas>.svg.
 import type { Connector } from '../types'
 
 export const connectors: Connector[] = [
@@ -31,8 +31,7 @@ export const connectors: Connector[] = [
       "mail.read",
       "mail.send",
       "mail.send_with_attachment"
-    ],
-    "frame": "/frames/gmail.webp"
+    ]
   },
   {
     "id": "gmail_imap",
@@ -61,8 +60,7 @@ export const connectors: Connector[] = [
       "mail.read",
       "mail.send",
       "mail.send_with_attachment"
-    ],
-    "frame": "/frames/gmail-imap-smtp.webp"
+    ]
   },
   {
     "id": "gmail_workspace",
@@ -92,8 +90,7 @@ export const connectors: Connector[] = [
       "mail.read",
       "mail.send",
       "mail.send_with_attachment"
-    ],
-    "frame": "/frames/gmail-workspace.webp"
+    ]
   },
   {
     "id": "sheets",
@@ -124,8 +121,7 @@ export const connectors: Connector[] = [
       "sheets.read",
       "sheets.update",
       "sheets.append"
-    ],
-    "frame": "/frames/sheets.webp"
+    ]
   },
   {
     "id": "sheets_workspace",
@@ -155,8 +151,7 @@ export const connectors: Connector[] = [
       "sheets.read",
       "sheets.update",
       "sheets.append"
-    ],
-    "frame": "/frames/sheets-workspace.webp"
+    ]
   },
   {
     "id": "drive",
@@ -188,8 +183,7 @@ export const connectors: Connector[] = [
       "file.download",
       "file.upload",
       "folder.create"
-    ],
-    "frame": "/frames/drive.webp"
+    ]
   },
   {
     "id": "drive_oauth",
@@ -221,8 +215,7 @@ export const connectors: Connector[] = [
       "file.download",
       "file.upload",
       "folder.create"
-    ],
-    "frame": "/frames/drive-oauth.webp"
+    ]
   },
   {
     "id": "docs",
@@ -256,8 +249,7 @@ export const connectors: Connector[] = [
       "docs.replace",
       "docs.create_from_template",
       "docs.export_pdf"
-    ],
-    "frame": "/frames/docs.webp"
+    ]
   },
   {
     "id": "docs_workspace",
@@ -289,8 +281,7 @@ export const connectors: Connector[] = [
       "docs.replace",
       "docs.create_from_template",
       "docs.export_pdf"
-    ],
-    "frame": "/frames/docs-workspace.webp"
+    ]
   },
   {
     "id": "calendar",
@@ -324,8 +315,7 @@ export const connectors: Connector[] = [
       "calendar.create_event",
       "calendar.list_events",
       "calendar.cancel_event"
-    ],
-    "frame": "/frames/calendar.webp"
+    ]
   },
   {
     "id": "calendar_workspace",
@@ -358,8 +348,7 @@ export const connectors: Connector[] = [
       "calendar.create_event",
       "calendar.list_events",
       "calendar.cancel_event"
-    ],
-    "frame": "/frames/calendar-workspace.webp"
+    ]
   },
   {
     "id": "postgresql",
@@ -386,8 +375,7 @@ export const connectors: Connector[] = [
       "db.read",
       "db.stats",
       "db.explain"
-    ],
-    "frame": "/frames/postgresql.webp"
+    ]
   },
   {
     "id": "mysql",
@@ -414,8 +402,7 @@ export const connectors: Connector[] = [
       "db.read",
       "db.stats",
       "db.explain"
-    ],
-    "frame": "/frames/mysql-mariadb.webp"
+    ]
   },
   {
     "id": "mssql",
@@ -442,8 +429,7 @@ export const connectors: Connector[] = [
       "db.read",
       "db.stats",
       "db.explain"
-    ],
-    "frame": "/frames/sql-server.webp"
+    ]
   },
   {
     "id": "oracle",
@@ -469,8 +455,7 @@ export const connectors: Connector[] = [
       "db.read",
       "db.stats",
       "db.explain"
-    ],
-    "frame": "/frames/oracle.webp"
+    ]
   },
   {
     "id": "mongodb",
@@ -499,8 +484,7 @@ export const connectors: Connector[] = [
       "db.read",
       "db.count",
       "db.stats"
-    ],
-    "frame": "/frames/mongodb.webp"
+    ]
   },
   {
     "id": "redis",
@@ -527,8 +511,7 @@ export const connectors: Connector[] = [
       "redis.read",
       "redis.write",
       "redis.list_keys"
-    ],
-    "frame": "/frames/redis.webp"
+    ]
   },
   {
     "id": "elasticsearch",
@@ -557,8 +540,7 @@ export const connectors: Connector[] = [
       "db.list_indices",
       "db.search",
       "db.count"
-    ],
-    "frame": "/frames/elasticsearch.webp"
+    ]
   },
   {
     "id": "aws_s3",
@@ -587,8 +569,7 @@ export const connectors: Connector[] = [
       "s3.upload",
       "s3.download",
       "s3.presigned_url"
-    ],
-    "frame": "/frames/aws-s3.webp"
+    ]
   },
   {
     "id": "aws_lambda",
@@ -617,8 +598,7 @@ export const connectors: Connector[] = [
       "lambda.list_functions",
       "lambda.invoke",
       "lambda.get_logs"
-    ],
-    "frame": "/frames/aws-lambda.webp"
+    ]
   },
   {
     "id": "aws_cloudwatch",
@@ -649,8 +629,7 @@ export const connectors: Connector[] = [
       "cloudwatch.get_metric_statistics",
       "cloudwatch.get_logs",
       "cloudwatch.list_active_alarms"
-    ],
-    "frame": "/frames/aws-cloudwatch.webp"
+    ]
   },
   {
     "id": "azure_blob",
@@ -678,8 +657,7 @@ export const connectors: Connector[] = [
       "blob.list",
       "blob.upload",
       "blob.download"
-    ],
-    "frame": "/frames/azure-blob-storage.webp"
+    ]
   },
   {
     "id": "azure_monitor",
@@ -708,8 +686,7 @@ export const connectors: Connector[] = [
     "operations": [
       "monitor.get_metrics",
       "monitor.list_active_alerts"
-    ],
-    "frame": "/frames/azure-monitor.webp"
+    ]
   },
   {
     "id": "gcs",
@@ -738,8 +715,7 @@ export const connectors: Connector[] = [
       "gcs.list_objects",
       "gcs.upload",
       "gcs.download"
-    ],
-    "frame": "/frames/google-cloud-storage.webp"
+    ]
   },
   {
     "id": "bigquery",
@@ -770,8 +746,7 @@ export const connectors: Connector[] = [
       "bigquery.list_tables",
       "bigquery.execute_query",
       "bigquery.estimate_cost"
-    ],
-    "frame": "/frames/bigquery.webp"
+    ]
   },
   {
     "id": "misp",
@@ -799,8 +774,7 @@ export const connectors: Connector[] = [
       "threat_intel.search_ioc",
       "threat_intel.create_event",
       "threat_intel.add_attribute"
-    ],
-    "frame": "/frames/misp.webp"
+    ]
   },
   {
     "id": "thehive",
@@ -829,8 +803,7 @@ export const connectors: Connector[] = [
       "security.add_task",
       "security.update_case_status",
       "security.add_observable"
-    ],
-    "frame": "/frames/thehive.webp"
+    ]
   },
   {
     "id": "tenable",
@@ -857,8 +830,7 @@ export const connectors: Connector[] = [
       "security.list_vulnerabilities_by_asset",
       "security.get_scan",
       "security.export_scan_results"
-    ],
-    "frame": "/frames/tenable-nessus.webp"
+    ]
   },
   {
     "id": "fortigate",
@@ -884,8 +856,7 @@ export const connectors: Connector[] = [
       "security.list_policies",
       "security.add_address_object",
       "security.get_logs"
-    ],
-    "frame": "/frames/fortigate.webp"
+    ]
   },
   {
     "id": "panos",
@@ -913,8 +884,7 @@ export const connectors: Connector[] = [
       "security.list_rules",
       "security.add_object",
       "security.commit"
-    ],
-    "frame": "/frames/palo-alto-pan-os.webp"
+    ]
   },
   {
     "id": "umbrella",
@@ -944,8 +914,7 @@ export const connectors: Connector[] = [
       "security.query_domain",
       "security.add_to_blocklist",
       "security.get_activity"
-    ],
-    "frame": "/frames/cisco-umbrella.webp"
+    ]
   },
   {
     "id": "okta",
@@ -975,8 +944,7 @@ export const connectors: Connector[] = [
       "identity.get_user",
       "identity.set_user_status",
       "identity.list_groups"
-    ],
-    "frame": "/frames/okta.webp"
+    ]
   },
   {
     "id": "cassandra",
@@ -1004,8 +972,7 @@ export const connectors: Connector[] = [
       "db.list_keyspaces_and_tables",
       "db.read_rows",
       "db.execute_cql"
-    ],
-    "frame": "/frames/cassandra.webp"
+    ]
   },
   {
     "id": "snowflake",
@@ -1032,8 +999,7 @@ export const connectors: Connector[] = [
       "db.execute_query",
       "db.list_databases_and_schemas",
       "db.estimate_query_cost"
-    ],
-    "frame": "/frames/snowflake.webp"
+    ]
   },
   {
     "id": "clickhouse",
@@ -1060,8 +1026,7 @@ export const connectors: Connector[] = [
       "db.execute_query",
       "db.list_tables",
       "db.table_stats"
-    ],
-    "frame": "/frames/clickhouse.webp"
+    ]
   },
   {
     "id": "dynamodb",
@@ -1091,8 +1056,7 @@ export const connectors: Connector[] = [
       "dynamo.query",
       "dynamo.delete_item",
       "dynamo.describe_table"
-    ],
-    "frame": "/frames/aws-dynamodb-api.webp"
+    ]
   },
   {
     "id": "ec2",
@@ -1121,8 +1085,7 @@ export const connectors: Connector[] = [
       "ec2.start_instance",
       "ec2.stop_instance",
       "ec2.get_instance_state"
-    ],
-    "frame": "/frames/aws-ec2.webp"
+    ]
   },
   {
     "id": "cost_explorer",
@@ -1150,8 +1113,7 @@ export const connectors: Connector[] = [
       "cost.get_cost_by_service",
       "cost.get_cost_by_period",
       "cost.get_cost_forecast"
-    ],
-    "frame": "/frames/aws-cost-explorer.webp"
+    ]
   },
   {
     "id": "secrets_manager",
@@ -1178,8 +1140,7 @@ export const connectors: Connector[] = [
       "secrets.get_secret",
       "secrets.list_secrets",
       "secrets.rotate_secret"
-    ],
-    "frame": "/frames/aws-secrets-manager.webp"
+    ]
   },
   {
     "id": "key_vault",
@@ -1208,8 +1169,7 @@ export const connectors: Connector[] = [
       "keyvault.get_secret",
       "keyvault.list_secrets",
       "keyvault.get_certificate"
-    ],
-    "frame": "/frames/azure-key-vault.webp"
+    ]
   },
   {
     "id": "service_bus",
@@ -1238,8 +1198,7 @@ export const connectors: Connector[] = [
       "servicebus.send_message",
       "servicebus.receive_message",
       "servicebus.get_queue_metrics"
-    ],
-    "frame": "/frames/azure-service-bus.webp"
+    ]
   },
   {
     "id": "azure_devops",
@@ -1267,8 +1226,7 @@ export const connectors: Connector[] = [
       "azure_devops.create_work_item",
       "azure_devops.get_pipeline_status",
       "azure_devops.add_comment"
-    ],
-    "frame": "/frames/azure-devops.webp"
+    ]
   },
   {
     "id": "intune",
@@ -1296,8 +1254,7 @@ export const connectors: Connector[] = [
       "intune.list_devices",
       "intune.get_compliance",
       "intune.sync_device"
-    ],
-    "frame": "/frames/microsoft-intune.webp"
+    ]
   },
   {
     "id": "pubsub",
@@ -1326,8 +1283,7 @@ export const connectors: Connector[] = [
       "pubsub.publish_message",
       "pubsub.create_subscription",
       "pubsub.consume_messages"
-    ],
-    "frame": "/frames/google-pub-sub.webp"
+    ]
   },
   {
     "id": "cloud_functions",
@@ -1353,8 +1309,7 @@ export const connectors: Connector[] = [
       "cloud_functions.invoke",
       "cloud_functions.list_functions",
       "cloud_functions.get_status"
-    ],
-    "frame": "/frames/google-cloud-functions.webp"
+    ]
   },
   {
     "id": "msgraph",
@@ -1385,7 +1340,6 @@ export const connectors: Connector[] = [
       "teams.message",
       "teams.meeting",
       "webhooks.subscribe"
-    ],
-    "frame": "/frames/msgraph-robin.webp"
+    ]
   }
 ]

@@ -139,55 +139,72 @@
 
 .layout {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(320px, 400px);
-  gap: 24px;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 380px);
+  gap: 32px;
   margin-top: 16px;
   align-items: start;
 }
 
-.showAll {
-  grid-column: 1;
-  justify-self: start;
-  margin-top: 16px;
+.groups {
+  display: grid;
+  gap: 32px;
 }
 
+.groupTitle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+  font-size: 1.0625rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.groupCount {
+  color: var(--muted);
+  font-weight: 400;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Cuadrícula uniforme: todas las tarjetas miden lo mismo y el texto nunca pasa de dos líneas */
 .results {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 8px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
 }
 
-/* Cada resultado aparece con una entrada breve al filtrar (solo CSS, sin medir el layout) */
 .results li {
+  min-width: 0;
   animation: pop 320ms var(--ease) both;
 }
 
 @keyframes pop {
   from {
     opacity: 0;
-    transform: scale(0.95);
+    transform: scale(0.96);
   }
 }
 
 .result {
-  display: grid;
-  grid-template-columns: auto minmax(0, 1fr);
+  display: flex;
   align-items: center;
-  column-gap: 10px;
+  gap: 12px;
   width: 100%;
-  min-height: 64px;
-  padding: 12px 16px;
+  height: 72px;
+  padding: 0 14px;
   border: 0;
   border-radius: var(--radius-sm);
   background: var(--bg);
   text-align: left;
   transition:
     background-color 200ms var(--ease),
-    transform 200ms var(--ease);
+    transform 200ms var(--ease),
+    box-shadow 200ms var(--ease);
 }
 
 .result:hover {
   transform: translateY(-2px);
+  box-shadow: 0 10px 24px -16px rgb(0 0 0 / 0.3);
 }
 
 .result[aria-pressed='true'] {
@@ -195,20 +212,34 @@
   color: var(--bg);
 }
 
-.resultName {
-  font-weight: 500;
-  line-height: 1.25;
+.resultText {
+  display: grid;
+  min-width: 0;
 }
 
-.resultCode {
-  grid-column: 2;
+.resultName,
+.resultMeta {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.resultName {
+  font-weight: 550;
+  line-height: 1.3;
+}
+
+.resultMeta {
   font-size: 0.8125rem;
   color: var(--muted);
-  font-variant-numeric: tabular-nums;
 }
 
-.result[aria-pressed='true'] .resultCode {
+.result[aria-pressed='true'] .resultMeta {
   color: var(--on-night-muted);
+}
+
+.showAll {
+  justify-self: start;
 }
 
 .detail {
@@ -219,19 +250,19 @@
 
 .card {
   display: grid;
-  gap: 12px;
-  padding: 20px 20px 24px;
+  gap: 10px;
+  padding: 28px;
   border-radius: var(--radius);
   background: var(--bg);
   box-shadow: 0 1px 2px rgb(0 0 0 / 0.06);
 }
 
-.cardImg {
-  width: 100%;
-  aspect-ratio: 8 / 5;
-  object-fit: cover;
-  object-position: left top;
-  border-radius: 14px;
+.cardHead {
+  display: flex;
+  justify-content: center;
+  padding: 28px 0;
+  margin: -6px -6px 6px;
+  border-radius: 20px;
   background: var(--surface);
 }
 
@@ -239,7 +270,6 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  margin-top: 6px;
   font-size: var(--fs-small);
   color: var(--muted);
 }
@@ -248,9 +278,16 @@
   font-size: var(--fs-h3);
 }
 
+.cardVariant {
+  margin-top: -4px;
+  color: var(--muted);
+  font-weight: 500;
+}
+
 .cardList {
   display: grid;
   gap: 14px;
+  margin-top: 6px;
   font-size: var(--fs-small);
 }
 
@@ -273,6 +310,12 @@
   font-size: 0.8125rem;
 }
 
+@media (max-width: 1100px) {
+  .results {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
 @media (max-width: 860px) {
   .layout {
     grid-template-columns: 1fr;
@@ -282,12 +325,10 @@
     position: static;
     order: -1;
   }
+}
 
+@media (max-width: 480px) {
   .results {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .showAll {
-    grid-column: auto;
+    grid-template-columns: 1fr;
   }
 }

@@ -132,18 +132,27 @@
 }
 
 .cardMedia {
-  display: block;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  height: clamp(260px, 24vw, 340px);
   margin-top: auto;
-  padding: 0 clamp(24px, 3vw, 40px) clamp(24px, 3vw, 40px);
+  padding: 0 clamp(24px, 3vw, 40px);
+  overflow: hidden;
   transition: transform 600ms var(--ease);
 }
 
+.cardMedia > * {
+  width: 100%;
+}
+
 .cardWide .cardMedia {
+  height: auto;
   padding: clamp(24px, 3vw, 48px);
 }
 
 .card:hover .cardMedia {
-  transform: scale(1.025);
+  transform: translateY(-6px);
 }
 
 .plain {
@@ -152,40 +161,50 @@
   object-fit: cover;
   object-position: left top;
   border-radius: var(--radius-sm);
-  box-shadow: 0 1px 0 rgb(0 0 0 / 0.06);
 }
 
+/* Un teléfono que asoma desde el borde inferior */
 .phoneCover {
-  width: min(46%, 220px);
-  margin: 0 auto -18%;
+  width: min(52%, 230px) !important;
 }
 
-.code {
-  margin: 0;
-  padding: 20px 22px;
-  border-radius: var(--radius-sm);
+/* Dos teléfonos escalonados */
+.phonesCover {
+  display: flex;
+  justify-content: center;
+  gap: 4%;
+}
+
+.phonesCover > * {
+  width: min(42%, 200px);
+}
+
+.phonesCover > :last-child {
+  margin-top: 40px;
+}
+
+/* Mosaico de logos sobre un panel oscuro */
+.media_logos {
+  padding-bottom: clamp(24px, 3vw, 40px);
+}
+
+.cloudCover {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  border-radius: 22px;
   background: var(--night);
-  color: var(--on-night);
-  overflow: hidden;
 }
 
-.codeFile {
-  margin-bottom: 14px;
-  font-size: 0.8125rem;
-  color: var(--on-night-muted);
-  font-family: var(--font);
+.cloud {
+  display: grid;
+  grid-template-columns: repeat(5, auto);
+  gap: 14px;
 }
 
-.code pre {
-  margin: 0;
-  font-size: 0.8125rem;
-  line-height: 1.6;
-  overflow-x: auto;
-}
-
-.cardMedia .code pre {
-  max-height: 15em;
-  overflow: hidden;
+.media_code {
+  padding-bottom: 0;
 }
 
 /* Diálogo de detalle */
@@ -280,13 +299,22 @@
   scroll-padding-inline: clamp(28px, 5vw, 56px);
 }
 
-.gallery > * {
+.gallery figure {
   flex: none;
-  width: min(78%, 640px);
+  margin: 0;
   scroll-snap-align: start;
 }
 
-.gallery img {
+.slideWide {
+  width: min(80%, 660px);
+}
+
+.slideTall {
+  width: min(56%, 250px);
+}
+
+.slideWide img {
+  width: 100%;
   aspect-ratio: 16 / 10;
   object-fit: cover;
   object-position: left top;
@@ -294,10 +322,30 @@
   background: var(--surface);
 }
 
-.galleryCode p {
+.slideTall img {
+  width: 100%;
+  border-radius: 28px;
+  box-shadow: inset 0 0 0 1px var(--line);
+  background: var(--surface);
+}
+
+.gallery figcaption {
   margin-top: 10px;
   font-size: var(--fs-small);
   color: var(--muted);
+}
+
+.cloudSlide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 16 / 10;
+  border-radius: var(--radius-sm);
+  background: var(--night);
+}
+
+.cloudSlide .cloud {
+  grid-template-columns: repeat(6, auto);
 }
 
 .story {
@@ -360,7 +408,42 @@
     grid-template-columns: 1fr;
   }
 
-  .gallery > * {
-    width: 86%;
+  .slideWide {
+    width: 88%;
   }
+
+  .slideTall {
+    width: 62%;
+  }
+
+  .cloud {
+    gap: 10px;
+  }
+
+  .cloudSlide .cloud {
+    grid-template-columns: repeat(4, auto);
+  }
+}
+
+.cloudCover .cloud > span {
+  width: 56px;
+  height: 56px;
+  padding: 11px;
+  border-radius: 15px;
+}
+
+@media (max-width: 480px) {
+  .cloudCover .cloud > span {
+    width: 44px;
+    height: 44px;
+    padding: 8px;
+    border-radius: 12px;
+  }
+}
+
+.cloudSlide .cloud > span {
+  width: 52px;
+  height: 52px;
+  padding: 10px;
+  border-radius: 14px;
 }

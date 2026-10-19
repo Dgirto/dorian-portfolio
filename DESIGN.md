@@ -11,9 +11,9 @@ Recorrido:
 1. **Hero claro**: nombre, «Software que conecta sistemas.» y un portátil con el panel real de watchdog-bot-monitor que se endereza y crece al desplazarse, con un teléfono (appEscuela) en paralaje.
 2. **Sobre mí**: retrato con paralaje, presentación y tres datos clave.
 3. **Capítulo oscuro fijado**: una frase que se ilumina palabra a palabra con el scroll.
-4. **Muro de conectores**: un contador hasta 46 y dos filas de capturas reales en movimiento continuo (con pausa).
+4. **Muro de conectores**: un contador hasta 46 y dos filas de placas con el logo de cada sistema sobre un cuadrado blanco (como iconos de aplicación), en movimiento continuo y con pausa.
 5. **Proyectos**: cuadrícula de tarjetas (la destacada a todo el ancho); cada una abre un diálogo con galería, problema, solución, aporte, tecnologías y enlaces.
-6. **Explorador de conectores**: búsqueda y filtros por familia con una ficha de detalle.
+6. **Explorador de conectores**: búsqueda y filtros por familia; resultados agrupados por familia en tarjetas de altura fija (logo, nombre en una línea, variante y código en otra) y una ficha con el logo grande.
 7. **Stack en mosaico**: cada herramienta con su evidencia.
 8. **Trayectoria oscura**: línea de tiempo que se dibuja con el scroll y certificaciones verificables.
 9. **GitHub en vivo**: cifras y actividad reciente de la API pública.
@@ -66,6 +66,20 @@ Los títulos de sección terminan en punto, como frases afirmativas.
 - **Barra de navegación**: fija, translúcida con desenfoque, sección activa resaltada, botón «Escríbeme».
 - **Botones**: píldora verde (primario) y contorno (secundario); enlaces «Ver más ›».
 - **Dispositivos** (`Laptop`, `Phone`): marcos dibujados en CSS que contienen capturas reales.
+- **Ventana de código** (`CodeWindow`): fragmentos reales de los repositorios con resaltado de sintaxis propio (sin dependencias).
+- **Placa de logo** (`LogoTile`): logo del sistema sobre cuadrado blanco redondeado, en tres tamaños.
+
+### Imágenes
+
+| Proyecto | Portada | Galería |
+| --- | --- | --- |
+| watchdog-bot-monitor | Portátil con el panel real | Panel, cockpit de IA, documentación OpenAPI |
+| Conectores Ruvic AI | Mosaico de logos sobre fondo oscuro | Mosaico, extracto de `client.py`, `manifest.json` |
+| appEscuela | Teléfono con la demo real | Escritorio, detalle, móvil |
+| msgraph-Robin | Ventana de código | Dos fragmentos del README |
+| appTareas (doit) | Dos teléfonos con el diseño de Figma | Cinco pantallas del archivo de Figma del proyecto |
+
+Las guías HTML de los conectores ya no se usan como imagen: a tamaño reducido eran ilegibles y mostraban marcadores sin rellenar.
 - **Tarjeta de proyecto**: el título es el botón y su área se extiende a toda la tarjeta; abre un `<dialog>` nativo.
 - **Explorador**: búsqueda en píldora, filtros por familia, resultados en cuadrícula, ficha fija.
 - **Mosaico de stack**, **línea de tiempo**, **cifras en vivo**.

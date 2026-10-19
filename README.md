@@ -51,8 +51,8 @@ src/
   utils/        Búsqueda de conectores, formato de fechas, cliente de la API de GitHub
   styles/       Tokens de diseño y estilos globales
 public/
-  frames/       Capturas de las guías de los 46 conectores
-  work/         Capturas de proyectos y retrato
+  logos/        Logo de cada conector (<repo-en-minúsculas>.svg)
+  work/         Capturas de proyectos, pantallas de Figma y retrato
   robots.txt, sitemap.xml, favicon.svg, og-image.png
 ```
 
@@ -81,10 +81,9 @@ Ningún componente contiene textos personales: todo vive en `src/data/`.
   slug: 'mi-proyecto',
   name: 'mi-proyecto',
   featured: false,             // true: ocupa todo el ancho de la cuadrícula
-  cover: {                     // portada de la tarjeta; sin portada se muestra el primer fragmento de código
-    src: '/work/mi-proyecto.webp', alt: 'Descripción', width: 1400, height: 875,
-    frame: 'laptop',           // 'laptop' | 'phone' | 'plain'
-  },
+  // Portada: { kind: 'laptop' | 'phone' | 'plain', src, alt, width, height }
+  //          { kind: 'phones', shots: [shot, shot] } · { kind: 'logos' } · { kind: 'code' }
+  cover: { kind: 'laptop', src: '/work/mi-proyecto.webp', alt: 'Descripción', width: 1400, height: 875 },
   kind: 'Personal',            // 'Prácticas' | 'Académico' | 'Personal'
   year: '2026',
   thesis: 'Una línea que diga qué es.',
@@ -95,7 +94,7 @@ Ningún componente contiene textos personales: todo vive en `src/data/`.
   demo: 'https://…',           // opcional
   slides: [
     { type: 'image', src: '/work/mi-proyecto.webp', alt: 'Descripción', width: 1400, height: 875 },
-    { type: 'code', filename: 'src/app.ts', language: 'ts', code: '…', caption: '…' },
+    { type: 'code', filename: 'src/app.py', language: 'python', code: '…', caption: '…' }, // python | java | bash | json
   ],
 }
 ```
@@ -108,7 +107,7 @@ Añade un objeto a `src/data/certifications.ts` con `name`, `issuer`, `issued` (
 
 ### Añadir un conector
 
-Añade un objeto a `src/data/connectors.ts` con la misma forma y su captura en `public/frames/<repo-en-minúsculas>.webp` (480 × 300). Aparecerá en el muro animado y en el explorador; la búsqueda usa nombre, código, descripción, palabras clave y operaciones.
+Añade un objeto a `src/data/connectors.ts` con la misma forma y su logo en `public/logos/<repo-en-minúsculas>.svg`. Aparecerá en el muro animado y en el explorador; la búsqueda usa nombre, código, descripción, palabras clave y operaciones.
 
 ## Integración con GitHub
 
@@ -140,10 +139,12 @@ Cada push a `main` generará un despliegue nuevo.
 ## Calidad
 
 - `npm run lint`, `npm run typecheck`, `npm test` y `npm run build` sin errores.
-- Lighthouse 12 (compilación de producción servida en local, 19 oct. 2026): escritorio 100 rendimiento · 100 accesibilidad · 96–100 buenas prácticas · 100 SEO; móvil 90 · 100 · 96–100 · 100. Las buenas prácticas bajan a 96 solo cuando la API pública de GitHub responde 403 por límite de consultas (ocurrió tras muchas pruebas seguidas desde la misma IP); la sección muestra entonces su estado de error.
+- Lighthouse 12 (compilación de producción servida en local, 19 oct. 2026): escritorio 97 rendimiento · 100 accesibilidad · 100 buenas prácticas · 100 SEO; móvil 94 · 100 · 100 · 100. Si la API pública de GitHub responde 403 por límite de consultas, buenas prácticas baja a 96 y la sección muestra su estado de error.
 - Respeta `prefers-reduced-motion` (sin desplazamientos, marquesina detenida, frase estática), navegable con teclado, foco visible, diálogo nativo accesible, enlaces externos con `rel="noopener noreferrer"`.
 
 ## Créditos
 
-- Capturas: guías de los conectores, panel de watchdog-bot-monitor y demo de appEscuela, todas de mis propios repositorios.
+- Capturas: panel de watchdog-bot-monitor (ejecutado en local con sus datos de demostración) y demo pública de appEscuela.
+- Pantallas de appTareas: exportadas del archivo de Figma enlazado en su README; son diseños, no capturas de la app compilada.
+- Logos de los conectores: los `icon.svg` de cada repositorio; los que faltaban proceden de [Devicon](https://devicon.dev) (MIT) y [Simple Icons](https://simpleicons.org) (CC0). Intune usa el logotipo de cuatro cuadrados de Microsoft. Todas las marcas pertenecen a sus propietarios y se muestran solo para identificar la integración.
 - Paleta: base inspirada en las extracciones públicas del sistema visual de Apple y en paletas oscuras para desarrolladores; acento verde propio.

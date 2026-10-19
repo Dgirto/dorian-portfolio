@@ -18,11 +18,11 @@ export const projects: Project[] = [
     stack: ['Python', 'FastAPI', 'WebSockets', 'SQLite / PostgreSQL', 'pytest'],
     repo: 'https://github.com/Dgirto/watchdog-bot-monitor',
     cover: {
+      kind: 'laptop',
       src: '/work/watchdog-dashboard.webp',
       alt: 'Panel de watchdog-bot-monitor con cinco agentes en línea y la salud de dos agentes de IA',
       width: 1400,
       height: 875,
-      frame: 'laptop',
     },
     slides: [
       {
@@ -63,28 +63,53 @@ export const projects: Project[] = [
     stack: ['Python', 'OAuth2', 'boto3', 'Azure SDK', 'Google APIs', 'Docker'],
     repo: 'https://github.com/Dgirto?tab=repositories',
     status: 'Repositorios públicos desde julio de 2026',
-    cover: {
-      src: '/work/doc-gmail.webp',
-      alt: 'Guía de configuración del conector de Gmail',
-      width: 960,
-      height: 600,
-      frame: 'plain',
-    },
+    cover: { kind: 'logos' },
     slides: [
-      { type: 'image', src: '/work/doc-gmail.webp', alt: 'Guía del conector de Gmail', width: 960, height: 600 },
+      { type: 'logos', caption: 'Los sistemas del catálogo, cada uno con su repositorio público.' },
       {
-        type: 'image',
-        src: '/work/doc-postgresql.webp',
-        alt: 'Guía del conector de PostgreSQL en modo de solo lectura',
-        width: 960,
-        height: 600,
+        type: 'code',
+        filename: 'PostgreSQL/lib/ruvic_postgresql_connector/client.py',
+        language: 'python',
+        caption: 'Extracto: validación de identificadores contra inyección SQL y conexión en modo de solo lectura.',
+        code: `_IDENTIFIER_RE = re.compile(r"^[A-Za-z_][A-Za-z0-9_]*$")
+
+
+def _validate_identifier(name: str, kind: str) -> None:
+    """Valida nombres de tabla/esquema para evitar inyección SQL."""
+    if not isinstance(name, str) or not _IDENTIFIER_RE.match(name):
+        raise PostgresqlDataError(
+            f"Nombre de {kind} inválido: {name!r}. "
+            "Solo se permiten letras, números y guion bajo."
+        )
+
+
+conn = psycopg.connect(
+    host=self.config.host,
+    dbname=self.config.database,
+    connect_timeout=self.config.connect_timeout,
+    options="-c default_transaction_read_only=on",
+)`,
       },
       {
-        type: 'image',
-        src: '/work/doc-palo-alto-pan-os.webp',
-        alt: 'Guía del conector de Palo Alto PAN-OS',
-        width: 960,
-        height: 600,
+        type: 'code',
+        filename: 'PostgreSQL/manifest.json',
+        language: 'json',
+        caption: 'El manifiesto describe el conector para el catálogo: autenticación, campos y operaciones.',
+        code: `{
+  "id": "postgresql",
+  "name": "PostgreSQL",
+  "category": "database",
+  "library": {
+    "package": "ruvic-postgresql-connector",
+    "import_name": "ruvic_postgresql_connector"
+  },
+  "operations": [
+    "db.list_tables",
+    "db.read",
+    "db.stats",
+    "db.explain"
+  ]
+}`,
       },
     ],
   },
@@ -103,11 +128,11 @@ export const projects: Project[] = [
     repo: 'https://github.com/Dgirto/appEscuela',
     demo: 'https://app-escuela-rho.vercel.app',
     cover: {
+      kind: 'phone',
       src: '/work/escuela-mobile.webp',
       alt: 'appEscuela en un teléfono: tarjetas de alumnos con su estado de matrícula',
       width: 390,
       height: 844,
-      frame: 'phone',
     },
     slides: [
       {
@@ -147,13 +172,7 @@ export const projects: Project[] = [
     team: 'Ruvic AI',
     stack: ['Python', 'Microsoft Graph', 'Azure AD', 'pip'],
     repo: 'https://github.com/Dgirto/msgraph-Robin',
-    cover: {
-      src: '/work/doc-msgraph-robin.webp',
-      alt: 'Guía de configuración del conector de Microsoft Graph',
-      width: 960,
-      height: 600,
-      frame: 'plain',
-    },
+    cover: { kind: 'code' },
     slides: [
       {
         type: 'code',
@@ -177,11 +196,18 @@ def procesar(email):
 email_client.start_polling(callback=procesar, poll_interval=60)`,
       },
       {
-        type: 'image',
-        src: '/work/doc-msgraph-robin.webp',
-        alt: 'Guía de configuración del conector de Microsoft Graph',
-        width: 960,
-        height: 600,
+        type: 'code',
+        filename: 'README.md · autenticación',
+        language: 'python',
+        caption: 'Una sola configuración de Azure para todos los clientes de la librería.',
+        code: `from msgraph_client import GraphAuth, GraphClient
+
+auth = GraphAuth(
+    client_id="tu-client-id",
+    client_secret="tu-client-secret",
+    tenant_id="tu-tenant-id",
+)
+client = GraphClient(auth)`,
       },
     ],
   },
@@ -198,7 +224,29 @@ email_client.start_polling(callback=procesar, poll_interval=60)`,
     team: 'SENATI · equipo de 5',
     stack: ['Java', 'Android SDK 35', 'SQLite', 'Firebase Auth', 'Figma'],
     repo: 'https://github.com/Dgirto/appTareas',
+    cover: {
+      kind: 'phones',
+      shots: [
+        {
+          src: '/work/tareas-lista.webp',
+          alt: 'Diseño en Figma de doit: lista de tareas con estados, búsqueda y filtros',
+          width: 390,
+          height: 844,
+        },
+        {
+          src: '/work/tareas-detalle.webp',
+          alt: 'Diseño en Figma de doit: detalle de una tarea en progreso',
+          width: 390,
+          height: 844,
+        },
+      ],
+    },
     slides: [
+      { type: 'image', src: '/work/tareas-lista.webp', alt: 'Diseño en Figma: lista de tareas con estados, búsqueda y filtros', width: 390, height: 844 },
+      { type: 'image', src: '/work/tareas-detalle.webp', alt: 'Diseño en Figma: detalle de una tarea con fechas y responsable', width: 390, height: 844 },
+      { type: 'image', src: '/work/tareas-editar.webp', alt: 'Diseño en Figma: formulario para crear o editar una tarea', width: 390, height: 844 },
+      { type: 'image', src: '/work/tareas-eliminar.webp', alt: 'Diseño en Figma: confirmación antes de eliminar una tarea', width: 390, height: 844 },
+      { type: 'image', src: '/work/tareas-login.webp', alt: 'Diseño en Figma: inicio de sesión con usuario, Google o como invitado', width: 390, height: 844 },
       {
         type: 'code',
         filename: 'ui/EstadosUi.java',

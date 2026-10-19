@@ -55,25 +55,25 @@
 
 .wall {
   display: grid;
-  gap: 20px;
+  gap: 28px;
   margin-top: clamp(56px, 8vw, 96px);
 }
 
 .row {
   overflow: hidden;
-  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
 }
 
 .track {
   display: flex;
-  gap: 20px;
+  gap: 16px;
   width: max-content;
-  animation: marquee 90s linear infinite;
+  animation: marquee 80s linear infinite;
 }
 
 .reverse {
   animation-direction: reverse;
-  animation-duration: 110s;
+  animation-duration: 95s;
 }
 
 .wall:hover .track,
@@ -83,30 +83,48 @@
 
 @keyframes marquee {
   to {
-    transform: translateX(calc(-50% - 10px));
+    transform: translateX(calc(-50% - 8px));
   }
 }
 
+/* Cada sistema: icono blanco sobre una placa oscura, nombre y variante en una línea cada uno */
 .item {
   flex: none;
-  width: clamp(220px, 22vw, 320px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  width: 168px;
+  padding: 22px 14px 18px;
+  border-radius: 24px;
+  background: var(--night-2);
+  text-align: center;
+  transition: background-color 300ms var(--ease);
 }
 
-.item img {
-  width: 100%;
-  aspect-ratio: 8 / 5;
-  object-fit: cover;
-  object-position: left top;
-  border-radius: 14px;
+.item:hover {
   background: var(--night-3);
 }
 
-.caption {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-top: 10px;
-  font-size: var(--fs-small);
+.item > :first-child {
+  margin-bottom: 10px;
+}
+
+.name,
+.variant {
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.name {
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.variant {
+  font-size: 0.8125rem;
   color: var(--on-night-muted);
 }
 
@@ -133,6 +151,12 @@
 
 .pause:hover {
   background: var(--on-night-dim);
+}
+
+@media (max-width: 640px) {
+  .item {
+    width: 140px;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

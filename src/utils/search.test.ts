@@ -2,6 +2,18 @@ import { describe, expect, it } from 'vitest'
 import { connectors } from '../data/connectors'
 import { filterConnectors, normalize } from './search'
 
+import { splitName } from './connectors'
+
+describe('splitName', () => {
+  it('separa el nombre de su variante', () => {
+    expect(splitName('Gmail (Google Workspace — cuenta de servicio)')).toEqual({
+      title: 'Gmail',
+      variant: 'Google Workspace — cuenta de servicio',
+    })
+    expect(splitName('PostgreSQL')).toEqual({ title: 'PostgreSQL', variant: null })
+  })
+})
+
 describe('normalize', () => {
   it('quita tildes y mayúsculas', () => {
     expect(normalize('  Conexión SEGURA ')).toBe('conexion segura')

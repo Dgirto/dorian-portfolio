@@ -4,12 +4,16 @@ import { AnimatePresence, m, useReducedMotion } from 'motion/react'
 import { connectors } from '../data/connectors'
 import { families, familyById } from '../data/families'
 import { filterConnectors } from '../utils/search'
+import { splitName } from '../utils/connectors'
 import { ExternalLink } from '../components/ExternalLink'
+import { LogoTile } from '../components/LogoTile'
 import { Reveal } from '../components/Reveal'
 import type { ConnectorFamily } from '../types'
 import styles from './Explorer.module.css'
 
 const suggestions = ['postgres', 'correo', 'firewall', 'aws', 'excel']
+/** Conectores visibles por familia antes de pulsar «Ver todos». */
+const PREVIEW = 3
 
 export function Explorer() {
   const [query, setQuery] = useState('')
@@ -22,11 +26,19 @@ export function Explorer() {
   const detailRef = useRef<HTMLDivElement>(null)
 
   const matches = useMemo(() => filterConnectors(connectors, deferred, family), [deferred, family])
+  const filtering = deferred.trim() !== '' || family !== 'todas'
+  const expanded = filtering || showAll
   const selected =
     matches.find((c) => c.id === selectedId) ?? matches[0] ?? connectors.find((c) => c.id === selectedId)!
-  const filtering = deferred.trim() !== '' || family !== 'todas'
-  // Sin filtro se muestra una muestra corta; el resto, a petición.
-  const visible = filtering || showAll ? matches : matches.slice(0, 12)
+  const selectedName = splitName(selected.name)
+
+  // Resultados agrupados por familia, en el orden del catálogo.
+  const groups = families
+    .map((f) => {
+      const items = matches.filter((c) => c.family === f.id)
+      return { family: f, items, shown: expanded ? items : items.slice(0, PREVIEW) }
+    })
+    .filter((g) => g.items.length > 0)
 
   const choose = (id: string) => {
     setSelectedId(id)
@@ -79,12 +91,7 @@ export function Explorer() {
           </p>
           <div className={styles.filters} role="group" aria-label="Filtrar por familia">
             {[{ id: 'todas' as const, label: 'Todas', colorVar: '' }, ...families].map((f) => (
-              <button
-                key={f.id}
-                type="button"
-                aria-pressed={family === f.id}
-                onClick={() => setFamily(f.id)}
-              >
+              <button key={f.id} type="button" aria-pressed={family === f.id} onClick={() => setFamily(f.id)}>
                 {f.colorVar && <span className={styles.dot} style={{ background: f.colorVar }} aria-hidden="true" />}
                 {f.label}
               </button>
@@ -100,27 +107,45 @@ export function Explorer() {
         </div>
 
         <div className={styles.layout}>
-          <ul className={styles.results}>
-            {visible.map((c) => (
-                <li key={c.id}>
-                  <button
-                    type="button"
-                    className={styles.result}
-                    aria-pressed={c.id === selected.id}
-                    onClick={() => choose(c.id)}
-                  >
-                    <span className={styles.dot} style={{ background: familyById[c.family].colorVar }} aria-hidden="true" />
-                    <span className={styles.resultName}>{c.name}</span>
-                    {c.code && <span className={styles.resultCode}>{c.code}</span>}
-                  </button>
-                </li>
-              ))}
-          </ul>
-          {!filtering && !showAll && (
-            <button type="button" className={`btn btn-ghost ${styles.showAll}`} onClick={() => setShowAll(true)}>
-              Ver los {connectors.length} conectores
-            </button>
-          )}
+          <div className={styles.groups}>
+            {groups.map(({ family: f, items, shown }) => (
+              <div key={f.id} className={styles.group}>
+                <h3 className={styles.groupTitle}>
+                  <span className={styles.dot} style={{ background: f.colorVar }} aria-hidden="true" />
+                  {f.label}
+                  <span className={styles.groupCount}>{items.length}</span>
+                </h3>
+                <ul className={styles.results}>
+                  {shown.map((c) => {
+                    const { title, variant } = splitName(c.name)
+                    return (
+                      <li key={c.id}>
+                        <button
+                          type="button"
+                          className={styles.result}
+                          aria-pressed={c.id === selected.id}
+                          onClick={() => choose(c.id)}
+                        >
+                          <LogoTile connector={c} size="sm" />
+                          <span className={styles.resultText}>
+                            <span className={styles.resultName}>{title}</span>
+                            <span className={styles.resultMeta}>
+                              {[variant, c.code].filter(Boolean).join(' · ')}
+                            </span>
+                          </span>
+                        </button>
+                      </li>
+                    )
+                  })}
+                </ul>
+              </div>
+            ))}
+            {!expanded && (
+              <button type="button" className={`btn btn-ghost ${styles.showAll}`} onClick={() => setShowAll(true)}>
+                Ver los {connectors.length} conectores
+              </button>
+            )}
+          </div>
 
           <div ref={detailRef} className={styles.detail} aria-live="polite">
             <AnimatePresence mode="wait">
@@ -132,21 +157,16 @@ export function Explorer() {
                 exit={reduce ? undefined : { opacity: 0, y: -12 }}
                 transition={{ duration: 0.25 }}
               >
-                <img
-                  className={styles.cardImg}
-                  src={selected.frame}
-                  alt={`Guía del conector ${selected.name}`}
-                  width={480}
-                  height={300}
-                  loading="lazy"
-                  decoding="async"
-                />
+                <div className={styles.cardHead}>
+                  <LogoTile connector={selected} size="lg" />
+                </div>
                 <p className={styles.cardMeta}>
                   <span className={styles.dot} style={{ background: familyById[selected.family].colorVar }} aria-hidden="true" />
                   {familyById[selected.family].label}
                   {selected.code && ` · ${selected.code}`}
                 </p>
-                <h3 className={styles.cardName}>{selected.name}</h3>
+                <h3 className={styles.cardName}>{selectedName.title}</h3>
+                {selectedName.variant && <p className={styles.cardVariant}>{selectedName.variant}</p>}
                 <p className={styles.cardText}>{selected.description.replace(/\.$/, '')}.</p>
                 <dl className={styles.cardList}>
                   <div>

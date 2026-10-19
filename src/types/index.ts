@@ -12,8 +12,6 @@ export interface Connector {
   keywords: string[]
   authModes: string[]
   operations: string[]
-  /** Captura real de la guía del conector (public/frames). */
-  frame: string
 }
 
 export interface FamilyInfo {
@@ -24,24 +22,33 @@ export interface FamilyInfo {
 
 export type ProjectKind = 'Prácticas' | 'Académico' | 'Personal'
 
-export type Slide =
-  | { type: 'image'; src: string; alt: string; width: number; height: number; position?: string }
-  | { type: 'code'; filename: string; language: string; code: string; caption: string }
+export type CodeLanguage = 'python' | 'java' | 'bash' | 'json'
 
-export interface ProjectCover {
+export interface Shot {
   src: string
   alt: string
   width: number
   height: number
-  /** Cómo se presenta la portada en la tarjeta. */
-  frame: 'laptop' | 'phone' | 'plain'
 }
+
+export type Slide =
+  | ({ type: 'image' } & Shot)
+  | { type: 'code'; filename: string; language: CodeLanguage; code: string; caption: string }
+  /** Mosaico con los logos de los sistemas conectados. */
+  | { type: 'logos'; caption: string }
+
+/** Cómo se presenta la portada de la tarjeta. */
+export type ProjectCover =
+  | ({ kind: 'laptop' | 'phone' | 'plain' } & Shot)
+  | { kind: 'phones'; shots: [Shot, Shot] }
+  | { kind: 'logos' }
+  /** Usa el primer fragmento de código de `slides`. */
+  | { kind: 'code' }
 
 export interface Project {
   slug: string
   name: string
-  /** Portada de la tarjeta; sin portada se muestra el primer fragmento de código. */
-  cover?: ProjectCover
+  cover: ProjectCover
   /** Ocupa el ancho completo de la cuadrícula. */
   featured?: boolean
   kind: ProjectKind
