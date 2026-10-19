@@ -29,9 +29,9 @@ export const profile: Profile = {
   },
   portrait: {
     src: '/work/dorian-portrait.webp',
-    alt: 'Dorian Girón Prato, de traje azul marino y corbata roja',
-    width: 300,
-    height: 400,
+    alt: 'Dorian Girón Prato, de pie, con traje azul marino, camisa blanca y corbata roja',
+    width: 546,
+    height: 728,
   },
   githubUser: 'Dgirto',
   // Cambia este valor por el dominio final tras desplegar (también en index.html, robots.txt y sitemap.xml).

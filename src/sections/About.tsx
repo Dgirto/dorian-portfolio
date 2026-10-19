@@ -14,7 +14,7 @@ export function About() {
   const ref = useRef<HTMLElement>(null)
   const reduce = useReducedMotion()
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start end', 'end start'] })
-  const photoY = useTransform(scrollYProgress, [0, 1], [60, -60])
+  const photoY = useTransform(scrollYProgress, [0, 1], [30, -30])
 
   return (
     <section ref={ref} id="sobre-mi" className={styles.about} aria-labelledby="sobre-mi-title">
