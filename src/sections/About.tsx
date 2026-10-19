@@ -7,7 +7,7 @@ import styles from './About.module.css'
 const facts = [
   { label: 'Base', value: profile.location },
   { label: 'Ahora', value: 'Prácticas en Ruvic AI' },
-  { label: 'Formación', value: 'SENATI, 2024 – 2027' },
+  { label: 'Formación', value: 'SENATI · 5.º ciclo' },
 ]
 
 export function About() {

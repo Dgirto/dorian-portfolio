@@ -108,7 +108,7 @@
     flex-direction: column;
     gap: 0;
     padding: 8px var(--margin) 28px;
-    background: rgb(251 251 253 / 0.97);
+    background: var(--bg);
     font-size: 1.5rem;
     font-weight: 600;
     letter-spacing: -0.02em;

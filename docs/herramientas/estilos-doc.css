@@ -1,0 +1,323 @@
+@page {
+  size: A4;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', 'Geist', Arial, sans-serif;
+  font-size: 10.5pt;
+  line-height: 1.55;
+  color: #1d1d1f;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+section {
+  padding: 0 16mm;
+}
+
+.salto {
+  break-before: page;
+}
+
+h1,
+h2,
+h3 {
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  break-after: avoid;
+}
+
+h2 {
+  font-size: 18pt;
+  margin: 0 0 8pt;
+  padding-top: 4mm;
+}
+
+h2 small {
+  display: block;
+  font-size: 9.5pt;
+  font-weight: 600;
+  color: #0a7f52;
+  letter-spacing: 0;
+  margin-bottom: 4pt;
+}
+
+h3 {
+  font-size: 12.5pt;
+  margin: 14pt 0 6pt;
+}
+
+p,
+li {
+  margin: 0 0 6pt;
+}
+
+ul,
+ol {
+  padding-left: 16pt;
+}
+
+code {
+  font-family: Consolas, 'Cascadia Code', monospace;
+  font-size: 9pt;
+  background: #f0f0f2;
+  padding: 1pt 4pt;
+  border-radius: 3pt;
+}
+
+/* Portada */
+.portada {
+  height: 264mm;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 18mm 18mm 10mm;
+  background: #0d1117;
+  color: #f5f5f7;
+}
+
+.portada .inst {
+  font-size: 10pt;
+  color: #a1a1a6;
+}
+
+.portada .inst strong {
+  display: block;
+  font-size: 13pt;
+  color: #f5f5f7;
+}
+
+.portada h1 {
+  font-size: 34pt;
+  margin: 0 0 8pt;
+  letter-spacing: -0.035em;
+}
+
+.portada .sub {
+  font-size: 14pt;
+  color: #3ecf8e;
+  margin-bottom: 18pt;
+  font-weight: 600;
+}
+
+.portada .imagen {
+  border-radius: 10pt;
+  overflow: hidden;
+  margin: 10mm 0;
+}
+
+.portada .imagen img {
+  width: 100%;
+  display: block;
+}
+
+.portada dl {
+  display: grid;
+  grid-template-columns: 34mm 1fr;
+  gap: 4pt 10pt;
+  margin: 0;
+  font-size: 10.5pt;
+}
+
+.portada dt {
+  color: #a1a1a6;
+}
+
+.portada dd {
+  margin: 0;
+}
+
+.portada a {
+  color: #3ecf8e;
+}
+
+/* Índice */
+.indice ol {
+  font-size: 11pt;
+  line-height: 1.9;
+}
+
+/* Tablas */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 9.5pt;
+  margin: 6pt 0 10pt;
+  break-inside: avoid;
+}
+
+th,
+td {
+  text-align: left;
+  padding: 5pt 7pt;
+  border-bottom: 1px solid #e3e3e6;
+  vertical-align: top;
+}
+
+th {
+  background: #f5f5f7;
+  font-weight: 600;
+}
+
+/* Recuadros */
+.nota {
+  background: #ecf8f1;
+  border-left: 3pt solid #0a7f52;
+  padding: 7pt 10pt;
+  border-radius: 4pt;
+  margin: 8pt 0;
+  break-inside: avoid;
+}
+
+.aviso {
+  background: #fff6e5;
+  border-left: 3pt solid #c77700;
+  padding: 7pt 10pt;
+  border-radius: 4pt;
+  margin: 8pt 0;
+  break-inside: avoid;
+}
+
+/* Capturas de código */
+.editor {
+  margin: 8pt 0 12pt;
+  border-radius: 7pt;
+  overflow: hidden;
+  background: #1e1e1e;
+  break-inside: auto;
+}
+
+.editor figcaption,
+.terminal figcaption {
+  display: flex;
+  align-items: center;
+  gap: 8pt;
+  padding: 5pt 10pt;
+  background: #2d2d2d;
+  color: #cccccc;
+  font-size: 8.5pt;
+  font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+.dots {
+  display: inline-flex;
+  gap: 4pt;
+}
+
+.dots i {
+  width: 7pt;
+  height: 7pt;
+  border-radius: 50%;
+  background: #ff5f57;
+}
+
+.dots i:nth-child(2) {
+  background: #febc2e;
+}
+
+.dots i:nth-child(3) {
+  background: #28c840;
+}
+
+.code {
+  display: flex;
+  font-family: Consolas, 'Cascadia Code', monospace;
+  font-size: 7.6pt;
+  line-height: 1.5;
+}
+
+.code pre {
+  margin: 0;
+  padding: 8pt 12pt 8pt 34pt;
+  white-space: pre-wrap;
+  word-break: break-word;
+  flex: 1;
+  background: #1e1e1e !important;
+}
+
+.code pre code {
+  background: none;
+  padding: 0;
+  font-size: inherit;
+}
+
+/* Terminal */
+.terminal {
+  margin: 8pt 0 12pt;
+  border-radius: 7pt;
+  overflow: hidden;
+  background: #012456;
+  break-inside: avoid;
+}
+
+.terminal pre {
+  margin: 0;
+  padding: 8pt 12pt;
+  color: #eeedf0;
+  font-family: Consolas, monospace;
+  font-size: 7.8pt;
+  line-height: 1.45;
+  white-space: pre-wrap;
+}
+
+.terminal b {
+  color: #f9f1a5;
+  font-weight: 400;
+}
+
+/* Capturas de ejecución */
+.shot {
+  margin: 8pt auto 12pt;
+  break-inside: avoid;
+}
+
+.shot img {
+  /* Una imagen más alta que la página bloquea la paginación con break-inside: avoid. */
+  max-width: 100%;
+  max-height: 225mm;
+  margin-inline: auto;
+  display: block;
+  border-radius: 6pt;
+  border: 1px solid #d2d2d7;
+}
+
+.shot figcaption {
+  font-size: 8.5pt;
+  color: #6e6e73;
+  margin-top: 4pt;
+  text-align: center;
+}
+
+.fila {
+  display: flex;
+  gap: 8mm;
+  justify-content: center;
+  align-items: flex-start;
+  break-inside: avoid;
+}
+
+.falta {
+  color: #c00;
+}
+
+/* Número de línea pegado a cada línea: sigue alineado aunque la línea se parta */
+.code .line::before {
+  counter-increment: ln;
+  content: counter(ln);
+  display: inline-block;
+  width: 22pt;
+  margin-left: -30pt;
+  margin-right: 8pt;
+  text-align: right;
+  color: #858585;
+}
+
+.arbol {
+  column-count: 3;
+  column-gap: 10pt;
+}

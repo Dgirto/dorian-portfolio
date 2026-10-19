@@ -22,7 +22,7 @@ export interface FamilyInfo {
 
 export type ProjectKind = 'Prácticas' | 'Académico' | 'Personal'
 
-export type CodeLanguage = 'python' | 'java' | 'bash' | 'json'
+export type CodeLanguage = 'python' | 'java' | 'bash' | 'json' | 'cpp'
 
 export interface Shot {
   src: string

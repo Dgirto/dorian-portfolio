@@ -7,6 +7,7 @@ const KEYWORDS: Record<CodeLanguage, string[]> = {
   java: ['final', 'class', 'static', 'int', 'switch', 'case', 'return', 'default', 'private', 'public', 'void', 'new'],
   bash: ['git', 'cd'],
   json: ['true', 'false', 'null'],
+  cpp: ['if', 'else', 'return', 'for', 'while', 'void', 'byte', 'int', 'float', 'char', 'const', 'volatile', 'unsigned', 'long'],
 }
 
 // Un único patrón con grupos: comentario, cadena, número, anotación, palabra.
@@ -23,7 +24,8 @@ function highlight(code: string, lang: CodeLanguage): ReactNode[] {
     if (at > last) out.push(code.slice(last, at))
     const [text, comment, str, num, deco, word] = m
     let cls: string | undefined
-    if (comment && !(lang === 'json')) cls = styles.comment
+    if (comment && lang === 'cpp' && text.startsWith('#')) cls = styles.deco
+    else if (comment && !(lang === 'json')) cls = styles.comment
     else if (str) cls = lang === 'json' && code[at + text.length] === ':' ? styles.key : styles.string
     else if (num) cls = styles.number
     else if (deco) cls = styles.deco

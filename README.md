@@ -1,6 +1,6 @@
 # Dorian Girón Prato · Portafolio
 
-Portafolio personal construido con **React + TypeScript + Vite**. Presenta mi trabajo como ingeniero de software júnior en Ruvic AI y mis proyectos con código público, empezando por los **46 conectores** que construí para que un agente de IA trabaje con sistemas externos.
+Portafolio personal construido con **React + TypeScript + Vite**. Presenta mi trabajo como ingeniero de software júnior en Ruvic AI, mi formación (estudiante de 5.º ciclo de Ingeniería de Software con IA en SENATI) y mis proyectos con código público, empezando por los **46 conectores** que construí para que un agente de IA trabaje con sistemas externos.
 
 La experiencia sigue el ritmo de una página de producto: titulares cortos y grandes, capturas reales dentro de dispositivos que se animan con el desplazamiento, capítulos oscuros fijados en pantalla y proyectos que se abren en detalle. El concepto, la paleta y el lenguaje de movimiento están documentados en [`DESIGN.md`](DESIGN.md).
 
@@ -55,6 +55,12 @@ public/
   logos/        Logo de cada conector (<repo-en-minúsculas>.svg)
   work/         Capturas de proyectos, pantallas de Figma y retrato
   robots.txt, sitemap.xml, favicon.svg, og-image.png
+iot/
+  alerta-sismica/  Programas de Arduino del proyecto de Tinkercad (controlador y actuadores)
+docs/
+  Laboratorio-4-Dorian-Giron-Prato.pdf  Documentación del Laboratorio #4 (SENATI)
+  capturas/        Capturas de ejecución usadas en el PDF
+  herramientas/    Scripts que toman las capturas y generan el PDF
 ```
 
 ## Editar el contenido
@@ -140,8 +146,22 @@ Cada push a `main` generará un despliegue nuevo.
 ## Calidad
 
 - `npm run lint`, `npm run typecheck`, `npm test` y `npm run build` sin errores.
-- Lighthouse 12 (compilación de producción servida en local, 19 oct. 2026): escritorio 100 rendimiento · 100 accesibilidad · 100 buenas prácticas · 100 SEO; móvil 93 · 100 · 100 · 100. Si la API pública de GitHub responde 403 por límite de consultas, buenas prácticas baja a 96 y la sección muestra su estado de error.
+- Lighthouse 12 (compilación de producción servida en local, 19 oct. 2026): escritorio 100 rendimiento · 100 accesibilidad · 100 buenas prácticas · 100 SEO; móvil 92 · 100 · 100 · 100 (el rendimiento móvil varía entre 92 y 94 según la ejecución). Si la API pública de GitHub responde 403 por límite de consultas, buenas prácticas baja a 96 y la sección muestra su estado de error.
 - Respeta `prefers-reduced-motion` (sin desplazamientos, marquesina detenida, frase estática), navegable con teclado, foco visible, diálogo nativo accesible, enlaces externos con `rel="noopener noreferrer"`.
+
+## Documentación del Laboratorio #4
+
+El PDF [`docs/Laboratorio-4-Dorian-Giron-Prato.pdf`](docs/Laboratorio-4-Dorian-Giron-Prato.pdf) documenta el proyecto según la Guía Práctica 4 del curso Fullstack Developer Software – Seminario (IA 501) de SENATI: cada paso de la guía con su código y su captura de ejecución, el proyecto de Tinkercad, la verificación y las diferencias con la guía. Se regenera con Google Chrome instalado:
+
+```bash
+npm run dev                                  # en otra terminal
+node docs/herramientas/capturas.mjs          # capturas de ejecución
+npm run build && npm run preview             # en otra terminal, para Lighthouse
+node docs/herramientas/lighthouse.mjs
+node docs/herramientas/generar-pdf.mjs       # código resaltado con shiki + PDF
+```
+
+Si Chrome no está en la ruta habitual, indica su ubicación con la variable `CHROME_PATH`.
 
 ## Créditos
 
@@ -150,4 +170,5 @@ Cada push a `main` generará un despliegue nuevo.
 - Marcos de iPhone 14 Pro y MacBook Pro estático (respaldo sin WebGL): adaptados de [devices.css](https://github.com/picturepan2/devices.css) de Yan Zhu (licencia MIT; aviso incluido en `src/components/Devices.module.css`). Se convirtieron a unidades relativas y la tapa del MacBook se separó para animar su apertura.
 - Pantallas de appTareas: exportadas del archivo de Figma enlazado en su README; son diseños, no capturas de la app compilada.
 - Logos de los conectores: los `icon.svg` de cada repositorio; los que faltaban proceden de [Devicon](https://devicon.dev) (MIT) y [Simple Icons](https://simpleicons.org) (CC0). Intune usa el logotipo de cuatro cuadrados de Microsoft. Todas las marcas pertenecen a sus propietarios y se muestran solo para identificar la integración.
+- Proyecto de Arduino: diseñado y simulado en Tinkercad Circuits; la vista de protoboard y el esquema son capturas del propio diseño.
 - Paleta: base inspirada en las extracciones públicas del sistema visual de Apple y en paletas oscuras para desarrolladores; acento verde propio.

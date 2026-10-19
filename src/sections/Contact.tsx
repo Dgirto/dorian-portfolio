@@ -2,6 +2,7 @@ import { ArrowUpRight, Mail } from 'lucide-react'
 import { profile } from '../data/profile'
 import { ExternalLink } from '../components/ExternalLink'
 import { Reveal } from '../components/Reveal'
+import { ContactForm } from '../components/ContactForm'
 import styles from './Contact.module.css'
 
 const subject = encodeURIComponent('Contacto desde tu portafolio')
@@ -33,6 +34,9 @@ export function Contact() {
               GitHub <ArrowUpRight size={18} aria-hidden="true" />
             </ExternalLink>
           </div>
+        </Reveal>
+        <Reveal delay={0.25}>
+          <ContactForm to={profile.email} />
         </Reveal>
         <p className={styles.where}>
           {profile.location} · {profile.workMode}

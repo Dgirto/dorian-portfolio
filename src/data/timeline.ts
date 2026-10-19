@@ -17,7 +17,7 @@ export const timeline: TimelineEntry[] = [
     kind: 'formacion',
     title: 'Profesional Técnico, Ingeniería de Software con Inteligencia Artificial',
     organization: 'SENATI',
-    type: 'Formación académica',
+    type: 'Formación académica · cursando el 5.º ciclo',
     start: '2024-09',
     end: '2027-07',
     endIsExpected: true,

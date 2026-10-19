@@ -1,0 +1,24 @@
+{
+  "version": "12.8.2",
+  "fecha": "2026-10-19",
+  "resultados": [
+    {
+      "version": "12.8.2",
+      "dispositivo": "Escritorio",
+      "rendimiento": 100,
+      "accesibilidad": 100,
+      "buenasPracticas": 100,
+      "seo": 100,
+      "lcp": "0.5 s"
+    },
+    {
+      "version": "12.8.2",
+      "dispositivo": "Móvil",
+      "rendimiento": 92,
+      "accesibilidad": 100,
+      "buenasPracticas": 100,
+      "seo": 100,
+      "lcp": "2.4 s"
+    }
+  ]
+}

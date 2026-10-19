@@ -286,4 +286,76 @@ cd appTareas
       },
     ],
   },
+  {
+    slug: 'alerta-sismica',
+    name: 'Alerta sísmica con Arduino',
+    featured: true,
+    kind: 'Académico',
+    year: '2026',
+    thesis: 'Sistema de alerta ante sismo, incendio y fuga de gas con dos Arduino conectados por I2C.',
+    problem:
+      'Ante un sismo, un incendio o una fuga de gas hay que avisar al instante y abrir la salida, y solo una persona autorizada debe poder desactivar la alarma.',
+    solution:
+      'Un Arduino lee cada medio segundo un sensor de inclinación, uno de temperatura TMP36 y uno de gas, muestra los valores en una pantalla LCD y envía el tipo de alerta por I2C. El segundo Arduino abre la puerta de emergencia con un servo, enciende un anillo NeoPixel con luces que corren hacia la salida (un color por evento) y hace sonar una sirena distinta en cada caso. La alarma se desactiva con una clave en un teclado 4×4.',
+    contribution: 'Diseño del circuito y programación de los dos microcontroladores, simulados en Tinkercad Circuits.',
+    team: 'Simulación en Tinkercad',
+    stack: ['Arduino (C++)', 'I2C (Wire)', 'Tinkercad Circuits', 'NeoPixel', 'Keypad', 'LCD I2C'],
+    repo: 'https://github.com/Dgirto/dorian-portfolio/tree/main/iot/alerta-sismica',
+    cover: {
+      kind: 'plain',
+      src: '/work/iot-circuito.webp',
+      alt: 'Circuito en Tinkercad: dos Arduino Uno, pantalla LCD, teclado 4×4, sensores de gas, temperatura e inclinación, servo, anillo NeoPixel y zumbador',
+      width: 1460,
+      height: 940,
+    },
+    slides: [
+      {
+        type: 'image',
+        src: '/work/iot-circuito.webp',
+        alt: 'Vista de protoboard del circuito en Tinkercad con los dos Arduino Uno y sus componentes',
+        width: 1460,
+        height: 940,
+      },
+      {
+        type: 'image',
+        src: '/work/iot-esquema.webp',
+        alt: 'Esquema eléctrico exportado de Tinkercad: el Arduino U1 con sensores, teclado y LCD, y el Arduino U4 con servo, NeoPixel y zumbador, unidos por A4 y A5 (I2C)',
+        width: 1600,
+        height: 1223,
+      },
+      {
+        type: 'code',
+        filename: 'controlador/controlador.ino',
+        language: 'cpp',
+        caption: 'El controlador decide el evento por prioridad y lo envía al Arduino de actuadores por I2C.',
+        code: `byte detectarEvento() {
+  if (digitalRead(PIN_TILT) != tiltReposo) return 1;  // Sismo (máxima prioridad)
+  if (temperatura > UMBRAL_TEMP)           return 2;  // Incendio
+  if (gas > UMBRAL_GAS)                    return 3;  // Fuga de gas
+  return 0;
+}
+
+void enviarAlerta() {
+  Wire.beginTransmission(DIR_ESCLAVO);
+  Wire.write(alerta);
+  Wire.endTransmission();
+}`,
+      },
+      {
+        type: 'code',
+        filename: 'actuadores/actuadores.ino',
+        language: 'cpp',
+        caption: 'El receptor abre la puerta de emergencia y anima las luces con un color por tipo de alerta.',
+        code: `void recibir(int n) {
+  while (Wire.available()) alerta = Wire.read();
+}
+
+uint32_t colorAlerta() {
+  if (alertaActual == 1) return luces.Color(255, 140, 0);  // Sismo: naranja
+  if (alertaActual == 2) return luces.Color(255, 0, 0);    // Incendio: rojo
+  return luces.Color(150, 0, 255);                         // Gas: morado
+}`,
+      },
+    ],
+  },
 ]

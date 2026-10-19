@@ -158,9 +158,11 @@
 .plain {
   width: 100%;
   aspect-ratio: 16 / 10;
-  object-fit: cover;
-  object-position: left top;
+  object-fit: contain;
+  padding: 4%;
+  background: #fff;
   border-radius: var(--radius-sm);
+  box-shadow: 0 1px 0 rgb(0 0 0 / 0.04), 0 24px 48px -28px rgb(0 0 0 / 0.25);
 }
 
 /* Teléfonos completos: se dimensionan por la altura para no recortarse */
