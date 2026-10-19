@@ -1,0 +1,28 @@
+# dependencies & build
+node_modules
+dist
+dist-ssr
+*.tsbuildinfo
+
+# env & secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# local tooling output (design skills, editor launch config)
+.taste-skill/
+.impeccable/
+.claude/
+.vercel
+*.local
+
+# logs & editors
+*.log
+npm-debug.log*
+.DS_Store
+Thumbs.db
+.vscode/*
+!.vscode/extensions.json
+.idea

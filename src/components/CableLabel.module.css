@@ -1,0 +1,50 @@
+.label {
+  display: inline-flex;
+  max-width: 100%;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  font-size: var(--step-small);
+  line-height: 1.3;
+  font-variant-numeric: tabular-nums;
+}
+
+.stripe {
+  flex: none;
+  width: 18px;
+  height: 6px;
+}
+
+.code {
+  flex: none;
+  color: var(--muted);
+}
+
+.name {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-weight: 500;
+}
+
+/* En la hoja, el nombre puede ocupar dos líneas en vez de cortarse */
+.wrap .name {
+  white-space: normal;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+}
+
+.wrap {
+  align-items: flex-start;
+}
+
+.wrap .stripe {
+  margin-top: 0.45em;
+}
+
+.onInk .code {
+  color: var(--on-ink-muted);
+}

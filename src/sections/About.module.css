@@ -1,0 +1,140 @@
+.about {
+  padding-top: var(--section-gap);
+}
+
+/* Dos filas que comparten una línea vertical al 34 % del ancho */
+.row {
+  display: grid;
+  grid-template-columns: 34% minmax(0, 1fr);
+  column-gap: 0;
+}
+
+.side {
+  padding-right: var(--gutter);
+}
+
+.heading {
+  font-size: var(--step-lead);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  margin-bottom: 28px;
+}
+
+.facts {
+  display: grid;
+  gap: 20px;
+  font-size: var(--step-small);
+}
+
+.facts dt {
+  color: var(--muted);
+}
+
+.facts dd {
+  font-weight: 500;
+}
+
+.paragraph {
+  font-size: var(--step-lead);
+  line-height: 1.35;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  max-width: 40ch;
+}
+
+.rowRecord {
+  margin-top: 120px;
+}
+
+.recordHeading {
+  font-size: var(--step-lead);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+.records {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 40px 64px;
+}
+
+.recordTitle {
+  font-size: var(--step-small);
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 1.4;
+  color: var(--muted);
+  margin-bottom: 16px;
+}
+
+.entry {
+  display: grid;
+  gap: 4px;
+}
+
+.entryHead {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.entryOrg {
+  font-size: var(--step-lead);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+.entryDate {
+  font-size: var(--step-small);
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+  padding-top: 6px;
+}
+
+.entryTitle {
+  font-weight: 500;
+}
+
+.entryMeta {
+  font-size: var(--step-small);
+  color: var(--muted);
+}
+
+.entryText {
+  margin-top: 8px;
+  max-width: 60ch;
+}
+
+@media (max-width: 899px) {
+  .row {
+    grid-template-columns: 1fr;
+  }
+
+  .side {
+    padding-right: 0;
+    margin-bottom: 28px;
+  }
+
+
+  .heading {
+    margin-bottom: 20px;
+  }
+
+  .facts {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    font-size: 0.875rem;
+  }
+
+  .rowRecord {
+    margin-top: 72px;
+  }
+
+  .recordHeading {
+    margin-bottom: 24px;
+  }
+
+  .records {
+    grid-template-columns: 1fr;
+  }
+}
