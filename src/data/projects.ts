@@ -129,6 +129,7 @@ conn = psycopg.connect(
     demo: 'https://app-escuela-rho.vercel.app',
     cover: {
       kind: 'phone',
+      island: false,
       src: '/work/escuela-mobile.webp',
       alt: 'appEscuela en un teléfono: tarjetas de alumnos con su estado de matrícula',
       width: 390,

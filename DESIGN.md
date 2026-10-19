@@ -8,7 +8,7 @@
 
 Recorrido:
 
-1. **Hero claro**: nombre, «Software que conecta sistemas.» y un portátil con el panel real de watchdog-bot-monitor que se endereza y crece al desplazarse, con un teléfono (appEscuela) en paralaje.
+1. **Hero claro**: nombre y «Software que conecta sistemas.»; debajo, un portátil en 3D (CSS) que llega **cerrado** y abre la tapa con el scroll mientras la escena queda fijada, hasta mostrar de frente el panel real de watchdog-bot-monitor; al final aparece un teléfono con appEscuela.
 2. **Sobre mí**: retrato con paralaje, presentación y tres datos clave.
 3. **Capítulo oscuro fijado**: una frase que se ilumina palabra a palabra con el scroll.
 4. **Muro de conectores**: un contador hasta 46 y dos filas de placas con el logo de cada sistema sobre un cuadrado blanco (como iconos de aplicación), en movimiento continuo y con pausa.
@@ -91,8 +91,8 @@ Biblioteca: `motion` (antes Framer Motion), con `LazyMotion` + `domAnimation` pa
 | Efecto | Dónde |
 | --- | --- |
 | Entrada al cargar (subida + opacidad, escalonada) | Hero |
-| Portátil que se endereza (rotateX 22° → 0°) y crece (0.86 → 1) ligado al scroll | Hero |
-| Paralaje | Teléfono del hero, retrato |
+| Tapa del portátil que se abre (rotateX −88° → 0°) ligada al scroll, con muelle suave; la cámara está fija y la escena fijada (`position: sticky`) | Hero |
+| Aparición del teléfono al final de la apertura; paralaje del retrato | Hero, Sobre mí |
 | Frase fijada que se ilumina palabra a palabra | Capítulo oscuro |
 | Contador animado | 46 conectores, repositorios públicos |
 | Marquesina continua con pausa (y pausa al pasar el cursor) | Muro de conectores |
@@ -119,7 +119,13 @@ Biblioteca: `motion` (antes Framer Motion), con `LazyMotion` + `domAnimation` pa
 | ≤ 860 px | Una columna en proyectos, sobre mí, trayectoria y explorador (la ficha pasa arriba y la lista hace scroll hasta ella). |
 | ≤ 640 px | Mosaico de stack a una columna; botones del hero apilados. |
 
-## 9. Rendimiento
+## 9. Nitidez de las imágenes
+
+- Capturas a 2× (escritorio, 2400 px) y 3× (móvil, emulación de dispositivo real); pantallas de Figma en WebP sin pérdida.
+- Ninguna imagen termina con `scale` ni con transformaciones residuales: el portátil acaba en 0° y la escena no se escala, así el navegador no rasteriza a menor tamaño.
+- Perspectiva proporcional al ancho del portátil (`300cqw`), para que el 3D se vea igual en móvil y escritorio.
+
+## 10. Rendimiento
 
 - Secciones bajo el pliegue con `content-visibility: auto`.
 - Imágenes WebP con dimensiones declaradas; carga diferida salvo el hero.

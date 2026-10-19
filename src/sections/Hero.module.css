@@ -1,6 +1,5 @@
 .hero {
   padding-top: clamp(40px, 7vh, 96px);
-  overflow: hidden;
 }
 
 .copy {
@@ -49,25 +48,58 @@
   margin-top: 32px;
 }
 
-.stage {
-  position: relative;
-  width: min(1100px, 100% - 2 * var(--margin));
-  margin: clamp(40px, 6vh, 72px) auto 0;
+/* Recorrido de scroll: la escena queda fija mientras la tapa se abre */
+.track {
+  height: 230vh;
+  margin-top: clamp(24px, 4vh, 48px);
+}
+
+.trackStatic {
+  margin-top: clamp(40px, 6vh, 72px);
   padding-bottom: clamp(48px, 6vw, 96px);
 }
 
+.sticky {
+  position: sticky;
+  top: 56px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: calc(100vh - 56px);
+  height: calc(100svh - 56px);
+  overflow: hidden;
+}
+
+.trackStatic .sticky {
+  position: static;
+  height: auto;
+  overflow: visible;
+}
+
+.stage {
+  position: relative;
+  width: min(1000px, 100% - 2 * var(--margin), (100svh - 200px) * 1.3);
+  /* Espacio para la base, que se proyecta por debajo de la tapa */
+  padding-bottom: 20%;
+}
+
 .laptop {
-  width: 88%;
-  transform-origin: center bottom;
-  will-change: transform;
+  width: 86%;
+  margin-inline: auto;
 }
 
 .phone {
   position: absolute;
   right: 0;
-  bottom: clamp(24px, 4vw, 64px);
-  width: 22%;
-  will-change: transform;
+  bottom: 10%;
+  width: 19%;
+}
+
+.hint {
+  margin-top: 8px;
+  font-size: var(--fs-small);
+  color: var(--muted);
 }
 
 @media (max-width: 640px) {
@@ -76,12 +108,17 @@
     gap: 8px;
   }
 
+  .track {
+    height: 190vh;
+  }
+
   .laptop {
-    width: 94%;
+    width: 88%;
   }
 
   .phone {
-    width: 30%;
+    width: 26%;
     right: -2%;
+    bottom: 8%;
   }
 }

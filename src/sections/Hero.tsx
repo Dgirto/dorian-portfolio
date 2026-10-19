@@ -1,27 +1,31 @@
 import { useRef } from 'react'
 import { ChevronRight } from 'lucide-react'
-import { m, useReducedMotion, useScroll, useTransform } from 'motion/react'
+import { m, useReducedMotion, useScroll, useSpring, useTransform } from 'motion/react'
 import { profile } from '../data/profile'
-import { Laptop, Phone } from '../components/Devices'
+import { Phone } from '../components/Devices'
+import { Laptop3D } from '../components/Laptop3D'
 import styles from './Hero.module.css'
 
 const ease = [0.22, 1, 0.36, 1] as const
 
 export function Hero() {
-  const stageRef = useRef<HTMLDivElement>(null)
+  const trackRef = useRef<HTMLDivElement>(null)
   const reduce = useReducedMotion()
-  const { scrollYProgress } = useScroll({ target: stageRef, offset: ['start end', 'center center'] })
-  // El portátil se endereza y crece mientras sube; el teléfono avanza un poco más rápido.
-  const rotateX = useTransform(scrollYProgress, [0, 1], [22, 0])
-  const scale = useTransform(scrollYProgress, [0, 1], [0.86, 1])
-  const phoneY = useTransform(scrollYProgress, [0, 1], [140, 0])
+  // Recorrido: el portátil llega cerrado y se abre mientras la escena queda fijada.
+  const { scrollYProgress } = useScroll({ target: trackRef, offset: ['start start', 'end end'] })
+  const smooth = useSpring(scrollYProgress, { stiffness: 140, damping: 30, mass: 0.4 })
+  const open = useTransform(smooth, [0, 0.62], [0, 1], { clamp: true })
+  const phoneY = useTransform(smooth, [0.55, 0.85], ['40%', '0%'], { clamp: true })
+  const phoneOpacity = useTransform(smooth, [0.55, 0.75], [0, 1], { clamp: true })
+  const hint = useTransform(smooth, [0, 0.15], [1, 0], { clamp: true })
 
   const enter = (delay: number) =>
     reduce
       ? {}
       : {
-          initial: { opacity: 0, y: 24 },
-          animate: { opacity: 1, y: 0 },
+          // Solo desplazamiento: el texto es visible desde el primer fotograma (mejor LCP).
+          initial: { y: 24 },
+          animate: { y: 0 },
           transition: { duration: 1, delay, ease },
         }
 
@@ -49,28 +53,36 @@ export function Hero() {
         </m.div>
       </div>
 
-      <div ref={stageRef} className={styles.stage}>
-        <m.div
-          className={styles.laptop}
-          style={reduce ? undefined : { rotateX, scale, transformPerspective: 1600 }}
-        >
-          <Laptop
-            src="/work/watchdog-dashboard.webp"
-            alt="Panel de watchdog-bot-monitor, uno de mis proyectos, con el estado de una flota de bots"
-            width={1400}
-            height={875}
-            eager
-          />
-        </m.div>
-        <m.div className={styles.phone} style={reduce ? undefined : { y: phoneY }}>
-          <Phone
-            src="/work/escuela-mobile.webp"
-            alt="appEscuela, otro de mis proyectos, en un teléfono"
-            width={390}
-            height={844}
-            eager
-          />
-        </m.div>
+      <div ref={trackRef} className={reduce ? styles.trackStatic : styles.track}>
+        <div className={styles.sticky}>
+          <div className={styles.stage}>
+            <div className={styles.laptop}>
+              <Laptop3D
+                src="/work/watchdog-dashboard.webp"
+                srcSet="/work/watchdog-dashboard-1200.webp 1200w, /work/watchdog-dashboard.webp 2400w"
+                sizes="(max-width: 640px) 90vw, 860px"
+                alt="Panel de watchdog-bot-monitor, uno de mis proyectos, con el estado de una flota de bots"
+                width={2400}
+                height={1500}
+                progress={reduce ? undefined : open}
+              />
+            </div>
+            <m.div className={styles.phone} style={reduce ? undefined : { y: phoneY, opacity: phoneOpacity }}>
+              <Phone
+                src="/work/escuela-mobile.webp"
+                alt="appEscuela, otro de mis proyectos, en un teléfono"
+                width={780}
+                height={1688}
+                island={false}
+              />
+            </m.div>
+          </div>
+          {!reduce && (
+            <m.p className={styles.hint} style={{ opacity: hint }} aria-hidden="true">
+              Desliza para abrir
+            </m.p>
+          )}
+        </div>
       </div>
     </section>
   )

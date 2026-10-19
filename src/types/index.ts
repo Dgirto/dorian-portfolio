@@ -29,6 +29,8 @@ export interface Shot {
   alt: string
   width: number
   height: number
+  /** Solo en teléfonos: false si la captura no tiene barra de estado. */
+  island?: boolean
 }
 
 export type Slide =

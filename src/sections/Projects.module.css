@@ -135,7 +135,7 @@
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  height: clamp(260px, 24vw, 340px);
+  height: clamp(320px, 30vw, 420px);
   margin-top: auto;
   padding: 0 clamp(24px, 3vw, 40px);
   overflow: hidden;
@@ -163,24 +163,33 @@
   border-radius: var(--radius-sm);
 }
 
-/* Un teléfono que asoma desde el borde inferior */
-.phoneCover {
-  width: min(52%, 230px) !important;
+/* Teléfonos completos: se dimensionan por la altura para no recortarse */
+.media_phone,
+.media_phones {
+  padding-bottom: clamp(24px, 3vw, 40px);
 }
 
-/* Dos teléfonos escalonados */
+.phoneCover {
+  height: 100%;
+  width: auto !important;
+  aspect-ratio: 1000 / 2104;
+}
+
 .phonesCover {
   display: flex;
   justify-content: center;
-  gap: 4%;
+  align-items: flex-start;
+  gap: 6%;
+  height: 100%;
 }
 
 .phonesCover > * {
-  width: min(42%, 200px);
+  height: 92%;
+  aspect-ratio: 1000 / 2104;
 }
 
 .phonesCover > :last-child {
-  margin-top: 40px;
+  margin-top: 8%;
 }
 
 /* Mosaico de logos sobre un panel oscuro */
@@ -310,7 +319,7 @@
 }
 
 .slideTall {
-  width: min(56%, 250px);
+  width: min(56%, 220px);
 }
 
 .slideWide img {
