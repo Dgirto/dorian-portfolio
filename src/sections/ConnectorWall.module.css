@@ -1,0 +1,151 @@
+.section {
+  padding-bottom: var(--section);
+  overflow: hidden;
+}
+
+.head {
+  width: var(--page);
+  margin-inline: auto;
+}
+
+.title {
+  display: flex;
+  flex-direction: column;
+  font-size: var(--fs-h2);
+}
+
+.number {
+  font-size: clamp(6rem, 3rem + 14vw, 15rem);
+  font-weight: 700;
+  letter-spacing: -0.06em;
+  line-height: 0.85;
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+}
+
+.families {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 32px;
+}
+
+.families li {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 999px;
+  background: var(--night-2);
+  font-size: var(--fs-small);
+  color: var(--on-night-muted);
+}
+
+.families strong {
+  color: var(--on-night);
+  font-weight: 600;
+}
+
+.dot {
+  flex: none;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.wall {
+  display: grid;
+  gap: 20px;
+  margin-top: clamp(56px, 8vw, 96px);
+}
+
+.row {
+  overflow: hidden;
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+
+.track {
+  display: flex;
+  gap: 20px;
+  width: max-content;
+  animation: marquee 90s linear infinite;
+}
+
+.reverse {
+  animation-direction: reverse;
+  animation-duration: 110s;
+}
+
+.wall:hover .track,
+.paused .track {
+  animation-play-state: paused;
+}
+
+@keyframes marquee {
+  to {
+    transform: translateX(calc(-50% - 10px));
+  }
+}
+
+.item {
+  flex: none;
+  width: clamp(220px, 22vw, 320px);
+}
+
+.item img {
+  width: 100%;
+  aspect-ratio: 8 / 5;
+  object-fit: cover;
+  object-position: left top;
+  border-radius: 14px;
+  background: var(--night-3);
+}
+
+.caption {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 10px;
+  font-size: var(--fs-small);
+  color: var(--on-night-muted);
+}
+
+.foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: var(--page);
+  margin: 32px auto 0;
+}
+
+.pause {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border: 0;
+  border-radius: 50%;
+  background: var(--night-3);
+  color: var(--on-night);
+  transition: background-color 200ms var(--ease);
+}
+
+.pause:hover {
+  background: var(--on-night-dim);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .track {
+    animation: none;
+  }
+
+  .row {
+    overflow-x: auto;
+    mask-image: none;
+  }
+
+  .pause {
+    display: none;
+  }
+}

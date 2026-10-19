@@ -1,67 +1,58 @@
+import { useRef } from 'react'
+import { m, useReducedMotion, useScroll, useTransform } from 'motion/react'
 import { profile } from '../data/profile'
-import { timeline } from '../data/timeline'
-import { formatRange } from '../utils/format'
-import type { TimelineEntry } from '../types'
+import { Reveal } from '../components/Reveal'
 import styles from './About.module.css'
 
 const facts = [
   { label: 'Base', value: profile.location },
-  { label: 'Ahora', value: 'Ruvic AI, en prácticas' },
+  { label: 'Ahora', value: 'Prácticas en Ruvic AI' },
   { label: 'Formación', value: 'SENATI, 2024 – 2027' },
 ]
 
-function Record({ title, entries }: { title: string; entries: TimelineEntry[] }) {
-  return (
-    <div className={styles.record}>
-      <h3 className={styles.recordTitle}>{title}</h3>
-      <ul>
-        {entries.map((e) => (
-          <li key={`${e.organization}-${e.start}`} className={styles.entry}>
-            <div className={styles.entryHead}>
-              <span className={styles.entryOrg}>{e.organization}</span>
-              <span className={styles.entryDate}>{formatRange(e.start, e.end, e.endIsExpected)}</span>
-            </div>
-            <p className={styles.entryTitle}>{e.title}</p>
-            <p className={styles.entryMeta}>
-              {e.type}
-              {e.location ? ` · ${e.location}` : ''}
-            </p>
-            {e.description && <p className={styles.entryText}>{e.description}</p>}
-          </li>
-        ))}
-      </ul>
-    </div>
-  )
-}
-
 export function About() {
-  const work = timeline.filter((e) => e.kind === 'experiencia')
-  const studies = timeline.filter((e) => e.kind === 'formacion')
+  const ref = useRef<HTMLElement>(null)
+  const reduce = useReducedMotion()
+  const { scrollYProgress } = useScroll({ target: ref, offset: ['start end', 'end start'] })
+  const photoY = useTransform(scrollYProgress, [0, 1], [60, -60])
 
   return (
-    <section id="sobre-mi" className={`wrap ${styles.about}`} aria-labelledby="sobre-mi-title">
-      <div className={styles.row} data-reveal>
-        <div className={styles.side}>
-          <h2 id="sobre-mi-title" className={styles.heading}>
-            Sobre mí
-          </h2>
-          <dl className={styles.facts}>
-            {facts.map((f) => (
-              <div key={f.label}>
-                <dt>{f.label}</dt>
-                <dd>{f.value}</dd>
-              </div>
-            ))}
-          </dl>
-        </div>
-        <p className={styles.paragraph}>{profile.about}</p>
-      </div>
-
-      <div className={`${styles.row} ${styles.rowRecord}`} data-reveal>
-        <h2 className={styles.side + ' ' + styles.recordHeading}>Trayectoria</h2>
-        <div className={styles.records}>
-          <Record title="Experiencia laboral" entries={work} />
-          <Record title="Formación académica" entries={studies} />
+    <section ref={ref} id="sobre-mi" className={styles.about} aria-labelledby="sobre-mi-title">
+      <div className={styles.grid}>
+        <Reveal className={styles.photoWrap}>
+          <m.img
+            className={styles.photo}
+            src={profile.portrait.src}
+            alt={profile.portrait.alt}
+            width={profile.portrait.width}
+            height={profile.portrait.height}
+            loading="lazy"
+            decoding="async"
+            style={reduce ? undefined : { y: photoY }}
+          />
+        </Reveal>
+        <div className={styles.text}>
+          <Reveal>
+            <h2 id="sobre-mi-title" className="section-title">
+              Sobre mí
+            </h2>
+          </Reveal>
+          <Reveal delay={0.1}>
+            <p className={styles.lead}>{profile.about}</p>
+          </Reveal>
+          <Reveal delay={0.15}>
+            <p className={styles.more}>{profile.aboutMore}</p>
+          </Reveal>
+          <Reveal delay={0.2}>
+            <dl className={styles.facts}>
+              {facts.map((f) => (
+                <div key={f.label}>
+                  <dt>{f.label}</dt>
+                  <dd>{f.value}</dd>
+                </div>
+              ))}
+            </dl>
+          </Reveal>
         </div>
       </div>
     </section>

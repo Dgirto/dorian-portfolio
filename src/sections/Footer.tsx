@@ -10,47 +10,39 @@ export function Footer() {
 
   return (
     <footer className={styles.footer}>
-      <div className={`${styles.tile} ${styles.statement}`}>
-        <p className={styles.statementText}>{profile.intro}</p>
-        <p className={styles.legal}>
-          © {year} {profile.name}. Fotografía del mosaico: Dorothee Hübner,{' '}
-          <ExternalLink href="https://unsplash.com/photos/4vPPtrfLRcs">Unsplash</ExternalLink>. Las capturas
-          pertenecen a los proyectos enlazados.
-        </p>
+      <div className={styles.inner}>
+        <div className={styles.top}>
+          <p className={styles.name}>{profile.name}</p>
+          <nav aria-label="Secundaria">
+            <ul className={styles.nav}>
+              {[...navItems, ...footerExtraItems].map((item) => (
+                <li key={item.href}>
+                  <a href={item.href}>{item.label}</a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+          <ul className={styles.nav}>
+            <li>
+              <a href={`mailto:${profile.email}`}>Correo</a>
+            </li>
+            <li>
+              <ExternalLink href={profile.links.linkedin.href}>LinkedIn</ExternalLink>
+            </li>
+            <li>
+              <ExternalLink href={profile.links.github.href}>GitHub</ExternalLink>
+            </li>
+          </ul>
+        </div>
+        <div className={styles.bottom}>
+          <p>
+            © {year} {profile.name}. Hecho con React y TypeScript.
+          </p>
+          <p>
+            {profile.location} · <time>{time}</time> hora local
+          </p>
+        </div>
       </div>
-      <nav className={`${styles.tile} ${styles.nav}`} aria-label="Secundaria">
-        <ul>
-          {[...navItems, ...footerExtraItems].map(
-            (item) => (
-              <li key={item.href}>
-                <a href={item.href}>{item.label}</a>
-              </li>
-            ),
-          )}
-        </ul>
-      </nav>
-      <div className={`${styles.tile} ${styles.place}`}>
-        <p>{profile.location}</p>
-        <p className={styles.time}>
-          <time>{time}</time> hora local
-        </p>
-      </div>
-      <div className={`${styles.tile} ${styles.email}`}>
-        <p className={styles.small}>Correo</p>
-        <a href={`mailto:${profile.email}`} className={styles.emailLink}>
-          {profile.email.split('@')[0]}
-          <wbr />@{profile.email.split('@')[1]}
-        </a>
-      </div>
-      <div className={`${styles.tile} ${styles.wordmark} on-ink`} aria-hidden="true">
-        <span>{profile.shortName}</span>
-      </div>
-      <a className={`${styles.tile} ${styles.invite} on-accent`} href={`mailto:${profile.email}`}>
-        <span className={styles.inviteText}>Hablemos de tu sistema</span>
-        <svg className={styles.arrow} viewBox="0 0 48 48" width="48" height="48" aria-hidden="true">
-          <path d="M10 38 38 10M16 10h22v22" fill="none" stroke="currentColor" strokeWidth="4" />
-        </svg>
-      </a>
     </footer>
   )
 }

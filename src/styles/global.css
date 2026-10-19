@@ -1,47 +1,54 @@
-@import '@fontsource-variable/work-sans/wght.css';
+@import '@fontsource-variable/geist/wght.css';
 
 :root {
-  /* Superficies y tinta */
-  --bg: #e5e1d8;
-  --surface: #dad5ca;
-  --surface-2: #cfc9bc;
-  --ink: #2a1d17;
-  --ink-2: #382820;
-  --ink-3: #46332a;
-  --muted: #5e4f45;
-  --on-ink: #e5e1d8;
-  --on-ink-muted: #b9ab9e;
-  --accent: #456f3a;
-  --accent-2: #3b6131;
-  --accent-ink: #ffffff;
-  --accent-ink-muted: #dbe6d5;
+  /* Claro: lectura */
+  --bg: #fbfbfd;
+  --surface: #f5f5f7;
+  --surface-2: #e8e8ed;
+  --line: #d2d2d7;
+  --ink: #1d1d1f;
+  --muted: #6e6e73;
 
-  /* Pares del cableado estructurado (clasificación de conectores) */
-  --pair-blue: #2f5f8f;
-  --pair-orange: #b5601d;
-  --pair-green: #456f3a;
-  --pair-brown: #6e4128;
-  --pair-slate: #56606b;
+  /* Oscuro: capítulos */
+  --night: #0d1117;
+  --night-2: #161b22;
+  --night-3: #21262d;
+  --on-night: #f5f5f7;
+  --on-night-muted: #a1a1a6;
+  --on-night-dim: #3a3f47;
+
+  /* Acento: verde "compile" */
+  --accent: #3ecf8e;
+  --accent-ink: #04130c;
+  --accent-strong: #0a7f52;
+  --accent-strong-hover: #086a44;
+
+  /* Familias de conectores */
+  --fam-datos: #4b8df8;
+  --fam-nube: #f08c2e;
+  --fam-productividad: #3ecf8e;
+  --fam-seguridad: #f2545b;
+  --fam-devops: #a1a1a6;
 
   /* Tipografía */
-  --font: 'Work Sans Variable', 'Work Sans', system-ui, sans-serif;
-  --font-code: ui-monospace, /* taste-skill-ignore: solo para <pre><code> con código real */ 'Cascadia Code', 'SFMono-Regular', Consolas, monospace;
-  --step-small: clamp(0.8125rem, 0.79rem + 0.1vw, 0.875rem);
-  --step-body: clamp(1.0625rem, 1rem + 0.25vw, 1.1875rem);
-  --step-lead: clamp(1.25rem, 1.1rem + 0.7vw, 1.625rem);
-  --step-statement: clamp(1.5rem, 1rem + 1.4vw, 2.25rem);
-  --step-head: clamp(2rem, 1.3rem + 3.2vw, 4rem);
-  --step-display: clamp(3rem, 1rem + 7.4vw, 8.5rem);
+  --font: 'Geist Variable', 'Geist', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-code: ui-monospace, 'Cascadia Code', 'SFMono-Regular', Consolas, monospace;
+  --fs-small: 0.875rem;
+  --fs-body: 1.0625rem;
+  --fs-lead: clamp(1.1875rem, 1rem + 0.6vw, 1.5rem);
+  --fs-h3: clamp(1.5rem, 1.1rem + 1.4vw, 2.25rem);
+  --fs-h2: clamp(2.5rem, 1.4rem + 4.4vw, 5rem);
+  --fs-hero: clamp(3rem, 1rem + 6.2vw, 7rem);
 
   /* Espacio */
-  --margin: clamp(16px, 2.2vw, 32px);
-  --gutter: clamp(12px, 1.4vw, 20px);
-  --section-gap: clamp(72px, 4rem + 7vw, 200px);
+  --margin: clamp(20px, 4vw, 48px);
+  --page: min(1240px, 100% - 2 * var(--margin));
+  --section: clamp(96px, 6rem + 6vw, 200px);
+  --radius: 28px;
+  --radius-sm: 16px;
 
   /* Movimiento */
-  --ease-out: cubic-bezier(0.2, 0.7, 0.2, 1);
-  --fast: 160ms;
-  --mid: 220ms;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
 
   color-scheme: light;
 }
@@ -55,8 +62,7 @@
 html {
   -webkit-text-size-adjust: 100%;
   scroll-behavior: smooth;
-  scroll-padding-top: 80px;
-  scrollbar-color: var(--muted) var(--surface);
+  scroll-padding-top: 64px;
 }
 
 body {
@@ -64,11 +70,12 @@ body {
   background: var(--bg);
   color: var(--ink);
   font-family: var(--font);
-  font-size: var(--step-body);
+  font-size: var(--fs-body);
   line-height: 1.55;
   font-weight: 400;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 h1,
@@ -94,10 +101,14 @@ ul {
 h1,
 h2,
 h3 {
-  font-weight: 300;
-  letter-spacing: -0.03em;
-  line-height: 1;
+  font-weight: 650;
+  letter-spacing: -0.035em;
+  line-height: 1.04;
   text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
 }
 
 img {
@@ -118,16 +129,8 @@ button {
 
 a {
   color: inherit;
-  text-decoration-line: underline;
+  text-underline-offset: 0.2em;
   text-decoration-thickness: 1px;
-  text-underline-offset: 0.22em;
-  transition:
-    text-decoration-thickness var(--fast) var(--ease-out),
-    color var(--fast) var(--ease-out);
-}
-
-a:hover {
-  text-decoration-thickness: 2px;
 }
 
 ::selection {
@@ -136,13 +139,13 @@ a:hover {
 }
 
 :focus-visible {
-  outline: 2px solid var(--accent);
+  outline: 2px solid var(--accent-strong);
   outline-offset: 3px;
+  border-radius: 6px;
 }
 
-.on-ink :focus-visible,
-.on-accent :focus-visible {
-  outline-color: var(--on-ink);
+.dark :focus-visible {
+  outline-color: var(--accent);
 }
 
 code,
@@ -157,106 +160,143 @@ pre {
   padding: 0;
   margin: -1px;
   overflow: hidden;
-  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
   white-space: nowrap;
   border: 0;
 }
 
-/* El texto oculto se ancla a su enlace: así no escapa de las filas desplazables */
 a:has(> .visually-hidden) {
   position: relative;
 }
 
 .skip-link {
   position: absolute;
-  left: var(--margin);
-  top: -60px;
-  z-index: 100;
-  padding: 12px 16px;
-  background: var(--accent);
-  color: var(--accent-ink);
+  left: 16px;
+  top: -80px;
+  z-index: 200;
+  padding: 12px 18px;
+  border-radius: 999px;
+  background: var(--ink);
+  color: var(--bg);
   font-weight: 500;
   text-decoration: none;
-  transition: top var(--fast) var(--ease-out);
+  transition: top 200ms var(--ease);
 }
 
 .skip-link:focus {
   top: 12px;
 }
 
-/* Contenedor de página: mismos márgenes en todo el sitio */
-.wrap {
-  padding-inline: var(--margin);
+/* Contenedor de página */
+.container {
+  width: var(--page);
+  margin-inline: auto;
 }
 
-.grid12 {
-  display: grid;
-  grid-template-columns: repeat(12, minmax(0, 1fr));
-  column-gap: var(--gutter);
+.dark {
+  background: var(--night);
+  color: var(--on-night);
+  color-scheme: dark;
 }
 
-/* Botón: relleno plano, esquinas rectas */
+/* Secciones bajo el pliegue: el navegador no calcula su estilo ni su layout hasta que se acercan */
+.defer {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 1400px;
+}
+
+/* Botones tipo píldora */
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: 8px;
   min-height: 48px;
-  padding: 0 22px;
+  padding: 0 24px;
   border: 0;
-  border-radius: 0;
-  background: var(--accent);
-  color: var(--accent-ink);
-  font-size: var(--step-body);
+  border-radius: 999px;
+  background: var(--accent-strong);
+  color: #fff;
+  font-size: var(--fs-body);
   font-weight: 500;
   white-space: nowrap;
   text-decoration: none;
   transition:
-    background-color var(--fast) var(--ease-out),
-    transform var(--fast) var(--ease-out);
+    background-color 200ms var(--ease),
+    transform 200ms var(--ease);
 }
 
 .btn:hover {
-  background: var(--accent-2);
+  background: var(--accent-strong-hover);
 }
 
 .btn:active {
-  transform: translateY(1px) scale(0.99);
+  transform: scale(0.97);
 }
 
-.btn svg {
-  transition: transform var(--mid) var(--ease-out);
+.dark .btn {
+  background: var(--accent);
+  color: var(--accent-ink);
 }
 
-.btn:hover svg {
+.dark .btn:hover {
+  background: #5ee0a4;
+}
+
+.btn-ghost,
+.dark .btn-ghost {
+  background: transparent;
+  color: inherit;
+  box-shadow: inset 0 0 0 1.5px currentColor;
+}
+
+.btn-ghost:hover,
+.dark .btn-ghost:hover {
+  background: rgb(127 127 127 / 0.14);
+}
+
+/* Enlace con chevrón */
+.link-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  min-height: 44px;
+  color: var(--accent-strong);
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.dark .link-more {
+  color: var(--accent);
+}
+
+.link-more:hover {
+  text-decoration: underline;
+}
+
+.link-more svg {
+  transition: transform 200ms var(--ease);
+}
+
+.link-more:hover svg {
   transform: translateX(3px);
 }
 
-/* Entradas escalonadas: solo si JS confirmó que el movimiento está permitido.
-   Solo desplazamiento: el texto conserva su contraste completo en todo momento. */
-.motion-ok [data-reveal] > * {
-  transform: translateY(28px);
-  transition: transform 800ms var(--ease-out);
+/* Cabecera de sección */
+.section-title {
+  font-size: var(--fs-h2);
 }
 
-.motion-ok [data-reveal].is-in > * {
-  transform: none;
+.section-lead {
+  margin-top: 20px;
+  font-size: var(--fs-lead);
+  line-height: 1.4;
+  color: var(--muted);
+  max-width: 44ch;
 }
 
-.motion-ok [data-reveal].is-in > :nth-child(2) {
-  transition-delay: 70ms;
-}
-
-.motion-ok [data-reveal].is-in > :nth-child(3) {
-  transition-delay: 140ms;
-}
-
-.motion-ok [data-reveal].is-in > :nth-child(4) {
-  transition-delay: 210ms;
-}
-
-.motion-ok [data-reveal].is-in > :nth-child(n + 5) {
-  transition-delay: 280ms;
+.dark .section-lead {
+  color: var(--on-night-muted);
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -3,7 +3,7 @@ import type { StackGroup } from '../types'
 const gh = (repo: string) => `https://github.com/Dgirto/${repo}`
 
 // Sin niveles ni porcentajes: cada tecnología dice dónde se ve.
-// "Confirmado por Dorian" marca conocimientos que él declaró y que aún no tienen un repositorio público.
+// "Sin repositorio público aún" marca conocimientos confirmados que todavía no tienen código público.
 export const stack: StackGroup[] = [
   {
     name: 'Lenguajes',
@@ -12,7 +12,7 @@ export const stack: StackGroup[] = [
       { name: 'TypeScript', evidence: 'Ruvic AI, este sitio' },
       { name: 'JavaScript', evidence: 'appEscuela', href: gh('appEscuela') },
       { name: 'Java', evidence: 'appTareas (Android)', href: gh('appTareas') },
-      { name: 'C y C++', evidence: 'Confirmado por Dorian' },
+      { name: 'C y C++', evidence: 'Sin repositorio público aún' },
       { name: 'SQL', evidence: 'Conectores de bases de datos', href: gh('PostgreSQL') },
     ],
   },
@@ -29,7 +29,7 @@ export const stack: StackGroup[] = [
   {
     name: 'Inteligencia artificial y APIs',
     items: [
-      { name: 'Integración de LLM con API keys', evidence: 'Confirmado por Dorian' },
+      { name: 'Integración de LLM con API keys', evidence: 'Sin repositorio público aún' },
       { name: 'Herramientas para agentes de IA', evidence: 'SKILL.md de cada conector', href: gh('Gmail') },
       { name: 'Métricas de agentes de IA', evidence: 'watchdog: latencia p95, error LLM', href: gh('watchdog-bot-monitor') },
       { name: 'Microsoft Graph', evidence: 'msgraph-Robin', href: gh('msgraph-Robin') },
@@ -43,7 +43,7 @@ export const stack: StackGroup[] = [
   {
     name: 'Automatización',
     items: [
-      { name: 'Automatización de procesos', evidence: 'Confirmado por Dorian' },
+      { name: 'Automatización de procesos', evidence: 'Sin repositorio público aún' },
       { name: 'Alertas por correo y Slack', evidence: 'watchdog: SendGrid, webhooks', href: gh('watchdog-bot-monitor') },
       { name: 'Lectura periódica de correo', evidence: 'msgraph-Robin: polling', href: gh('msgraph-Robin') },
       { name: 'Integración de servicios por API', evidence: '46 conectores', href: 'https://github.com/Dgirto?tab=repositories' },
@@ -62,7 +62,7 @@ export const stack: StackGroup[] = [
   {
     name: 'IoT y sistemas embebidos',
     items: [
-      { name: 'Simulación de circuitos en Tinkercad', evidence: 'Confirmado por Dorian' },
+      { name: 'Simulación de circuitos en Tinkercad', evidence: 'Sin repositorio público aún' },
       { name: 'Soluciones IoT', evidence: 'Certificación Cisco IoT', href: '#certificaciones' },
       { name: 'Redes y hardware', evidence: 'Certificaciones Cisco', href: '#certificaciones' },
     ],

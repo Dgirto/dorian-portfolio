@@ -19,8 +19,6 @@ export interface Connector {
 export interface FamilyInfo {
   id: ConnectorFamily
   label: string
-  /** Nombre del par de colores TIA-568 que la representa. */
-  pair: string
   colorVar: string
 }
 
@@ -30,9 +28,22 @@ export type Slide =
   | { type: 'image'; src: string; alt: string; width: number; height: number; position?: string }
   | { type: 'code'; filename: string; language: string; code: string; caption: string }
 
+export interface ProjectCover {
+  src: string
+  alt: string
+  width: number
+  height: number
+  /** Cómo se presenta la portada en la tarjeta. */
+  frame: 'laptop' | 'phone' | 'plain'
+}
+
 export interface Project {
   slug: string
   name: string
+  /** Portada de la tarjeta; sin portada se muestra el primer fragmento de código. */
+  cover?: ProjectCover
+  /** Ocupa el ancho completo de la cuadrícula. */
+  featured?: boolean
   kind: ProjectKind
   year: string
   /** Una frase-tesis: qué es, en una línea. */
@@ -103,6 +114,8 @@ export interface Profile {
   workMode: string
   intro: string
   about: string
+  aboutMore: string
+  statement: string
   email: string
   links: { github: ProfileLink; linkedin: ProfileLink }
   portrait: { src: string; alt: string; width: number; height: number }

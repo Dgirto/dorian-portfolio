@@ -1,12 +1,12 @@
 import type { ConnectorFamily, FamilyInfo } from '../types'
 
-// Cada familia de sistemas lleva un par del código de colores del cableado estructurado (TIA-568).
+// Familias de sistemas del catálogo de conectores, cada una con su color.
 export const families: FamilyInfo[] = [
-  { id: 'datos', label: 'Bases de datos', pair: 'par azul', colorVar: 'var(--pair-blue)' },
-  { id: 'nube', label: 'Nube y almacenamiento', pair: 'par naranja', colorVar: 'var(--pair-orange)' },
-  { id: 'productividad', label: 'Productividad y mensajería', pair: 'par verde', colorVar: 'var(--pair-green)' },
-  { id: 'seguridad', label: 'Seguridad', pair: 'par marrón', colorVar: 'var(--pair-brown)' },
-  { id: 'devops', label: 'DevOps', pair: 'par gris', colorVar: 'var(--pair-slate)' },
+  { id: 'datos', label: 'Bases de datos', colorVar: 'var(--fam-datos)' },
+  { id: 'nube', label: 'Nube y almacenamiento', colorVar: 'var(--fam-nube)' },
+  { id: 'productividad', label: 'Productividad y mensajería', colorVar: 'var(--fam-productividad)' },
+  { id: 'seguridad', label: 'Seguridad', colorVar: 'var(--fam-seguridad)' },
+  { id: 'devops', label: 'DevOps', colorVar: 'var(--fam-devops)' },
 ]
 
 export const familyById = Object.fromEntries(families.map((f) => [f.id, f])) as Record<ConnectorFamily, FamilyInfo>
