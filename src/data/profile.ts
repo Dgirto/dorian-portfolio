@@ -35,5 +35,5 @@ export const profile: Profile = {
   },
   githubUser: 'Dgirto',
   // Cambia este valor por el dominio final tras desplegar (también en index.html, robots.txt y sitemap.xml).
-  siteUrl: 'https://dorian-portfolio.vercel.app',
+  siteUrl: 'https://dorian-portafolio.vercel.app',
 }

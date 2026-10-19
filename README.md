@@ -1,5 +1,7 @@
 # Dorian Girón Prato · Portafolio
 
+**Sitio publicado:** [dorian-portafolio.vercel.app](https://dorian-portafolio.vercel.app/)
+
 Portafolio personal construido con **React + TypeScript + Vite**. Presenta mi trabajo como ingeniero de software júnior en Ruvic AI, mi formación (estudiante de 5.º ciclo de Ingeniería de Software con IA en SENATI) y mis proyectos con código público, empezando por los **46 conectores** que construí para que un agente de IA trabaje con sistemas externos.
 
 La experiencia sigue el ritmo de una página de producto: titulares cortos y grandes, capturas reales dentro de dispositivos que se animan con el desplazamiento, capítulos oscuros fijados en pantalla y proyectos que se abren en detalle. El concepto, la paleta y el lenguaje de movimiento están documentados en [`DESIGN.md`](DESIGN.md).
@@ -131,12 +133,12 @@ El usuario se cambia en `profile.githubUser`.
 
 ## Despliegue en Vercel
 
-El proyecto no necesita `vercel.json`: Vercel detecta Vite automáticamente.
+El sitio está publicado en **[dorian-portafolio.vercel.app](https://dorian-portafolio.vercel.app/)**. El proyecto no necesita `vercel.json`: Vercel detecta Vite automáticamente.
 
 1. Entra en [vercel.com/new](https://vercel.com/new) e importa el repositorio `Dgirto/dorian-portfolio`.
 2. Framework: **Vite** · Build command: `npm run build` · Output directory: `dist`.
 3. No hay variables de entorno que configurar.
-4. Tras el primer despliegue, actualiza la URL definitiva en:
+4. Si cambia el dominio, actualiza la URL en:
    - `src/data/profile.ts` → `siteUrl`
    - `index.html` → `canonical`, `og:url`, `og:image` y JSON-LD
    - `public/robots.txt` y `public/sitemap.xml`
