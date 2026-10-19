@@ -76,7 +76,6 @@
   animation-duration: 95s;
 }
 
-.wall:hover .track,
 .paused .track {
   animation-play-state: paused;
 }
