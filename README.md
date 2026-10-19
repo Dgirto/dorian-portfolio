@@ -32,6 +32,7 @@ npm run dev        # servidor de desarrollo en http://localhost:5173
 | React 19 + TypeScript | Núcleo de la interfaz, tipado de todos los datos editables |
 | Vite 8 | Desarrollo rápido y compilación estática lista para Vercel |
 | CSS Modules + tokens en `global.css` | Estilos por componente sin dependencias de runtime |
+| `three` | Portátil 3D del hero con materiales físicos. Se carga en un fragmento aparte al primer gesto del visitante; antes se muestra un fotograma fijo |
 | `motion` | Animaciones ligadas al scroll (portátil, paralaje, frase fijada, línea de tiempo), entradas y contadores. Se carga con `LazyMotion` + `domAnimation` |
 | `lucide-react` | Iconos SVG consistentes (solo se empaquetan los usados) |
 | `@fontsource-variable/geist` | Tipografía Geist autoalojada: sin peticiones a terceros |
@@ -145,7 +146,8 @@ Cada push a `main` generará un despliegue nuevo.
 ## Créditos
 
 - Capturas: panel de watchdog-bot-monitor (ejecutado en local con sus datos de demostración) y demo pública de appEscuela, tomadas a 2× y 3× con emulación de dispositivo.
-- Marcos de MacBook Pro e iPhone 14 Pro: adaptados de [devices.css](https://github.com/picturepan2/devices.css) de Yan Zhu (licencia MIT; aviso incluido en `src/components/Devices.module.css`). Se convirtieron a unidades relativas y la tapa del MacBook se separó para animar su apertura.
+- Portátil 3D del hero: modelado por código con [three.js](https://threejs.org) (MIT) en `src/three/laptopScene.ts`.
+- Marcos de iPhone 14 Pro y MacBook Pro estático (respaldo sin WebGL): adaptados de [devices.css](https://github.com/picturepan2/devices.css) de Yan Zhu (licencia MIT; aviso incluido en `src/components/Devices.module.css`). Se convirtieron a unidades relativas y la tapa del MacBook se separó para animar su apertura.
 - Pantallas de appTareas: exportadas del archivo de Figma enlazado en su README; son diseños, no capturas de la app compilada.
 - Logos de los conectores: los `icon.svg` de cada repositorio; los que faltaban proceden de [Devicon](https://devicon.dev) (MIT) y [Simple Icons](https://simpleicons.org) (CC0). Intune usa el logotipo de cuatro cuadrados de Microsoft. Todas las marcas pertenecen a sus propietarios y se muestran solo para identificar la integración.
 - Paleta: base inspirada en las extracciones públicas del sistema visual de Apple y en paletas oscuras para desarrolladores; acento verde propio.

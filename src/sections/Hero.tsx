@@ -3,6 +3,7 @@ import { ChevronRight } from 'lucide-react'
 import { m, useReducedMotion, useScroll, useSpring, useTransform } from 'motion/react'
 import { profile } from '../data/profile'
 import { Laptop, Phone } from '../components/Devices'
+import { LaptopCanvas } from '../components/LaptopCanvas'
 import styles from './Hero.module.css'
 
 const ease = [0.22, 1, 0.36, 1] as const
@@ -56,15 +57,23 @@ export function Hero() {
         <div className={styles.sticky}>
           <div className={styles.stage}>
             <div className={styles.laptop}>
-              <Laptop
-                src="/work/watchdog-dashboard.webp"
-                srcSet="/work/watchdog-dashboard-1200.webp 1200w, /work/watchdog-dashboard.webp 2400w"
-                sizes="(max-width: 640px) 90vw, 860px"
-                alt="Panel de watchdog-bot-monitor, uno de mis proyectos, con el estado de una flota de bots"
-                width={2400}
-                height={1500}
-                progress={reduce ? undefined : open}
-              />
+              {reduce ? (
+                <Laptop
+                  src="/work/watchdog-dashboard.webp"
+                  srcSet="/work/watchdog-dashboard-1200.webp 1200w, /work/watchdog-dashboard.webp 2400w"
+                  sizes="(max-width: 640px) 90vw, 860px"
+                  alt="Panel de watchdog-bot-monitor, uno de mis proyectos, con el estado de una flota de bots"
+                  width={2400}
+                  height={1500}
+                />
+              ) : (
+                <LaptopCanvas
+                  screen="/work/watchdog-dashboard.webp"
+                  poster="/work/laptop-closed.webp"
+                  alt="Portátil que se abre y muestra el panel de watchdog-bot-monitor, uno de mis proyectos"
+                  progress={open}
+                />
+              )}
             </div>
             <m.div className={styles.phone} style={reduce ? undefined : { y: phoneY, opacity: phoneOpacity }}>
               <Phone

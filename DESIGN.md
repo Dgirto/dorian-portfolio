@@ -8,7 +8,7 @@
 
 Recorrido:
 
-1. **Hero claro**: nombre y «Software que conecta sistemas.»; debajo, un MacBook Pro en 3D (CSS, basado en devices.css) que llega **cerrado** y abre la tapa con el scroll mientras la escena queda fijada, hasta mostrar de frente el panel real de watchdog-bot-monitor; al final aparece un teléfono con appEscuela.
+1. **Hero claro**: nombre y «Software que conecta sistemas.»; debajo, un portátil en **3D real (three.js)** con materiales físicos —aluminio metálico con reflejos de entorno, cristal en el marco, teclas y trackpad— que llega **cerrado** y abre la tapa sobre su bisagra con el scroll mientras la escena queda fijada, hasta mostrar el panel real de watchdog-bot-monitor; al final aparece un iPhone con appEscuela.
 2. **Sobre mí**: retrato con paralaje, presentación y tres datos clave.
 3. **Capítulo oscuro fijado**: una frase que se ilumina palabra a palabra con el scroll.
 4. **Muro de conectores**: un contador hasta 46 y dos filas de placas con el logo de cada sistema sobre un cuadrado blanco (como iconos de aplicación), en movimiento continuo y con pausa.
@@ -91,7 +91,7 @@ Biblioteca: `motion` (antes Framer Motion), con `LazyMotion` + `domAnimation` pa
 | Efecto | Dónde |
 | --- | --- |
 | Entrada al cargar (subida + opacidad, escalonada) | Hero |
-| Tapa del portátil que se abre (rotateX −88° → 0°) ligada al scroll, con muelle suave; la cámara está fija y la escena fijada (`position: sticky`) | Hero |
+| Tapa del portátil 3D que gira sobre la bisagra (cerrada → ~105° abierta) y cámara que pasa de vista cenital a frontal, ligadas al scroll con muelle suave; escena fijada con `position: sticky` | Hero |
 | Aparición del teléfono al final de la apertura; paralaje del retrato | Hero, Sobre mí |
 | Frase fijada que se ilumina palabra a palabra | Capítulo oscuro |
 | Contador animado | 46 conectores, repositorios públicos |
@@ -124,6 +124,16 @@ Biblioteca: `motion` (antes Framer Motion), con `LazyMotion` + `domAnimation` pa
 - Capturas a 2× (escritorio, 2400 px) y 3× (móvil, emulación de dispositivo real); pantallas de Figma en WebP sin pérdida.
 - Ninguna imagen termina con `scale` ni con transformaciones residuales: el portátil acaba en 0° y la escena no se escala, así el navegador no rasteriza a menor tamaño.
 - Perspectiva expresada en `em` del propio dispositivo, para que el 3D se vea igual en móvil y escritorio.
+
+### Cómo se hizo el portátil (ingeniería inversa de Apple)
+
+Las páginas de MacBook de Apple no usan CSS para el producto: reproducen un **vídeo prerenderizado** desde un modelo 3D (Cinema 4D), con un fotograma inicial y otro final como imagen de respaldo, archivos distintos por tamaño de pantalla y un tiempo límite de carga. Sus renders y vídeos tienen derechos de autor, así que aquí se aplica el mismo principio con recursos propios:
+
+- Modelo 3D construido por código con three.js (MIT): cuerpo de aluminio redondeado, marco de cristal, teclas instanciadas, trackpad, muesca, bisagra y sombra de contacto; iluminación con `RoomEnvironment` y *tone mapping* ACES.
+- **Fotograma inicial**: una imagen del portátil cerrado renderizada desde la misma escena (`public/work/laptop-closed.webp`), visible al instante.
+- La escena 3D se descarga y se crea al primer gesto del visitante (scroll, toque, teclado) o tras 6 s, y sustituye al fotograma sin salto.
+- Solo se redibuja cuando cambia el progreso o el tamaño; sin WebGL o con movimiento reducido se muestra el MacBook estático de CSS.
+- No se encontró un modelo de portátil con licencia libre verificable y descargable sin cuenta; el de los ejemplos de react-three-fiber no declara origen ni licencia, por eso se descartó.
 
 ## 10. Rendimiento
 

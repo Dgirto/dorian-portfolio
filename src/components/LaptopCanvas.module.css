@@ -1,0 +1,32 @@
+.wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 11;
+}
+
+.poster,
+.canvas {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.poster {
+  object-fit: contain;
+  transition: opacity 400ms var(--ease) 200ms;
+}
+
+.canvas {
+  opacity: 0;
+  transition: opacity 400ms var(--ease);
+}
+
+.ready {
+  opacity: 1;
+}
+
+.hidden {
+  opacity: 0;
+}
