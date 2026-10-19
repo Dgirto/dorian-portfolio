@@ -1,80 +1,323 @@
-.laptop {
+/*
+ * Dispositivos adaptados de devices.css (MacBook Pro 2022 e iPhone 14 Pro)
+ * Copyright (c) 2017 Yan Zhu — Licencia MIT — https://github.com/picturepan2/devices.css
+ * Cambios: medidas convertidas a `em` y escaladas con el ancho del contenedor (nítidas a cualquier tamaño),
+ * tapa del MacBook separable para animar su apertura en 3D, colores grafito para el iPhone.
+ */
+
+/* ───────────── iPhone 14 Pro (428 × 868) ───────────── */
+.phoneWrap {
+  container-type: inline-size;
   width: 100%;
+  aspect-ratio: 428 / 868;
 }
 
-.lid {
-  padding: 1.7% 1.7% 2.4%;
-  background: #0b0b0d;
-  border-radius: clamp(10px, 1.6vw, 22px) clamp(10px, 1.6vw, 22px) 0 0;
+.iphone {
+  position: relative;
+  font-size: calc(100cqw / 428);
+  width: 428em;
+  height: 868em;
+}
+
+.iphoneFrame {
+  position: relative;
+  width: 428em;
+  height: 868em;
+  padding: 19em;
+  border: 1em solid #2b2b2d;
+  border-radius: 68em;
+  background: #010101;
   box-shadow:
-    inset 0 0 0 1px #2c2c2e,
-    inset 0 0 0 3px #0b0b0d,
-    inset 0 0 0 4px #3a3a3c;
+    inset 0 0 4em 2em #b9b9bd,
+    inset 0 0 0 6em #48484b,
+    0 40em 70em -30em rgb(0 0 0 / 0.45);
 }
 
-.screen {
-  aspect-ratio: 16 / 10;
-  overflow: hidden;
-  border-radius: 4px;
-  background: #000;
+.iphoneScreen {
+  display: block;
+  width: 390em;
+  height: 830em;
+  border-radius: 49em;
+  object-fit: cover;
+  object-position: center top;
+  background: #fff;
 }
 
-.screen img,
-.phoneScreen img {
+/* Dynamic Island + cámara */
+.iphoneIsland {
+  position: absolute;
+  top: 29em;
+  left: 50%;
+  width: 120em;
+  height: 35em;
+  margin-left: -60em;
+  border-radius: 20em;
+  background: #010101;
+}
+
+.iphoneIsland::after {
+  content: '';
+  position: absolute;
+  top: 13em;
+  right: 16em;
+  width: 9em;
+  height: 9em;
+  border-radius: 50%;
+  background:
+    radial-gradient(farthest-corner at 20% 20%, #6074bf 0, transparent 40%),
+    radial-gradient(farthest-corner at 80% 80%, #513785 0, #24555e 20%, transparent 50%);
+}
+
+/* Antenas del canto */
+.iphoneStripe::before,
+.iphoneStripe::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  z-index: 9;
   width: 100%;
-  height: 100%;
+  height: 7em;
+  border: solid rgb(1 1 1 / 0.25);
+  border-width: 0 7em;
+}
+
+.iphoneStripe::after {
+  top: 85em;
+}
+
+.iphoneStripe::before {
+  bottom: 85em;
+}
+
+/* Botones laterales */
+.iphoneBtns {
+  position: absolute;
+  top: 115em;
+  left: -2em;
+  width: 3em;
+  height: 32em;
+  border-radius: 2em;
+  background: #2b2b2d;
+}
+
+.iphoneBtns::before,
+.iphoneBtns::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  width: 3em;
+  height: 62em;
+  border-radius: 2em;
+  background: #2b2b2d;
+}
+
+.iphoneBtns::after {
+  top: 60em;
+}
+
+.iphoneBtns::before {
+  top: 140em;
+}
+
+.iphonePower {
+  position: absolute;
+  top: 200em;
+  right: -2em;
+  width: 3em;
+  height: 100em;
+  border-radius: 2em;
+  background: #2b2b2d;
+}
+
+/* ───────────── MacBook Pro 2022 (740 × 434) ───────────── */
+.macWrap {
+  container-type: inline-size;
+  width: 100%;
+}
+
+.mac {
+  position: relative;
+  font-size: calc(100cqw / 740);
+  width: 740em;
+  perspective: 2600em;
+  perspective-origin: 50% 10%;
+}
+
+/* La tapa: marco, pantalla y muesca. Gira sobre su borde inferior. */
+.macLid {
+  position: relative;
+  width: 618em;
+  height: 418em;
+  margin: 0 auto;
+  transform-origin: 50% 100%;
+  transform-style: preserve-3d;
+}
+
+.macFrame {
+  position: absolute;
+  inset: 0;
+  padding: 9em 9em 23em;
+  border-radius: 20em;
+  background: #0d0d0d;
+  box-shadow: inset 0 0 0 2em #c6c8ca;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.macFrame::after {
+  content: '';
+  position: absolute;
+  left: 2em;
+  bottom: 2em;
+  width: 614em;
+  height: 24em;
+  border-radius: 0 0 20em 20em;
+  background: linear-gradient(#272727, #0d0d0d);
+}
+
+.macScreen {
+  display: block;
+  width: 600em;
+  height: 375em;
+  border: 2em solid #121212;
+  border-radius: 10em 10em 0 0;
   object-fit: cover;
   object-position: left top;
-}
-
-.base {
-  position: relative;
-  height: clamp(10px, 1.4vw, 18px);
-  margin-inline: -6%;
-  background: linear-gradient(#d2d2d7, #a1a1a6);
-  border-radius: 0 0 clamp(12px, 2vw, 26px) clamp(12px, 2vw, 26px);
-}
-
-.base::before {
-  content: '';
-  position: absolute;
-  left: 50%;
-  top: 0;
-  width: 14%;
-  height: 40%;
-  transform: translateX(-50%);
-  background: #8e8e93;
-  border-radius: 0 0 8px 8px;
-}
-
-/* Teléfono: bisel fino, canto metálico y Dynamic Island */
-.phone {
-  position: relative;
-  padding: 2.6%;
-  border-radius: 16% / 7.4%;
-  background: #0b0b0d;
-  box-shadow:
-    0 0 0 1.5px #8e8e93,
-    0 0 0 3px #3a3a3c,
-    0 40px 60px -30px rgb(0 0 0 / 0.45),
-    0 12px 24px -12px rgb(0 0 0 / 0.25);
-}
-
-.island::after {
-  content: '';
-  position: absolute;
-  top: 4.2%;
-  left: 50%;
-  width: 30%;
-  height: 3.6%;
-  transform: translateX(-50%);
-  border-radius: 999px;
   background: #000;
 }
 
-.phoneScreen {
-  aspect-ratio: 390 / 844;
-  overflow: hidden;
-  border-radius: 13.5% / 6.3%;
-  background: #fff;
+/* Muesca de la cámara */
+.macNotch {
+  position: absolute;
+  top: 11em;
+  left: 50%;
+  z-index: 2;
+  width: 64em;
+  height: 12em;
+  margin-left: -32em;
+  border-radius: 0 0 4em 4em;
+  background: #0d0d0d;
+}
+
+.macNotch::before,
+.macNotch::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  width: 4em;
+  height: 4em;
+}
+
+.macNotch::after {
+  left: -4em;
+  background: radial-gradient(circle at bottom left, transparent 0, transparent 75%, #0d0d0d 75%, #0d0d0d 100%);
+}
+
+.macNotch::before {
+  right: -4em;
+  background: radial-gradient(circle at bottom right, transparent 0, transparent 75%, #0d0d0d 75%, #0d0d0d 100%);
+}
+
+/* Dorso de la tapa (visible con el portátil cerrado) */
+.macBack {
+  position: absolute;
+  inset: 0;
+  border-radius: 20em;
+  transform: rotateX(180deg);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  background: linear-gradient(180deg, #d9dadc 0%, #e8e9ea 45%, #cfd1d3 100%);
+  box-shadow: inset 0 0 0 2em #c6c8ca;
+}
+
+/* Base: la cubierta del teclado tumbada hacia el visitante, solo se ve en ángulo */
+.macDeck {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 418em;
+  height: 400em;
+  transform-origin: 50% 0;
+  transform: rotateX(90deg);
+  transform-style: preserve-3d;
+  border-radius: 6em 6em 18em 18em;
+  background: linear-gradient(180deg, #d4d6d8, #e2e3e4 30%, #d9dadc);
+}
+
+.macDeck::before {
+  content: '';
+  position: absolute;
+  left: 9%;
+  right: 9%;
+  top: 6%;
+  height: 42%;
+  border-radius: 10em;
+  background:
+    repeating-linear-gradient(90deg, transparent 0 calc(100% / 14 - 4em), #18181a calc(100% / 14 - 4em) calc(100% / 14)),
+    repeating-linear-gradient(0deg, transparent 0 calc(100% / 6 - 4em), #18181a calc(100% / 6 - 4em) calc(100% / 6)),
+    #2f2f33;
+  box-shadow: 0 0 0 5em #c9cbcd;
+}
+
+.macDeck::after {
+  content: '';
+  position: absolute;
+  left: 30%;
+  right: 30%;
+  top: 55%;
+  height: 36%;
+  border-radius: 12em;
+  background: #d7d9db;
+  box-shadow: inset 0 0 0 1em rgb(0 0 0 / 0.08);
+}
+
+/* En 3D, el canto frontal cuelga del borde delantero de la cubierta y mira al visitante */
+.macPowerFront {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin-top: 0;
+  transform-origin: 50% 0;
+  transform: rotateX(-90deg);
+}
+
+/* Canto frontal de la base, con la muesca para abrir y las patas */
+.macPower {
+  position: relative;
+  z-index: 9;
+  width: 740em;
+  height: 24em;
+  margin-top: -10em;
+  border: solid #9fa2a5;
+  border-width: 1em 2em 0;
+  border-radius: 2em 2em 12em 12em;
+  background: radial-gradient(circle at center, #e2e3e4 85%, #c8c9cb 100%);
+  box-shadow: inset 0 -2em 8em 0 #6b6f72;
+}
+
+.macPower::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 120em;
+  height: 10em;
+  margin-left: -60em;
+  border-radius: 0 0 10em 10em;
+  background: #e2e3e4;
+  box-shadow: inset 0 0 4em 2em #babdbf;
+}
+
+.macPower::before {
+  content: '';
+  position: absolute;
+  bottom: -2em;
+  left: 50%;
+  width: 40em;
+  height: 2em;
+  margin-left: -20em;
+  border-radius: 0 0 3em 3em;
+  box-shadow:
+    -300em 0 #272727,
+    300em 0 #272727;
 }

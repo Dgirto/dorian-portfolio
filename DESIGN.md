@@ -8,7 +8,7 @@
 
 Recorrido:
 
-1. **Hero claro**: nombre y «Software que conecta sistemas.»; debajo, un portátil en 3D (CSS) que llega **cerrado** y abre la tapa con el scroll mientras la escena queda fijada, hasta mostrar de frente el panel real de watchdog-bot-monitor; al final aparece un teléfono con appEscuela.
+1. **Hero claro**: nombre y «Software que conecta sistemas.»; debajo, un MacBook Pro en 3D (CSS, basado en devices.css) que llega **cerrado** y abre la tapa con el scroll mientras la escena queda fijada, hasta mostrar de frente el panel real de watchdog-bot-monitor; al final aparece un teléfono con appEscuela.
 2. **Sobre mí**: retrato con paralaje, presentación y tres datos clave.
 3. **Capítulo oscuro fijado**: una frase que se ilumina palabra a palabra con el scroll.
 4. **Muro de conectores**: un contador hasta 46 y dos filas de placas con el logo de cada sistema sobre un cuadrado blanco (como iconos de aplicación), en movimiento continuo y con pausa.
@@ -65,7 +65,7 @@ Los títulos de sección terminan en punto, como frases afirmativas.
 
 - **Barra de navegación**: fija, translúcida con desenfoque, sección activa resaltada, botón «Escríbeme».
 - **Botones**: píldora verde (primario) y contorno (secundario); enlaces «Ver más ›».
-- **Dispositivos** (`Laptop`, `Phone`): marcos dibujados en CSS que contienen capturas reales.
+- **Dispositivos** (`Laptop`, `Phone`): MacBook Pro e iPhone 14 Pro adaptados de devices.css (MIT), con medidas en `em` escaladas por el ancho del contenedor; contienen capturas reales.
 - **Ventana de código** (`CodeWindow`): fragmentos reales de los repositorios con resaltado de sintaxis propio (sin dependencias).
 - **Placa de logo** (`LogoTile`): logo del sistema sobre cuadrado blanco redondeado, en tres tamaños.
 
@@ -123,7 +123,7 @@ Biblioteca: `motion` (antes Framer Motion), con `LazyMotion` + `domAnimation` pa
 
 - Capturas a 2× (escritorio, 2400 px) y 3× (móvil, emulación de dispositivo real); pantallas de Figma en WebP sin pérdida.
 - Ninguna imagen termina con `scale` ni con transformaciones residuales: el portátil acaba en 0° y la escena no se escala, así el navegador no rasteriza a menor tamaño.
-- Perspectiva proporcional al ancho del portátil (`300cqw`), para que el 3D se vea igual en móvil y escritorio.
+- Perspectiva expresada en `em` del propio dispositivo, para que el 3D se vea igual en móvil y escritorio.
 
 ## 10. Rendimiento
 

@@ -139,12 +139,13 @@ Cada push a `main` generará un despliegue nuevo.
 ## Calidad
 
 - `npm run lint`, `npm run typecheck`, `npm test` y `npm run build` sin errores.
-- Lighthouse 12 (compilación de producción servida en local, 19 oct. 2026): escritorio 100 rendimiento · 100 accesibilidad · 100 buenas prácticas · 100 SEO; móvil 94 · 100 · 100 · 100. Si la API pública de GitHub responde 403 por límite de consultas, buenas prácticas baja a 96 y la sección muestra su estado de error.
+- Lighthouse 12 (compilación de producción servida en local, 19 oct. 2026): escritorio 100 rendimiento · 100 accesibilidad · 100 buenas prácticas · 100 SEO; móvil 93 · 100 · 100 · 100. Si la API pública de GitHub responde 403 por límite de consultas, buenas prácticas baja a 96 y la sección muestra su estado de error.
 - Respeta `prefers-reduced-motion` (sin desplazamientos, marquesina detenida, frase estática), navegable con teclado, foco visible, diálogo nativo accesible, enlaces externos con `rel="noopener noreferrer"`.
 
 ## Créditos
 
 - Capturas: panel de watchdog-bot-monitor (ejecutado en local con sus datos de demostración) y demo pública de appEscuela, tomadas a 2× y 3× con emulación de dispositivo.
+- Marcos de MacBook Pro e iPhone 14 Pro: adaptados de [devices.css](https://github.com/picturepan2/devices.css) de Yan Zhu (licencia MIT; aviso incluido en `src/components/Devices.module.css`). Se convirtieron a unidades relativas y la tapa del MacBook se separó para animar su apertura.
 - Pantallas de appTareas: exportadas del archivo de Figma enlazado en su README; son diseños, no capturas de la app compilada.
 - Logos de los conectores: los `icon.svg` de cada repositorio; los que faltaban proceden de [Devicon](https://devicon.dev) (MIT) y [Simple Icons](https://simpleicons.org) (CC0). Intune usa el logotipo de cuatro cuadrados de Microsoft. Todas las marcas pertenecen a sus propietarios y se muestran solo para identificar la integración.
 - Paleta: base inspirada en las extracciones públicas del sistema visual de Apple y en paletas oscuras para desarrolladores; acento verde propio.

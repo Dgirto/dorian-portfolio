@@ -2,8 +2,7 @@ import { useRef } from 'react'
 import { ChevronRight } from 'lucide-react'
 import { m, useReducedMotion, useScroll, useSpring, useTransform } from 'motion/react'
 import { profile } from '../data/profile'
-import { Phone } from '../components/Devices'
-import { Laptop3D } from '../components/Laptop3D'
+import { Laptop, Phone } from '../components/Devices'
 import styles from './Hero.module.css'
 
 const ease = [0.22, 1, 0.36, 1] as const
@@ -57,7 +56,7 @@ export function Hero() {
         <div className={styles.sticky}>
           <div className={styles.stage}>
             <div className={styles.laptop}>
-              <Laptop3D
+              <Laptop
                 src="/work/watchdog-dashboard.webp"
                 srcSet="/work/watchdog-dashboard-1200.webp 1200w, /work/watchdog-dashboard.webp 2400w"
                 sizes="(max-width: 640px) 90vw, 860px"

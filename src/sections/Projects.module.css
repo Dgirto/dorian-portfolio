@@ -172,7 +172,7 @@
 .phoneCover {
   height: 100%;
   width: auto !important;
-  aspect-ratio: 1000 / 2104;
+  aspect-ratio: 428 / 868;
 }
 
 .phonesCover {
@@ -184,8 +184,9 @@
 }
 
 .phonesCover > * {
+  width: auto !important;
   height: 92%;
-  aspect-ratio: 1000 / 2104;
+  aspect-ratio: 428 / 868;
 }
 
 .phonesCover > :last-child {
