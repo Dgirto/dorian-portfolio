@@ -131,13 +131,26 @@ La sección «GitHub, en vivo» consulta la **API pública** (`/users/Dgirto` y 
 
 El usuario se cambia en `profile.githubUser`.
 
+## Formulario de contacto (EmailJS)
+
+El formulario envía el mensaje con [EmailJS](https://www.emailjs.com) y muestra el resultado con SweetAlert2. Mientras envía, bloquea los campos y el botón («Enviando…») para evitar duplicados, y limita a un envío cada 10 s. Si las credenciales no están configuradas, abre la aplicación de correo del visitante con el mensaje redactado: nunca finge un envío.
+
+1. Crea una cuenta gratuita en emailjs.com.
+2. **Email Services → Add New Service**: conecta tu Gmail y anota el *Service ID*.
+3. **Email Templates → Create New Template**: usa en el cuerpo las variables `{{nombre}}`, `{{email}}` y `{{mensaje}}` (y `{{email}}` en *Reply To* para responder con un clic). Anota el *Template ID*.
+4. **Account → API Keys**: copia la *Public Key*. En **Account → Security** limita los dominios permitidos a `dorian-portafolio.vercel.app` y `localhost`.
+5. Copia `.env.example` como `.env`, completa los tres valores y reinicia `npm run dev`.
+6. En Vercel, añade las mismas tres variables y vuelve a desplegar.
+
+`.env` está en `.gitignore`. La *Public Key* es pública por diseño (viaja en el JavaScript del sitio); lo que la protege es la lista de dominios permitidos.
+
 ## Despliegue en Vercel
 
 El sitio está publicado en **[dorian-portafolio.vercel.app](https://dorian-portafolio.vercel.app/)**. El proyecto no necesita `vercel.json`: Vercel detecta Vite automáticamente.
 
 1. Entra en [vercel.com/new](https://vercel.com/new) e importa el repositorio `Dgirto/dorian-portfolio`.
 2. Framework: **Vite** · Build command: `npm run build` · Output directory: `dist`.
-3. No hay variables de entorno que configurar.
+3. Variables de entorno (opcionales, para el formulario): en **Settings → Environment Variables** añade `VITE_EMAILJS_SERVICE_ID`, `VITE_EMAILJS_TEMPLATE_ID` y `VITE_EMAILJS_PUBLIC_KEY` y vuelve a desplegar. Ver [Formulario de contacto (EmailJS)](#formulario-de-contacto-emailjs).
 4. Si cambia el dominio, actualiza la URL en:
    - `src/data/profile.ts` → `siteUrl`
    - `index.html` → `canonical`, `og:url`, `og:image` y JSON-LD
