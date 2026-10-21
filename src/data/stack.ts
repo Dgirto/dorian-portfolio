@@ -19,7 +19,7 @@ export const stack: StackGroup[] = [
   {
     name: 'Desarrollo frontend',
     items: [
-      { name: 'React', evidence: 'appEscuela, este sitio', href: 'https://app-escuela-rho.vercel.app' },
+      { name: 'React', evidence: 'appEscuela, Tuerka, este sitio', href: 'https://proyecto-tuerka.vercel.app' },
       { name: 'HTML y CSS', evidence: 'Guías de los conectores', href: gh('Gmail') },
       { name: 'Vite', evidence: 'appEscuela, este sitio', href: gh('appEscuela') },
       { name: 'Bootstrap 5', evidence: 'appEscuela', href: gh('appEscuela') },
@@ -73,7 +73,7 @@ export const stack: StackGroup[] = [
       { name: 'Git y GitHub', evidence: 'github.com/Dgirto', href: 'https://github.com/Dgirto' },
       { name: 'pytest', evidence: 'watchdog: 29 pruebas', href: gh('watchdog-bot-monitor') },
       { name: 'Gradle y Android Studio', evidence: 'appTareas', href: gh('appTareas') },
-      { name: 'Figma', evidence: 'Diseño de appTareas', href: gh('appTareas') },
+      { name: 'Figma', evidence: 'appTareas; Tuerka, de Figma a React', href: gh('ProyectoTuerka') },
       { name: 'Pruebas QA', evidence: 'Ruvic AI' },
     ],
   },

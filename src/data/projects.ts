@@ -160,6 +160,68 @@ conn = psycopg.connect(
     ],
   },
   {
+    slug: 'tuerka',
+    name: 'Tuerka',
+    featured: true,
+    kind: 'Académico',
+    year: '2026',
+    thesis: 'Sitio web de venta de vehículos, llevado de Figma a React.',
+    problem:
+      'Un sitio para buscar, comparar y reservar vehículos tiene que verse igual que su diseño en cualquier pantalla y dejar que el cliente filtre el inventario y agende una visita sin fricción.',
+    solution:
+      'Inicio con buscador por tipo, marca y presupuesto; catálogo con filtros y orden que se guardan en la URL; ficha de cada vehículo con galería, pestañas y relacionados; favoritos que se conservan en el navegador; formulario «Agenda tu visita» con validación, y menú y buscador a pantalla completa en todas las páginas.',
+    contribution:
+      'Implementé el diseño de Figma del equipo en React: maquetación de las páginas, componentes y estilos, fiel al diseño y adaptado a escritorio y móvil.',
+    team: 'Proyecto grupal',
+    stack: ['React 18', 'React Router', 'Vite', 'CSS', 'Figma'],
+    repo: 'https://github.com/Dgirto/ProyectoTuerka',
+    demo: 'https://proyecto-tuerka.vercel.app',
+    cover: {
+      kind: 'laptop',
+      src: '/work/tuerka-inicio.webp',
+      alt: 'Portada de Tuerka: «Tu próximo camino empieza aquí» con un auto deportivo frente al mar al atardecer',
+      width: 1400,
+      height: 875,
+    },
+    slides: [
+      {
+        type: 'image',
+        src: '/work/tuerka-inicio.webp',
+        alt: 'Inicio de Tuerka con la portada y los botones para explorar vehículos',
+        width: 1400,
+        height: 875,
+      },
+      {
+        type: 'image',
+        src: '/work/tuerka-catalogo.webp',
+        alt: 'Catálogo con filtros por marca, tipo, condición, precio, año y transmisión, y seis vehículos de ejemplo',
+        width: 1400,
+        height: 875,
+      },
+      {
+        type: 'image',
+        src: '/work/tuerka-detalle.webp',
+        alt: 'Ficha del Toyota Corolla 2024 con galería, precio, botones para agendar visita y datos técnicos',
+        width: 1400,
+        height: 875,
+      },
+      {
+        type: 'image',
+        src: '/work/tuerka-movil-inicio.webp',
+        alt: 'Inicio de Tuerka en un teléfono',
+        width: 390,
+        height: 844,
+      },
+      {
+        type: 'image',
+        src: '/work/tuerka-movil-detalle.webp',
+        alt: 'Ficha de un vehículo en un teléfono, con carrusel de fotos',
+        width: 390,
+        height: 844,
+      },
+    ],
+  },
+  {
     slug: 'msgraph',
     name: 'msgraph-Robin',
     kind: 'Prácticas',
