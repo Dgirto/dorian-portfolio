@@ -137,7 +137,7 @@ El formulario envía el mensaje con [EmailJS](https://www.emailjs.com) y muestra
 
 1. Crea una cuenta gratuita en emailjs.com.
 2. **Email Services → Add New Service**: conecta tu Gmail y anota el *Service ID*.
-3. **Email Templates → Create New Template**: usa en el cuerpo las variables `{{nombre}}`, `{{email}}` y `{{mensaje}}` (y `{{email}}` en *Reply To* para responder con un clic). Anota el *Template ID*.
+3. **Email Templates → Create New Template**: usa en el cuerpo las variables `{{nombre}}`, `{{email}}` y `{{mensaje}}` (también sirven las de la plantilla «Contact Us» por defecto: `{{name}}`, `{{message}}`, `{{title}}` y `{{time}}`) (y `{{email}}` en *Reply To* para responder con un clic). Anota el *Template ID*.
 4. **Account → API Keys**: copia la *Public Key*. En **Account → Security** limita los dominios permitidos a `dorian-portafolio.vercel.app` y `localhost`.
 5. Copia `.env.example` como `.env`, completa los tres valores y reinicia `npm run dev`.
 6. En Vercel, añade las mismas tres variables y vuelve a desplegar.

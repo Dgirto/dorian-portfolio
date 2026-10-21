@@ -79,7 +79,16 @@ export function ContactForm({ to }: { to: string }) {
     setStatus('sending')
     try {
       const { default: emailjs } = await import('@emailjs/browser')
-      await emailjs.send(EMAILJS.serviceId!, EMAILJS.templateId!, { ...form }, {
+      // Variables de la guía ({{nombre}}, {{email}}, {{mensaje}}) y también las de la plantilla
+      // «Contact Us» por defecto de EmailJS ({{name}}, {{message}}, {{title}}, {{time}}).
+      const params = {
+        ...form,
+        name: form.nombre,
+        message: form.mensaje,
+        title: `Mensaje de ${form.nombre} desde el portafolio`,
+        time: new Date().toLocaleString('es-PE', { dateStyle: 'long', timeStyle: 'short' }),
+      }
+      await emailjs.send(EMAILJS.serviceId!, EMAILJS.templateId!, params, {
         publicKey: EMAILJS.publicKey,
         // Antispam: un envío cada 10 s por visitante y sin navegadores automatizados.
         limitRate: { id: 'contacto', throttle: 10_000 },
