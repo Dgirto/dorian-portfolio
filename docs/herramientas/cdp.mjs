@@ -15,10 +15,11 @@ const CHROME =
 
 export const sleep = (ms) => new Promise((r) => setTimeout(r, ms))
 
-export async function openChrome() {
+/** `headless: false` abre una ventana visible (EmailJS rechaza los navegadores sin interfaz). */
+export async function openChrome({ headless = true } = {}) {
   const port = 9300 + Math.floor(Math.random() * 500)
   const chrome = spawn(CHROME, [
-    '--headless=new',
+    ...(headless ? ['--headless=new'] : ['--window-size=1500,1000', '--no-first-run', '--no-default-browser-check']),
     `--remote-debugging-port=${port}`,
     '--hide-scrollbars',
     `--user-data-dir=${mkdtempSync(join(tmpdir(), 'cdp-'))}`,

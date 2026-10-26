@@ -1,0 +1,54 @@
+<div style="margin:0; padding:32px 12px; background:#f5f5f7; font-family:-apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="max-width:600px; margin:0 auto; border-collapse:separate;">
+
+    <!-- Cabecera oscura, como los capítulos del portafolio -->
+    <tr>
+      <td style="background:#0d1117; border-radius:22px 22px 0 0; padding:36px 40px 32px;">
+        <p style="margin:0 0 28px; font-size:15px; font-weight:600; letter-spacing:-0.01em; color:#f5f5f7;">Dorian Girón</p>
+        <p style="margin:0 0 10px; font-size:13px; font-weight:600; color:#3ecf8e;">Nuevo mensaje desde el portafolio</p>
+        <h1 style="margin:0; font-size:34px; line-height:1.1; font-weight:700; letter-spacing:-0.03em; color:#f5f5f7;">¿Hablamos?</h1>
+        <p style="margin:12px 0 0; font-size:16px; line-height:1.5; color:#a1a1a6;">{{nombre}} quiere ponerse en contacto contigo.</p>
+      </td>
+    </tr>
+
+    <!-- Cuerpo claro con la ficha del visitante y el mensaje -->
+    <tr>
+      <td style="background:#ffffff; padding:32px 40px 8px;">
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+          <tr>
+            <td width="50%" style="padding:0 12px 20px 0; vertical-align:top;">
+              <p style="margin:0 0 4px; font-size:12px; color:#6e6e73;">Nombre</p>
+              <p style="margin:0; font-size:16px; font-weight:600; color:#1d1d1f;">{{nombre}}</p>
+            </td>
+            <td width="50%" style="padding:0 0 20px 12px; vertical-align:top;">
+              <p style="margin:0 0 4px; font-size:12px; color:#6e6e73;">Correo</p>
+              <p style="margin:0; font-size:16px; font-weight:600;"><a href="mailto:{{email}}" style="color:#0a7f52; text-decoration:none;">{{email}}</a></p>
+            </td>
+          </tr>
+        </table>
+
+        <p style="margin:4px 0 10px; font-size:12px; color:#6e6e73;">Mensaje</p>
+        <div style="background:#f5f5f7; border-radius:16px; border-left:4px solid #3ecf8e; padding:20px 22px; font-size:16px; line-height:1.6; color:#1d1d1f; white-space:pre-line;">{{mensaje}}</div>
+
+        <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="margin:28px 0 32px;">
+          <tr>
+            <td style="background:#0a7f52; border-radius:999px;">
+              <a href="mailto:{{email}}?subject=Re:%20tu%20mensaje%20en%20mi%20portafolio" style="display:inline-block; padding:13px 26px; font-size:15px; font-weight:600; color:#ffffff; text-decoration:none;">Responder a {{nombre}} &rarr;</a>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+    <!-- Pie -->
+    <tr>
+      <td style="background:#ffffff; border-radius:0 0 22px 22px; border-top:1px solid #e8e8ed; padding:20px 40px 26px;">
+        <p style="margin:0; font-size:12px; line-height:1.6; color:#6e6e73;">
+          Recibido el {{time}} desde
+          <a href="https://dorian-portafolio.vercel.app" style="color:#0a7f52; text-decoration:none;">dorian-portafolio.vercel.app</a>
+        </p>
+      </td>
+    </tr>
+
+  </table>
+</div>

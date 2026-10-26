@@ -7,7 +7,8 @@ import { dirname, join, relative } from 'node:path'
 import { fileURLToPath, pathToFileURL } from 'node:url'
 import { codeToHtml } from 'shiki'
 import { openChrome, sleep } from './cdp.mjs'
-import { seccionesDoc, datosDoc } from './contenido.mjs'
+// Contenido a generar: `node generar-pdf.mjs [contenido.mjs | contenido-lab6.mjs]` (por defecto el Laboratorio #4).
+const { seccionesDoc, datosDoc } = await import(`./${process.argv[2] ?? 'contenido.mjs'}`)
 
 const HERE = dirname(fileURLToPath(import.meta.url))
 const ROOT = join(HERE, '..', '..')
@@ -25,7 +26,7 @@ async function codigo(file, { desde, hasta, titulo } = {}) {
   const b = hasta ?? lines.length
   const fragment = lines.slice(a - 1, b).join('\n').replace(/\s+$/, '')
   const html = await codeToHtml(fragment, { lang: lang(file), theme: 'dark-plus' })
-  return `<figure class="editor">
+  return `<figure class="editor${b - a < 30 ? ' corto' : ''}">
     <figcaption><span class="dots"><i></i><i></i><i></i></span><span>${esc(titulo ?? file)}${desde ? ` · líneas ${a}–${b}` : ''}</span></figcaption>
     <div class="code" style="counter-reset: ln ${a - 1}">${html}</div>
   </figure>`
@@ -61,7 +62,7 @@ const html = `<!doctype html><html lang="es"><head><meta charset="utf-8">
 <style>${readFileSync(join(HERE, 'estilos-doc.css'), 'utf8')}</style></head>
 <body>${cuerpo.join('\n')}</body></html>`
 
-const htmlPath = join(DOCS, 'documentacion.html')
+const htmlPath = join(DOCS, datosDoc.archivo.replace(/\.pdf$/, '.html'))
 writeFileSync(htmlPath, html)
 
 const { send, close } = await openChrome()

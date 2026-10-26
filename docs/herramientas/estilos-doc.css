@@ -321,3 +321,53 @@ th {
   column-count: 3;
   column-gap: 10pt;
 }
+
+/* Diagrama de flujo (Laboratorio #6) */
+.flujo {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  margin: 10pt 0 14pt;
+  break-inside: avoid;
+}
+
+.flujo > div {
+  flex: 1;
+  padding: 9pt 10pt;
+  background: #f5f5f7;
+  border: 1px solid #e3e3e6;
+  border-radius: 7pt;
+  font-size: 9pt;
+  line-height: 1.4;
+}
+
+.flujo > div strong {
+  display: block;
+  margin-bottom: 3pt;
+  font-size: 10pt;
+  color: #0a7f52;
+}
+
+.flujo > span {
+  align-self: center;
+  padding: 0 5pt;
+  color: #6e6e73;
+  font-size: 14pt;
+}
+
+.par {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6mm;
+  align-items: start;
+  break-inside: avoid;
+}
+
+.par .shot {
+  margin: 0;
+}
+
+/* Bloques de código cortos: nunca se parten entre páginas */
+.editor.corto {
+  break-inside: avoid;
+}

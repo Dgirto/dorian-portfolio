@@ -28,4 +28,4 @@ Thumbs.db
 .idea
 
 # HTML intermedio del PDF (rutas absolutas locales)
-docs/documentacion.html
+docs/*.html
