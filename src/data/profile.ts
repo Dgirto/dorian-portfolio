@@ -6,7 +6,7 @@ export const profile: Profile = {
   name: 'Dorian Girón Prato',
   shortName: 'Dorian Girón',
   headline: 'Software Developer Intern | Ingeniería de Software con Inteligencia Artificial',
-  role: 'Ingeniero de software júnior',
+  role: 'Ingeniero de Software',
   studies: 'Estudiante de 5.º ciclo de Ingeniería de Software con IA en SENATI',
   location: 'Lima, Perú',
   workMode: 'Trabajo en remoto',

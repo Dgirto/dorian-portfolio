@@ -8,7 +8,6 @@ const ease = [0.22, 1, 0.36, 1] as const
 
 export function Hero() {
   const reduce = useReducedMotion()
-  const role = profile.role.charAt(0).toLowerCase() + profile.role.slice(1)
 
   const enter = (delay: number) =>
     reduce
@@ -25,7 +24,7 @@ export function Hero() {
       <div className={styles.intro}>
         <div className={styles.copy}>
           <m.h1 id="hero-title" className={styles.title} {...enter(0)}>
-            Soy <mark>{profile.shortName}</mark>, {role}.
+            Soy <mark>{profile.shortName}</mark>. {profile.role}.
           </m.h1>
           <m.p className={styles.lead} {...enter(0.1)}>
             {profile.intro}
