@@ -4,7 +4,7 @@ export interface Connector {
   id: string
   repo: string
   name: string
-  /** Código del catálogo de Ruvic AI, p. ej. "CON-016". */
+  /** Código del catálogo, p. ej. "CON-016". */
   code: string | null
   description: string
   category: string
@@ -20,9 +20,9 @@ export interface FamilyInfo {
   colorVar: string
 }
 
-export type ProjectKind = 'Prácticas' | 'Académico' | 'Personal'
+export type ProjectKind = 'Prácticas' | 'Académico' | 'Personal' | 'Cliente'
 
-export type CodeLanguage = 'python' | 'java' | 'bash' | 'json' | 'cpp'
+export type CodeLanguage = 'python' | 'java' | 'javascript' | 'bash' | 'json' | 'cpp'
 
 export interface Shot {
   src: string
@@ -53,6 +53,8 @@ export interface Project {
   cover: ProjectCover
   /** Ocupa el ancho completo de la cuadrícula. */
   featured?: boolean
+  /** Solo aparece en «Todos los proyectos», no en la cuadrícula principal. */
+  listOnly?: boolean
   kind: ProjectKind
   year: string
   /** Una frase-tesis: qué es, en una línea. */
@@ -63,7 +65,8 @@ export interface Project {
   team: string
   stack: string[]
   slides: Slide[]
-  repo: string
+  /** Opcional: los trabajos para clientes no enlazan su código. */
+  repo?: string
   demo?: string
   status?: string
 }
@@ -75,8 +78,11 @@ export interface Certification {
   issued: string
   /** AAAA-MM o null si no vence / no consta. */
   expires: string | null
-  credentialId: string
+  /** null si LinkedIn no muestra un ID de credencial. */
+  credentialId: string | null
   verifyUrl: string | null
+  /** Ruta sin extensión: `<src>.webp` a tamaño completo y `<src>-min.webp` en miniatura. */
+  image: { src: string; width: number; height: number }
 }
 
 export interface TimelineEntry {
@@ -124,7 +130,8 @@ export interface Profile {
   intro: string
   about: string
   aboutMore: string
-  statement: string
+  /** Filosofía en una línea; la última palabra se resalta. */
+  philosophy: string
   email: string
   links: { github: ProfileLink; linkedin: ProfileLink }
   portrait: { src: string; alt: string; width: number; height: number }

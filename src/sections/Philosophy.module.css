@@ -1,0 +1,45 @@
+.section {
+  position: relative;
+  padding-block: clamp(96px, 5rem + 7vw, 184px) 0;
+  overflow: hidden;
+}
+
+.line {
+  width: var(--page);
+  margin-inline: auto;
+  font-size: clamp(1.75rem, 8.2vw, 7rem);
+  font-weight: 700;
+  letter-spacing: -0.045em;
+  line-height: 1;
+  white-space: nowrap;
+  text-wrap: nowrap;
+}
+
+.line span {
+  color: var(--accent);
+}
+
+.chart {
+  display: block;
+  width: 100%;
+  height: clamp(120px, 18vw, 240px);
+  margin-top: clamp(40px, 6vw, 72px);
+  overflow: visible;
+}
+
+.ghost,
+.trace {
+  fill: none;
+  stroke-linejoin: round;
+}
+
+.ghost {
+  stroke: var(--night-3);
+  stroke-width: 1;
+}
+
+.trace {
+  stroke: var(--accent);
+  stroke-width: 3;
+  filter: drop-shadow(0 0 14px rgb(200 240 49 / 0.45));
+}

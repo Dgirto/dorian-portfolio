@@ -1,47 +1,45 @@
-# DESIGN.md — Portafolio de Dorian Girón Prato (v2)
+# DESIGN.md — Portafolio de Dorian Girón Prato (v3)
 
-> Segunda versión del sistema visual. La primera (hoja de contactos en hueso y chocolate) se descartó por feedback de Dorian: se veía apagada, los proyectos parecían desordenados y la redacción necesitaba pulirse. Esta versión responde a su pedido explícito: una paleta investigada y una experiencia de desplazamiento al estilo de las páginas de producto de Apple, con imágenes y animación, sin copiar su diseño.
+> Tercera versión del sistema visual. Sustituye la experiencia de producto con portátil 3D por una dirección más técnica: negro y blanco con un único color principal amarillo verdoso, líneas, cuadrícula, sombras y gráficos propios.
 
 ## 1. Concepto
 
-**El producto es el trabajo.** Cada proyecto se presenta como se presenta un producto: una frase corta y grande, una imagen protagonista (capturas reales dentro de dispositivos dibujados en CSS) y el detalle a un clic. El ritmo alterna capítulos claros, para leer, y capítulos oscuros, para los momentos de impacto.
+**El trabajo se explica solo.** La página presenta quién es Dorian sin tono de venta: un titular directo, un diagrama de lo que conecta y proyectos reales con capturas, código y un video corto.
 
 Recorrido:
 
-1. **Hero claro**: nombre y «Software que conecta sistemas.»; debajo, un portátil en **3D real (three.js)** con materiales físicos —aluminio metálico con reflejos de entorno, cristal en el marco, teclas y trackpad— que llega **cerrado** y abre la tapa sobre su bisagra con el scroll mientras la escena queda fijada, hasta mostrar el panel real de watchdog-bot-monitor; al final aparece un iPhone con appEscuela.
-2. **Sobre mí**: retrato con paralaje, presentación y tres datos clave.
-3. **Capítulo oscuro fijado**: una frase que se ilumina palabra a palabra con el scroll.
-4. **Muro de conectores**: un contador hasta 46 y dos filas de placas con el logo de cada sistema sobre un cuadrado blanco (como iconos de aplicación), en movimiento continuo y con pausa.
-5. **Proyectos**: cuadrícula de tarjetas (la destacada a todo el ancho); cada una abre un diálogo con galería, problema, solución, aporte, tecnologías y enlaces.
-6. **Explorador de conectores**: búsqueda y filtros por familia; resultados agrupados por familia en tarjetas de altura fija (logo, nombre en una línea, variante y código en otra) y una ficha con el logo grande.
-7. **Stack en mosaico**: cada herramienta con su evidencia.
-8. **Trayectoria oscura**: línea de tiempo que se dibuja con el scroll y certificaciones verificables.
-9. **GitHub en vivo**: cifras y actividad reciente de la API pública.
-10. **Contacto oscuro** y pie.
+1. **Hero**: «Soy Dorian Girón, ingeniero de software júnior.», una presentación breve, enlaces de texto y un diagrama de nodos que se dibuja al cargar.
+2. **Sobre mí**: retrato fijo al desplazarse, presentación y trayectoria.
+3. **Certificaciones**: cada una con miniatura; «Ver» abre el certificado completo y las de Cisco conservan «Verificar».
+4. **Filosofía**: «Crecer con estrategia.» en una línea, con un trazo escalonado que se dibuja con el scroll.
+5. **Proyectos**: cuadrícula de tarjetas (las destacadas a todo el ancho); cada una abre un diálogo con video, galería, problema, solución, aporte, tecnologías y enlaces.
+6. **Stack en mosaico**: cada herramienta con su evidencia.
+7. **GitHub en vivo**: cifras y actividad reciente de la API pública.
+8. **Contacto** y pie.
 
-## 2. Paleta (investigada)
+## 2. Paleta
 
-Base inspirada en las extracciones públicas del sistema de Apple (`#f5f5f7` para paneles, `#1d1d1f` para texto) y en paletas oscuras para desarrolladores (`#0d1117` de base, un acento verde «compile»). El acento propio sustituye al azul de Apple para no copiar su identidad.
+Blanco y negro puros con un solo color principal. El amarillo verdoso nunca se usa como texto sobre blanco: ahí se emplea su versión oscura.
 
 | Rol | Token | Valor | Contraste |
 | --- | --- | --- | --- |
-| Fondo claro | `--bg` | `#fbfbfd` | — |
-| Panel | `--surface` | `#f5f5f7` | — |
-| Panel 2 | `--surface-2` | `#e8e8ed` | — |
-| Texto | `--ink` | `#1d1d1f` | 16.3:1 sobre `--bg` |
-| Texto secundario | `--muted` | `#6e6e73` | 4.9:1 sobre `--bg` |
-| Fondo oscuro | `--night` | `#0d1117` | — |
-| Paneles oscuros | `--night-2` / `--night-3` | `#161b22` / `#21262d` | — |
-| Texto sobre oscuro | `--on-night` | `#f5f5f7` | 17.4:1 |
-| Secundario sobre oscuro | `--on-night-muted` | `#a1a1a6` | 7.4:1 |
-| Acento sobre oscuro | `--accent` | `#3ecf8e` | 9.5:1 sobre `--night` |
-| Acento sobre claro | `--accent-strong` | `#0a7f52` | 5.0:1 con texto blanco |
-
-Familias de conectores (solo puntos y etiquetas): datos `#4b8df8`, nube `#f08c2e`, productividad `#3ecf8e`, seguridad `#f2545b`, DevOps `#a1a1a6`.
+| Fondo claro | `--bg` | `#ffffff` | — |
+| Panel | `--surface` | `#f5f5f5` | — |
+| Panel 2 | `--surface-2` | `#e8e8e8` | — |
+| Líneas | `--line` | `#d6d6d6` | — |
+| Texto | `--ink` | `#0a0a0a` | 19.8:1 sobre `--bg` |
+| Texto secundario | `--muted` | `#5c5c5c` | 6.7:1 sobre `--bg` |
+| Fondo oscuro | `--night` | `#0a0a0a` | — |
+| Paneles oscuros | `--night-2` / `--night-3` | `#141414` / `#262626` | — |
+| Texto sobre oscuro | `--on-night` | `#ffffff` | 19.8:1 |
+| Secundario sobre oscuro | `--on-night-muted` | `#a8a8a8` | 8.3:1 |
+| Color principal | `--accent` | `#c8f031` | 15.1:1 sobre `--night` |
+| Texto sobre el principal | `--accent-ink` | `#0a0a0a` | 15.1:1 |
+| Principal como texto sobre claro | `--accent-strong` | `#4c5e00` | 7.2:1 sobre `--bg` |
 
 ## 3. Tipografía
 
-**Geist** (variable, autoalojada con `@fontsource-variable/geist`): grotesca neutra y técnica, cercana en espíritu a la tipografía de sistema de Apple sin ser ella.
+**Geist** (variable, autoalojada con `@fontsource-variable/geist`) para titulares y texto, y **Geist Mono** (`@fontsource-variable/geist-mono`) para índices, metadatos y código.
 
 | Token | Tamaño | Uso |
 | --- | --- | --- |
@@ -59,84 +57,66 @@ Los títulos de sección terminan en punto, como frases afirmativas.
 - Contenedor: `min(1240px, 100% − 2 × margen)`, margen `clamp(20px, 4vw, 48px)`.
 - Separación entre secciones: `clamp(96px, 6rem + 6vw, 200px)`.
 - Radios: 28 px en tarjetas y paneles, 16 px en elementos internos, píldora (999 px) en botones y filtros.
-- Sombras solo en lo que flota o se levanta: dispositivos, tarjetas al pasar el cursor, diálogo.
+- Sombras solo en lo que flota o se levanta: dispositivos, tarjetas al pasar el cursor, diálogo, nodos y video (`--shadow-md`, `--shadow-lg`).
+- Cuadrícula de líneas como fondo con la utilidad `.grid-lines`.
 
 ## 5. Componentes
 
-- **Barra de navegación**: fija, translúcida con desenfoque, sección activa resaltada, botón «Escríbeme».
-- **Botones**: píldora verde (primario) y contorno (secundario); enlaces «Ver más ›».
-- **Dispositivos** (`Laptop`, `Phone`): MacBook Pro e iPhone 14 Pro adaptados de devices.css (MIT), con medidas en `em` escaladas por el ancho del contenedor; contienen capturas reales.
+- **Cabecera**: fija, con el monograma DG, índice numerado en mono, línea inferior negra y subrayado del color principal en la sección activa.
+- **Diagrama del hero** (`HeroGraphic`): SVG de Python, TypeScript, SQL, React, LLM y APIs conectados al nodo DG.
+- **Dispositivos** (`Laptop`, `Phone`): MacBook Pro e iPhone 14 Pro adaptados de devices.css (MIT), usados solo en las portadas de proyectos.
+- **Marquesina de logos** (`LogoMarquee`): dos filas en movimiento dentro de la tarjeta del catálogo de conectores.
+- **Línea de tiempo** (`Timeline`): trayectoria dentro de «Sobre mí».
+- **Visor de certificados**: `<dialog>` nativo con la imagen completa.
 - **Ventana de código** (`CodeWindow`): fragmentos reales de los repositorios con resaltado de sintaxis propio (sin dependencias).
-- **Placa de logo** (`LogoTile`): logo del sistema sobre cuadrado blanco redondeado, en tres tamaños.
-
-### Imágenes
-
-| Proyecto | Portada | Galería |
-| --- | --- | --- |
-| watchdog-bot-monitor | Portátil con el panel real | Panel, cockpit de IA, documentación OpenAPI |
-| Conectores Ruvic AI | Mosaico de logos sobre fondo oscuro | Mosaico, extracto de `client.py`, `manifest.json` |
-| appEscuela | Teléfono con la demo real | Escritorio, detalle, móvil |
-| msgraph-Robin | Ventana de código | Dos fragmentos del README |
-| appTareas (doit) | Dos teléfonos con el diseño de Figma | Cinco pantallas del archivo de Figma del proyecto |
-
-Las guías HTML de los conectores ya no se usan como imagen: a tamaño reducido eran ilegibles y mostraban marcadores sin rellenar.
+- **Placa de logo** (`LogoTile`): logo del sistema sobre cuadrado blanco redondeado.
 - **Tarjeta de proyecto**: el título es el botón y su área se extiende a toda la tarjeta; abre un `<dialog>` nativo.
-- **Explorador**: búsqueda en píldora, filtros por familia, resultados en cuadrícula, ficha fija.
-- **Mosaico de stack**, **línea de tiempo**, **cifras en vivo**.
+
+### Imágenes y video
+
+- Cada proyecto tiene portada (dispositivo, captura, código o logos) y galería con material real. Las pantallas de appTareas son diseños de Figma, no capturas de la app.
+- Cada proyecto tiene un video de presentación de 16 s, sin sonido, en `public/videos/<slug>.mp4` (1280 × 720) con su fotograma en `.webp`. Se generan con HyperFrames a partir de los datos de `projects.ts`.
 
 ## 6. Movimiento
 
-Biblioteca: `motion` (antes Framer Motion), con `LazyMotion` + `domAnimation` para reducir el peso.
+Biblioteca: `motion`, con `LazyMotion` + `domAnimation` para reducir el peso.
 
 | Efecto | Dónde |
 | --- | --- |
-| Entrada al cargar (subida + opacidad, escalonada) | Hero |
-| Tapa del portátil 3D que gira sobre la bisagra (cerrada → ~105° abierta) y cámara que pasa de vista cenital a frontal, ligadas al scroll con muelle suave; escena fijada con `position: sticky` | Hero |
-| Aparición del teléfono al final de la apertura; paralaje del retrato | Hero, Sobre mí |
-| Frase fijada que se ilumina palabra a palabra | Capítulo oscuro |
-| Contador animado | 46 conectores, repositorios públicos |
-| Marquesina continua con pausa (y pausa al pasar el cursor) | Muro de conectores |
+| Entrada al cargar y trazado de las conexiones | Hero |
+| Trazo escalonado ligado al scroll | Filosofía |
+| Marquesina continua de logos | Tarjeta del catálogo de conectores |
+| Contador animado | Repositorios públicos |
 | Aparición al entrar en pantalla (`whileInView`, una vez) | Títulos, tarjetas, baldosas |
-| Línea de tiempo que se rellena con el scroll | Trayectoria |
-| Diálogo que entra deslizándose | Proyectos |
+| Línea de tiempo | Sobre mí |
+| Video en bucle al abrir el diálogo | Proyectos |
 
-`prefers-reduced-motion`: `MotionConfig reducedMotion="user"`, la frase se muestra estática, la marquesina se detiene y pasa a desplazamiento manual, y los componentes animados se renderizan sin transición.
+`prefers-reduced-motion`: `MotionConfig reducedMotion="user"`, el video no arranca solo, la marquesina se detiene y los componentes animados se renderizan sin transición.
 
 ## 7. Accesibilidad
 
 - WCAG 2.2 AA; Lighthouse 100 en accesibilidad (escritorio y móvil).
 - Un `h1`, jerarquía h2 → h3, landmarks y enlace «Saltar al contenido».
-- La frase animada existe una sola vez para lectores de pantalla (texto oculto visualmente); las palabras decorativas se pintan con CSS.
+- El video tiene controles nativos y etiqueta accesible; el diagrama del hero es decorativo.
 - Diálogo nativo con foco atrapado, cierre con Escape, clic fuera o botón.
-- Objetivos táctiles ≥ 44 px; foco visible en verde.
+- Objetivos táctiles ≥ 44 px; foco visible.
 
 ## 8. Responsive
 
 | Ancho | Cambios |
 | --- | --- |
-| > 900 px | Navegación completa; cuadrícula de proyectos a 2 columnas con la destacada a todo el ancho; explorador con ficha lateral fija. |
+| > 900 px | Navegación completa; cuadrícula de proyectos a 2 columnas con las destacadas a todo el ancho. |
 | ≤ 900 px | Menú desplegable. |
-| ≤ 860 px | Una columna en proyectos, sobre mí, trayectoria y explorador (la ficha pasa arriba y la lista hace scroll hasta ella). |
-| ≤ 640 px | Mosaico de stack a una columna; botones del hero apilados. |
+| ≤ 860 px | Una columna en proyectos, sobre mí y trayectoria. |
+| ≤ 640 px | Mosaico de stack a una columna. |
 
 ## 9. Nitidez de las imágenes
 
 - Capturas a 2× (escritorio, 2400 px) y 3× (móvil, emulación de dispositivo real); pantallas de Figma en WebP sin pérdida.
-- Ninguna imagen termina con `scale` ni con transformaciones residuales: el portátil acaba en 0° y la escena no se escala, así el navegador no rasteriza a menor tamaño.
-- Perspectiva expresada en `em` del propio dispositivo, para que el 3D se vea igual en móvil y escritorio.
-
-### Cómo se hizo el portátil (ingeniería inversa de Apple)
-
-Las páginas de MacBook de Apple no usan CSS para el producto: reproducen un **vídeo prerenderizado** desde un modelo 3D (Cinema 4D), con un fotograma inicial y otro final como imagen de respaldo, archivos distintos por tamaño de pantalla y un tiempo límite de carga. Sus renders y vídeos tienen derechos de autor, así que aquí se aplica el mismo principio con recursos propios:
-
-- Modelo 3D construido por código con three.js (MIT): cuerpo de aluminio redondeado, marco de cristal, teclas instanciadas, trackpad, muesca, bisagra y sombra de contacto; iluminación con `RoomEnvironment` y *tone mapping* ACES.
-- **Fotograma inicial**: una imagen del portátil cerrado renderizada desde la misma escena (`public/work/laptop-closed.webp`), visible al instante.
-- La escena 3D se descarga y se crea al primer gesto del visitante (scroll, toque, teclado) o tras 6 s, y sustituye al fotograma sin salto.
-- Solo se redibuja cuando cambia el progreso o el tamaño; sin WebGL o con movimiento reducido se muestra el MacBook estático de CSS.
-- No se encontró un modelo de portátil con licencia libre verificable y descargable sin cuenta; el de los ejemplos de react-three-fiber no declara origen ni licencia, por eso se descartó.
+- Ninguna imagen termina con `scale` ni con transformaciones residuales, así el navegador no rasteriza a menor tamaño.
 
 ## 10. Rendimiento
 
 - Secciones bajo el pliegue con `content-visibility: auto`.
 - Imágenes WebP con dimensiones declaradas; carga diferida salvo el hero.
-- Sin animaciones de layout medido (los resultados del explorador usan una entrada CSS).
+- Videos de 200–670 KB con `preload="metadata"`: solo se descargan al abrir un proyecto.

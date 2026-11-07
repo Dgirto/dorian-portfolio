@@ -13,14 +13,14 @@ export const projects: Project[] = [
     problem: 'Un bot puede caerse sin que nadie lo note, y un agente de IA puede seguir en línea mientras responde mal.',
     solution:
       'Cada agente envía latidos firmados con HMAC por HTTP o WebSocket. Si deja de hacerlo, se abre un incidente y llega una alerta por correo o Slack, con filtros contra falsas alarmas. Un panel muestra el estado de la flota y la salud de cada agente de IA: latencia p95, tasa de error del LLM y cola.',
-    contribution: 'Diseño y desarrollo completos: arquitectura hexagonal, API REST y WebSocket, panel web y 29 pruebas automatizadas.',
+    contribution: 'Diseño y desarrollo completos: arquitectura hexagonal, API REST y WebSocket, panel web en tiempo real y 91 pruebas automatizadas.',
     team: 'Individual',
     stack: ['Python', 'FastAPI', 'WebSockets', 'SQLite / PostgreSQL', 'pytest'],
     repo: 'https://github.com/Dgirto/watchdog-bot-monitor',
     cover: {
       kind: 'laptop',
       src: '/work/watchdog-dashboard.webp',
-      alt: 'Panel de watchdog-bot-monitor con cinco agentes en línea y la salud de dos agentes de IA',
+      alt: 'Panel de watchdog-bot-monitor con cinco agentes en línea, uno degradado, y la salud de dos agentes de IA',
       width: 1400,
       height: 875,
     },
@@ -28,16 +28,16 @@ export const projects: Project[] = [
       {
         type: 'image',
         src: '/work/watchdog-dashboard.webp',
-        alt: 'Panel de watchdog-bot-monitor: estado de la flota y cockpit de agentes de IA',
+        alt: 'Panel de watchdog-bot-monitor: estado general, flota por gravedad y cockpit de agentes de IA',
         width: 1400,
         height: 875,
       },
       {
         type: 'image',
         src: '/work/watchdog-fleet.webp',
-        alt: 'Cockpit de agentes de IA: uno degradado con 3400 ms de latencia y 18 % de error frente a otro en estado óptimo',
-        width: 1130,
-        height: 620,
+        alt: 'Panel con un incidente activo: scraper-02 caído aparece primero y la franja de estado pasa a rojo',
+        width: 1400,
+        height: 875,
       },
       {
         type: 'image',
@@ -50,7 +50,8 @@ export const projects: Project[] = [
   },
   {
     slug: 'conectores',
-    name: 'Catálogo de conectores de Ruvic AI',
+    featured: true,
+    name: 'Catálogo de conectores',
     kind: 'Prácticas',
     year: '2026',
     thesis: '46 conectores que permiten a un agente de IA trabajar con sistemas reales.',
@@ -59,7 +60,7 @@ export const projects: Project[] = [
     solution:
       'Todos siguen el mismo método: librería instalable con pip, manifiesto para el catálogo, instrucciones para el agente, guía de configuración bilingüe, prueba de conexión, permisos mínimos y errores clasificados.',
     contribution: 'Desarrollo en Python, documentación y pruebas de los conectores durante mis prácticas.',
-    team: 'Ruvic AI',
+    team: 'Prácticas profesionales',
     stack: ['Python', 'OAuth2', 'boto3', 'Azure SDK', 'Google APIs', 'Docker'],
     repo: 'https://github.com/Dgirto?tab=repositories',
     status: 'Repositorios públicos desde julio de 2026',
@@ -68,7 +69,7 @@ export const projects: Project[] = [
       { type: 'logos', caption: 'Los sistemas del catálogo, cada uno con su repositorio público.' },
       {
         type: 'code',
-        filename: 'PostgreSQL/lib/ruvic_postgresql_connector/client.py',
+        filename: 'PostgreSQL/client.py',
         language: 'python',
         caption: 'Extracto: validación de identificadores contra inyección SQL y conexión en modo de solo lectura.',
         code: `_IDENTIFIER_RE = re.compile(r"^[A-Za-z_][A-Za-z0-9_]*$")
@@ -99,10 +100,6 @@ conn = psycopg.connect(
   "id": "postgresql",
   "name": "PostgreSQL",
   "category": "database",
-  "library": {
-    "package": "ruvic-postgresql-connector",
-    "import_name": "ruvic_postgresql_connector"
-  },
   "operations": [
     "db.list_tables",
     "db.read",
@@ -115,6 +112,7 @@ conn = psycopg.connect(
   },
   {
     slug: 'escuela',
+    listOnly: true,
     name: 'appEscuela',
     kind: 'Académico',
     year: '2026',
@@ -173,7 +171,7 @@ conn = psycopg.connect(
     contribution:
       'Implementé el diseño de Figma del equipo en React: maquetación de las páginas, componentes y estilos, fiel al diseño y adaptado a escritorio y móvil.',
     team: 'Proyecto grupal',
-    stack: ['React 18', 'React Router', 'Vite', 'CSS', 'Figma'],
+    stack: ['React 18', 'React Router', 'Vite', 'CSS', 'Supabase', 'Mercado Pago', 'Figma'],
     repo: 'https://github.com/Dgirto/ProyectoTuerka',
     demo: 'https://proyecto-tuerka.vercel.app',
     cover: {
@@ -222,55 +220,54 @@ conn = psycopg.connect(
     ],
   },
   {
-    slug: 'msgraph',
-    name: 'msgraph-Robin',
-    kind: 'Prácticas',
+    slug: 'selah',
+    name: 'Selah Cafetería',
+    kind: 'Cliente',
     year: '2026',
-    thesis: 'Librería de Python para automatizar Microsoft 365.',
+    thesis: 'Web de una cafetería con cuentas, reservas y panel de gestión.',
     problem:
-      'Leer y enviar correos de Outlook, gestionar archivos de OneDrive y avisar por Teams desde un script, sin repetir la autenticación de Azure en cada proyecto.',
+      'Las reservas y las cotizaciones de eventos no llegaban a ningún sitio, y la apertura del local necesitaba una promoción de café gratis para clientes registrados.',
     solution:
-      'Clientes para correo (con filtros y lectura periódica), envío con adjuntos, OneDrive y Excel, mensajes de Teams y webhooks de Microsoft Graph, todo con una sola configuración.',
-    contribution: 'Desarrollo de la librería y su integración como conector del catálogo.',
-    team: 'Ruvic AI',
-    stack: ['Python', 'Microsoft Graph', 'Azure AD', 'pip'],
-    repo: 'https://github.com/Dgirto/msgraph-Robin',
-    cover: { kind: 'code' },
+      'Sitio público con carta, eventos y reservas; cuentas de cliente con cupón de café gratis; reservas de mesa con depósito opcional por Yape o Plin; cotizaciones de eventos y un panel por roles para caja y administración.',
+    contribution:
+      'Frontend sin framework, API en Cloudflare Pages Functions, base de datos D1 con migraciones, acceso con contraseña o Google, protección con Turnstile y límites de peticiones.',
+    team: 'Cafetería en Lima',
+    stack: ['JavaScript', 'HTML', 'CSS', 'Cloudflare Pages', 'Cloudflare D1', 'SQL', 'Google OAuth', 'Turnstile'],
+    cover: {
+      kind: 'laptop',
+      src: '/work/selah-inicio.webp',
+      alt: 'Inicio de la web de Selah Cafetería con la barra del local y el titular «Ven por el café, quédate por la esencia»',
+      width: 1400,
+      height: 875,
+    },
     slides: [
       {
-        type: 'code',
-        filename: 'README.md · uso de EmailClient',
-        language: 'python',
-        caption: 'Lectura periódica de correo con un callback, tal como la documenta el repositorio.',
-        code: `from msgraph_client import EmailClient
-
-email_client = EmailClient(client, mailbox="usuario@empresa.com")
-
-emails = email_client.get_new_emails(
-    only_unread=True,
-    subject_contains="Reporte",
-    include_attachments=True,
-    limit=10,
-)
-
-def procesar(email):
-    print(f"Nuevo correo: {email.subject}")
-
-email_client.start_polling(callback=procesar, poll_interval=60)`,
+        type: 'image',
+        src: '/work/selah-inicio.webp',
+        alt: 'Inicio de la web de Selah Cafetería con la barra del local y el titular «Ven por el café, quédate por la esencia»',
+        width: 1400,
+        height: 875,
       },
       {
-        type: 'code',
-        filename: 'README.md · autenticación',
-        language: 'python',
-        caption: 'Una sola configuración de Azure para todos los clientes de la librería.',
-        code: `from msgraph_client import GraphAuth, GraphClient
-
-auth = GraphAuth(
-    client_id="tu-client-id",
-    client_secret="tu-client-secret",
-    tenant_id="tu-tenant-id",
-)
-client = GraphClient(auth)`,
+        type: 'image',
+        src: '/work/selah-favoritos.webp',
+        alt: 'Sección «Nuestros favoritos» con cuatro postres de la carta en tarjetas blancas',
+        width: 1400,
+        height: 875,
+      },
+      {
+        type: 'image',
+        src: '/work/selah-reservas.webp',
+        alt: 'Página de reservas con dos opciones: reservar una mesa o celebrar en Selah',
+        width: 1400,
+        height: 875,
+      },
+      {
+        type: 'image',
+        src: '/work/selah-eventos.webp',
+        alt: 'Página de eventos con los tipos de celebración y los paquetes disponibles',
+        width: 1400,
+        height: 875,
       },
     ],
   },
@@ -349,9 +346,163 @@ cd appTareas
     ],
   },
   {
-    slug: 'alerta-sismica',
-    name: 'Alerta sísmica con Arduino',
+    slug: 'inventario',
+    name: 'Sistema de inventario',
     featured: true,
+    kind: 'Académico',
+    year: '2026',
+    thesis: 'Panel administrativo fullstack con API REST, autenticación JWT, roles y kardex de movimientos.',
+    problem:
+      'Un almacén necesita saber qué tiene, cuánto vale y qué se está agotando, con un registro fiable de cada entrada y salida y permisos distintos según quién opere el sistema.',
+    solution:
+      'Una API en Node.js y Express con MySQL y un panel en React. Incluye inicio de sesión con JWT, rutas protegidas, roles de Administrador y Almacenero, gestión de productos, categorías y proveedores, y un kardex donde cada movimiento actualiza el stock en una transacción. El panel resume el valor del inventario, los productos con bajo stock y la actividad reciente.',
+    contribution: 'Desarrollo completo del backend y el frontend en el seminario Fullstack Developer Software (IA 501) de SENATI.',
+    team: 'SENATI · individual',
+    stack: ['React 19', 'Node.js', 'Express', 'Sequelize', 'MySQL', 'JWT', 'Bootstrap'],
+    repo: 'https://github.com/Dgirto/appInventario',
+    status: 'API en el repositorio miApi. Capturas con datos de demostración.',
+    cover: {
+      kind: 'laptop',
+      src: '/work/inventario-dashboard.webp',
+      alt: 'Panel del sistema de inventario con valor total, productos, categorías, proveedores, bajo stock y flujo de stock',
+      width: 1400,
+      height: 875,
+    },
+    slides: [
+      {
+        type: 'image',
+        src: '/work/inventario-dashboard.webp',
+        alt: 'Panel de inicio con indicadores del inventario y gráficos de stock y categorías',
+        width: 1400,
+        height: 875,
+      },
+      {
+        type: 'image',
+        src: '/work/inventario-productos.webp',
+        alt: 'Gestión de productos con su categoría, precio y stock',
+        width: 1400,
+        height: 875,
+      },
+      {
+        type: 'image',
+        src: '/work/inventario-kardex.webp',
+        alt: 'Kardex con el formulario de movimientos y la lista de entradas, salidas y ajustes',
+        width: 1400,
+        height: 875,
+      },
+      {
+        type: 'code',
+        filename: 'miApi/controllers/movimientoController.js',
+        language: 'javascript',
+        caption: 'Extracto: el movimiento y el stock se actualizan en una transacción, con bloqueo de la fila del producto.',
+        code: `const movimiento = await sequelize.transaction(async (t) => {
+    // Bloqueo de la fila del producto: evita que dos movimientos simultáneos
+    // lean el mismo stock y se pisen al actualizarlo
+    const producto = await Producto.findByPk(producto_id, {
+        transaction: t,
+        lock: t.LOCK.UPDATE
+    });`,
+      },
+    ],
+  },
+  {
+    slug: 'alumnos',
+    listOnly: true,
+    name: 'Mantenimiento de alumnos',
+    kind: 'Académico',
+    year: '2026',
+    thesis: 'App Android para registrar y gestionar alumnos con base de datos local.',
+    problem: 'Llevar el registro de alumnos de una institución en el teléfono, con sus datos personales, carrera, ciclo y estado, sin depender de internet.',
+    solution:
+      'Formulario de 10 campos, listado de registros y almacenamiento en SQLite. La interfaz usa Material Design, con menús desplegables para ciclo y estado y formato automático de la fecha de nacimiento.',
+    contribution:
+      'Implementé el mantenimiento de 10 campos con SQLite, rediseñé la interfaz con Material Design e integré las ramas del equipo mediante pull requests.',
+    team: 'Equipo de 5',
+    stack: ['Java', 'Android', 'SQLite', 'Material Design', 'Git'],
+    repo: 'https://github.com/Dgirto/appMantenimientoAlumnos',
+    cover: { kind: 'code' },
+    slides: [
+      {
+        type: 'code',
+        filename: 'db/DbAlumnos.java',
+        language: 'java',
+        caption: 'Extracto: inserción de un alumno en la base de datos SQLite.',
+        code: `ContentValues values = new ContentValues();
+values.put("nombre", nombre);
+values.put("apellido", apellido);
+values.put("telefono", telefono);
+values.put("correo_electronico", correo_electronico);
+values.put("direccion", direccion);
+values.put("fechaNacimiento", fechaNacimiento);
+values.put("dni", dni);
+values.put("carrera", carrera);
+values.put("ciclo", ciclo);
+values.put("estado", estado);
+
+// nos va a regresar el id insertado
+id = db.insert(TABLE_ALUMNOS, null, values);`,
+      },
+    ],
+  },
+  {
+    slug: 'parqueo',
+    featured: true,
+    name: 'Parqueo con lectura de placas',
+    kind: 'Académico',
+    year: '2026',
+    thesis: 'Sistema web que lee placas en video y controla entradas, salidas y cobros.',
+    problem: 'Controlar un estacionamiento a mano es lento y propenso a errores: hay que anotar cada placa y calcular cada cobro.',
+    solution:
+      'Procesa el video con OpenCV, reconoce la placa con EasyOCR y registra la entrada o la salida en SQLite. Un panel web muestra la cámara y los tickets en tiempo real, con historial filtrable, reportes de ingresos, tarifas y salida manual.',
+    contribution: 'Desarrollo de la aplicación: visión por computadora, API, panel web, lógica de cobro, base de datos y pruebas.',
+    team: 'Individual',
+    stack: ['Python', 'FastAPI', 'OpenCV', 'EasyOCR', 'SQLite', 'React', 'TypeScript'],
+    repo: 'https://github.com/Dgirto/parqueo',
+    cover: {
+      kind: 'laptop',
+      src: '/work/parqueo-vivo.webp',
+      alt: 'Panel En vivo de SmartPark con la cámara, la última placa leída y los vehículos dentro',
+      width: 1400,
+      height: 875,
+    },
+    slides: [
+      {
+        type: 'image',
+        src: '/work/parqueo-vivo.webp',
+        alt: 'Panel En vivo de SmartPark con la cámara, la última placa leída y los vehículos dentro',
+        width: 1400,
+        height: 875,
+      },
+      {
+        type: 'image',
+        src: '/work/parqueo-registros.webp',
+        alt: 'Historial de tickets con filtros por placa, estado y fecha',
+        width: 1400,
+        height: 875,
+      },
+      {
+        type: 'image',
+        src: '/work/parqueo-reportes.webp',
+        alt: 'Reportes con ingresos por día y entradas por hora; el historial es de demostración',
+        width: 1400,
+        height: 875,
+      },
+      {
+        type: 'code',
+        filename: 'app/vision/plate_detector.py',
+        language: 'python',
+        caption: 'Extracto: se mejora el contraste del fotograma antes de pasarlo al reconocimiento de texto.',
+        code: `def preprocess(self, frame: np.ndarray) -> np.ndarray:
+    gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+    clahe = cv2.createCLAHE(clipLimit=2.0, tileGridSize=(8, 8))
+    return clahe.apply(gray)`,
+      },
+    ],
+  },
+  {
+    slug: 'alerta-sismica',
+    listOnly: true,
+    name: 'Alerta sísmica con Arduino',
     kind: 'Académico',
     year: '2026',
     thesis: 'Sistema de alerta ante sismo, incendio y fuga de gas con dos Arduino conectados por I2C.',

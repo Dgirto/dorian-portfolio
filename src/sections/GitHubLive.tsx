@@ -72,7 +72,7 @@ export function GitHubLive() {
                 <li key={r.name}>
                   <ExternalLink className={styles.repo} href={r.html_url}>
                     <span className={styles.repoName}>{r.name}</span>
-                    <span className={styles.repoDesc}>{r.description || 'Sin descripción'}</span>
+                    <span className={styles.repoDesc}>{r.description?.replace(/\s*Ruvic(\s+AI)?/gi, '') || 'Sin descripción'}</span>
                     <span className={styles.repoMeta}>
                       {r.language ?? 'Sin lenguaje'} · {formatDate(r.pushed_at)}
                     </span>

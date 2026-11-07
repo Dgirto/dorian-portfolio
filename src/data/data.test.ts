@@ -22,8 +22,11 @@ describe('datos del portafolio', () => {
 
   it('cada proyecto enlaza a GitHub y sus imágenes existen', () => {
     for (const p of projects) {
-      expect(p.repo).toMatch(/^https:\/\/github\.com\/Dgirto/)
+      if (p.repo) expect(p.repo).toMatch(/^https:\/\/github\.com\/Dgirto/)
+      else expect(p.kind).toBe('Cliente')
       expect(p.slides.length).toBeGreaterThan(0)
+      expect(existsSync(join(publicDir, 'videos', `${p.slug}.mp4`))).toBe(true)
+      expect(existsSync(join(publicDir, 'videos', `${p.slug}.webp`))).toBe(true)
       for (const s of p.slides) if (s.type === 'image') expect(existsSync(join(publicDir, s.src))).toBe(true)
       if (p.cover.kind === 'laptop' || p.cover.kind === 'phone' || p.cover.kind === 'plain')
         expect(existsSync(join(publicDir, p.cover.src))).toBe(true)

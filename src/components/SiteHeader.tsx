@@ -4,10 +4,12 @@ import { profile } from '../data/profile'
 import { navItems } from '../data/navigation'
 import styles from './SiteHeader.module.css'
 
-/** Barra fija y translúcida con la sección activa resaltada. */
+/** Barra fija con un índice numerado y la sección activa resaltada. */
 export function SiteHeader() {
   const [open, setOpen] = useState(false)
-  const [active, setActive] = useState<string>('')
+  const [active, setActive] = useState<string>(() =>
+    window.location.pathname.startsWith('/proyectos') ? '/#proyectos' : '',
+  )
   const menuId = useId()
 
   useEffect(() => {
@@ -19,11 +21,11 @@ export function SiteHeader() {
 
   useEffect(() => {
     const sections = navItems
-      .map((n) => document.querySelector(n.href))
+      .map((n) => document.querySelector(n.href.slice(1)))
       .filter((el): el is Element => el !== null)
     const observer = new IntersectionObserver(
       (entries) => {
-        for (const e of entries) if (e.isIntersecting) setActive(`#${e.target.id}`)
+        for (const e of entries) if (e.isIntersecting) setActive(`/#${e.target.id}`)
       },
       { rootMargin: '-45% 0px -50% 0px' },
     )
@@ -34,26 +36,29 @@ export function SiteHeader() {
   return (
     <header className={styles.header}>
       <div className={styles.bar}>
-        <a className={styles.wordmark} href="#inicio" onClick={() => setOpen(false)}>
+        <a className={styles.wordmark} href="/#inicio" onClick={() => setOpen(false)}>
+          <span className={styles.mark} aria-hidden="true">
+            DG
+          </span>
           {profile.shortName}
         </a>
         <nav aria-label="Principal" className={styles.nav}>
           <ul id={menuId} className={`${styles.links} ${open ? styles.open : ''}`}>
-            {navItems.map((item) => (
+            {navItems.map((item, i) => (
               <li key={item.href}>
                 <a
                   href={item.href}
                   aria-current={active === item.href ? 'true' : undefined}
                   onClick={() => setOpen(false)}
                 >
+                  <span className={styles.index} aria-hidden="true">
+                    {String(i + 1).padStart(2, '0')}
+                  </span>
                   {item.label}
                 </a>
               </li>
             ))}
           </ul>
-          <a className={styles.action} href={`mailto:${profile.email}`}>
-            Escríbeme
-          </a>
           <button
             type="button"
             className={styles.toggle}

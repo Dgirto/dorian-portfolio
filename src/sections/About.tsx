@@ -2,13 +2,8 @@ import { useRef } from 'react'
 import { m, useReducedMotion, useScroll, useTransform } from 'motion/react'
 import { profile } from '../data/profile'
 import { Reveal } from '../components/Reveal'
+import { Timeline } from '../components/Timeline'
 import styles from './About.module.css'
-
-const facts = [
-  { label: 'Base', value: profile.location },
-  { label: 'Ahora', value: 'Prácticas en Ruvic AI' },
-  { label: 'Formación', value: 'SENATI · 5.º ciclo' },
-]
 
 export function About() {
   const ref = useRef<HTMLElement>(null)
@@ -43,16 +38,12 @@ export function About() {
           <Reveal delay={0.15}>
             <p className={styles.more}>{profile.aboutMore}</p>
           </Reveal>
-          <Reveal delay={0.2}>
-            <dl className={styles.facts}>
-              {facts.map((f) => (
-                <div key={f.label}>
-                  <dt>{f.label}</dt>
-                  <dd>{f.value}</dd>
-                </div>
-              ))}
-            </dl>
-          </Reveal>
+          <div className={styles.journey}>
+            <Reveal>
+              <h3 className={styles.journeyTitle}>Trayectoria</h3>
+            </Reveal>
+            <Timeline />
+          </div>
         </div>
       </div>
     </section>

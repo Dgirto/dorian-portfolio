@@ -1,0 +1,50 @@
+.graphic {
+  display: block;
+  width: 100%;
+  max-width: 520px;
+  height: auto;
+  margin-inline: auto;
+  overflow: visible;
+}
+
+.trace {
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 1.5;
+}
+
+.joint {
+  fill: var(--bg);
+  stroke: var(--ink);
+  stroke-width: 1.5;
+}
+
+.node {
+  fill: var(--bg);
+  stroke: var(--ink);
+  stroke-width: 1.5;
+  filter: drop-shadow(0 10px 14px rgb(0 0 0 / 0.14));
+}
+
+.label,
+.hubLabel {
+  font-family: var(--font-code);
+  text-anchor: middle;
+  fill: var(--ink);
+}
+
+.label {
+  font-size: 13px;
+}
+
+.hub {
+  fill: var(--accent);
+  stroke: var(--ink);
+  stroke-width: 1.5;
+  filter: drop-shadow(0 16px 22px rgb(0 0 0 / 0.28));
+}
+
+.hubLabel {
+  font-size: 18px;
+  font-weight: 600;
+}

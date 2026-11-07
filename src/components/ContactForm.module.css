@@ -54,7 +54,7 @@
 .field textarea:focus {
   outline: none;
   border-color: var(--accent);
-  box-shadow: 0 0 0 3px rgb(62 207 142 / 0.25);
+  box-shadow: 0 0 0 3px rgb(200 240 49 / 0.25);
 }
 
 .footer {

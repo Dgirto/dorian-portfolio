@@ -9,7 +9,7 @@ const subject = encodeURIComponent('Contacto desde tu portafolio')
 
 export function Contact() {
   return (
-    <section id="contacto" className={`dark ${styles.section} defer`} aria-labelledby="contacto-title">
+    <section id="contacto" className={`dark grid-lines ${styles.section} defer`} aria-labelledby="contacto-title">
       <div className={styles.inner}>
         <Reveal>
           <h2 id="contacto-title" className={styles.title}>

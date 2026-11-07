@@ -1,4 +1,4 @@
-// Generado a partir de los manifest.json públicos de github.com/Dgirto (catálogo de conectores de Ruvic AI).
+// Generado a partir de los manifest.json públicos de github.com/Dgirto (catálogo de conectores).
 // Para añadir un conector, agrega un objeto con la misma forma y su logo en public/logos/<repo-en-minúsculas>.svg.
 import type { Connector } from '../types'
 

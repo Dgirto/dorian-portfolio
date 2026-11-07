@@ -2,9 +2,9 @@
 
 **Sitio publicado:** [dorian-portafolio.vercel.app](https://dorian-portafolio.vercel.app/)
 
-Portafolio personal construido con **React + TypeScript + Vite**. Presenta mi trabajo como ingeniero de software júnior en Ruvic AI, mi formación (estudiante de 5.º ciclo de Ingeniería de Software con IA en SENATI) y mis proyectos con código público, empezando por los **46 conectores** que construí para que un agente de IA trabaje con sistemas externos.
+Portafolio personal construido con **React + TypeScript + Vite**. Presenta mi trabajo como ingeniero de software júnior, mi formación (estudiante de 5.º ciclo de Ingeniería de Software con IA en SENATI) y mis proyectos con código público, empezando por los **46 conectores** que construí para que un agente de IA trabaje con sistemas externos.
 
-La experiencia sigue el ritmo de una página de producto: titulares cortos y grandes, capturas reales dentro de dispositivos que se animan con el desplazamiento, capítulos oscuros fijados en pantalla y proyectos que se abren en detalle. El concepto, la paleta y el lenguaje de movimiento están documentados en [`DESIGN.md`](DESIGN.md).
+La página combina negro, blanco y un color principal amarillo verdoso con líneas y gráficos propios. Cada proyecto se abre en detalle con un video de presentación, capturas reales y código. El concepto, la paleta y el lenguaje de movimiento están documentados en [`DESIGN.md`](DESIGN.md).
 
 ## Requisitos previos
 
@@ -25,7 +25,7 @@ npm run dev        # servidor de desarrollo en http://localhost:5173
 | `npm run preview` | Sirve `dist/` localmente para revisar la compilación |
 | `npm run lint` | ESLint (TypeScript + reglas de hooks de React) |
 | `npm run typecheck` | Solo verificación de tipos |
-| `npm test` | Pruebas unitarias con Vitest (búsqueda, resumen de GitHub, integridad de datos) |
+| `npm test` | Pruebas unitarias con Vitest (formato, resumen de GitHub, integridad de datos) |
 
 ## Tecnologías
 
@@ -34,10 +34,9 @@ npm run dev        # servidor de desarrollo en http://localhost:5173
 | React 19 + TypeScript | Núcleo de la interfaz, tipado de todos los datos editables |
 | Vite 8 | Desarrollo rápido y compilación estática lista para Vercel |
 | CSS Modules + tokens en `global.css` | Estilos por componente sin dependencias de runtime |
-| `three` | Portátil 3D del hero con materiales físicos. Se carga en un fragmento aparte al primer gesto del visitante; antes se muestra un fotograma fijo |
-| `motion` | Animaciones ligadas al scroll (portátil, paralaje, frase fijada, línea de tiempo), entradas y contadores. Se carga con `LazyMotion` + `domAnimation` |
+| `motion` | Animaciones ligadas al scroll, trazados SVG, entradas y contadores. Se carga con `LazyMotion` + `domAnimation` |
 | `lucide-react` | Iconos SVG consistentes (solo se empaquetan los usados) |
-| `@fontsource-variable/geist` | Tipografía Geist autoalojada: sin peticiones a terceros |
+| `@fontsource-variable/geist` y `geist-mono` | Tipografías Geist y Geist Mono autoalojadas: sin peticiones a terceros |
 | Vitest | Pruebas de la lógica y de los datos |
 
 No se usa React Router (es una sola página) ni backend.
@@ -46,16 +45,18 @@ No se usa React Router (es una sola página) ni backend.
 
 ```
 src/
-  components/   Piezas reutilizables (cabecera, dispositivos, entrada animada, frase fijada, contador, enlace externo)
+  components/   Piezas reutilizables (cabecera, dispositivos, diagrama, marquesina, línea de tiempo, contador, enlace externo)
   sections/     Una sección por archivo, cada una con su .module.css
   data/         TODO el contenido editable (ver abajo)
   hooks/        API de GitHub y hora local
   types/        Tipos compartidos
-  utils/        Búsqueda de conectores, formato de fechas, cliente de la API de GitHub
+  utils/        Conectores, formato de fechas, cliente de la API de GitHub
   styles/       Tokens de diseño y estilos globales
 public/
   logos/        Logo de cada conector (<repo-en-minúsculas>.svg)
   work/         Capturas de proyectos, pantallas de Figma y retrato
+  videos/       Video de presentación de cada proyecto (<slug>.mp4) y su fotograma (<slug>.webp)
+  certificados/ Imagen completa y miniatura de cada certificado
   robots.txt, sitemap.xml, favicon.svg, og-image.png
 iot/
   alerta-sismica/  Programas de Arduino del proyecto de Tinkercad (controlador y actuadores)
@@ -82,7 +83,7 @@ Ningún componente contiene textos personales: todo vive en `src/data/`.
 
 ### Añadir un proyecto
 
-1. Guarda sus capturas en `public/work/` (WebP, 1000–1400 px de ancho).
+1. Guarda sus capturas en `public/work/` (WebP, 1000–1400 px de ancho) y su video en `public/videos/<slug>.mp4` con el fotograma `<slug>.webp`.
 2. Añade un objeto al arreglo de `src/data/projects.ts`:
 
 ```ts
@@ -90,33 +91,34 @@ Ningún componente contiene textos personales: todo vive en `src/data/`.
   slug: 'mi-proyecto',
   name: 'mi-proyecto',
   featured: false,             // true: ocupa todo el ancho de la cuadrícula
+  listOnly: false,             // true: solo aparece en la página /proyectos
   // Portada: { kind: 'laptop' | 'phone' | 'plain', src, alt, width, height }
   //          { kind: 'phones', shots: [shot, shot] } · { kind: 'logos' } · { kind: 'code' }
   cover: { kind: 'laptop', src: '/work/mi-proyecto.webp', alt: 'Descripción', width: 1400, height: 875 },
-  kind: 'Personal',            // 'Prácticas' | 'Académico' | 'Personal'
+  kind: 'Personal',            // 'Prácticas' | 'Académico' | 'Personal' | 'Cliente'
   year: '2026',
   thesis: 'Una línea que diga qué es.',
   problem: '…', solution: '…', contribution: '…',
   team: 'Individual',
   stack: ['React', 'TypeScript'],
-  repo: 'https://github.com/Dgirto/mi-proyecto',
+  repo: 'https://github.com/Dgirto/mi-proyecto', // opcional solo en proyectos de tipo 'Cliente'
   demo: 'https://…',           // opcional
   slides: [
     { type: 'image', src: '/work/mi-proyecto.webp', alt: 'Descripción', width: 1400, height: 875 },
-    { type: 'code', filename: 'src/app.py', language: 'python', code: '…', caption: '…' }, // python | java | bash | json
+    { type: 'code', filename: 'src/app.py', language: 'python', code: '…', caption: '…' }, // python | java | javascript | bash | json
   ],
 }
 ```
 
-Para eliminarlo, borra el objeto. `npm test` comprueba que cada imagen enlazada existe.
+Para eliminarlo, borra el objeto. `npm test` comprueba que cada imagen enlazada y cada video existen.
 
 ### Añadir una certificación
 
-Añade un objeto a `src/data/certifications.ts` con `name`, `issuer`, `issued` (`AAAA-MM`), `expires` (`AAAA-MM` o `null`), `credentialId` y `verifyUrl` (o `null` si no hay enlace de verificación). La sección se ordena tal como está el arreglo.
+Añade un objeto a `src/data/certifications.ts` con `name`, `issuer`, `issued` (`AAAA-MM`), `expires` (`AAAA-MM` o `null`), `credentialId` (o `null`), `verifyUrl` (o `null` si no hay enlace de verificación) e `image` con la ruta en `public/certificados/` y sus medidas. La miniatura se guarda junto a la imagen con el sufijo `-min`. La sección se ordena tal como está el arreglo.
 
 ### Añadir un conector
 
-Añade un objeto a `src/data/connectors.ts` con la misma forma y su logo en `public/logos/<repo-en-minúsculas>.svg`. Aparecerá en el muro animado y en el explorador; la búsqueda usa nombre, código, descripción, palabras clave y operaciones.
+Añade un objeto a `src/data/connectors.ts` con la misma forma y su logo en `public/logos/<repo-en-minúsculas>.svg`. Los logos aparecen en la marquesina de la tarjeta del catálogo.
 
 ## Integración con GitHub
 
@@ -146,7 +148,7 @@ El formulario envía el mensaje con [EmailJS](https://www.emailjs.com) y muestra
 
 ## Despliegue en Vercel
 
-El sitio está publicado en **[dorian-portafolio.vercel.app](https://dorian-portafolio.vercel.app/)**. El proyecto no necesita `vercel.json`: Vercel detecta Vite automáticamente.
+El sitio está publicado en **[dorian-portafolio.vercel.app](https://dorian-portafolio.vercel.app/)**. Vercel detecta Vite automáticamente; `vercel.json` solo dirige la ruta `/proyectos` a `index.html`.
 
 1. Entra en [vercel.com/new](https://vercel.com/new) e importa el repositorio `Dgirto/dorian-portfolio`.
 2. Framework: **Vite** · Build command: `npm run build` · Output directory: `dist`.
@@ -162,7 +164,7 @@ Cada push a `main` generará un despliegue nuevo.
 
 - `npm run lint`, `npm run typecheck`, `npm test` y `npm run build` sin errores.
 - Lighthouse 12 (compilación de producción servida en local, 19 oct. 2026): escritorio 100 rendimiento · 100 accesibilidad · 100 buenas prácticas · 100 SEO; móvil 92 · 100 · 100 · 100 (el rendimiento móvil varía entre 92 y 94 según la ejecución). Si la API pública de GitHub responde 403 por límite de consultas, buenas prácticas baja a 96 y la sección muestra su estado de error.
-- Respeta `prefers-reduced-motion` (sin desplazamientos, marquesina detenida, frase estática), navegable con teclado, foco visible, diálogo nativo accesible, enlaces externos con `rel="noopener noreferrer"`.
+- Respeta `prefers-reduced-motion` (sin desplazamientos, marquesina detenida, video sin reproducción automática), navegable con teclado, foco visible, diálogo nativo accesible, enlaces externos con `rel="noopener noreferrer"`.
 
 ## Documentación del Laboratorio #4
 
@@ -181,9 +183,9 @@ Si Chrome no está en la ruta habitual, indica su ubicación con la variable `CH
 ## Créditos
 
 - Capturas: panel de watchdog-bot-monitor (ejecutado en local con sus datos de demostración) y demo pública de appEscuela, tomadas a 2× y 3× con emulación de dispositivo.
-- Portátil 3D del hero: modelado por código con [three.js](https://threejs.org) (MIT) en `src/three/laptopScene.ts`.
-- Marcos de iPhone 14 Pro y MacBook Pro estático (respaldo sin WebGL): adaptados de [devices.css](https://github.com/picturepan2/devices.css) de Yan Zhu (licencia MIT; aviso incluido en `src/components/Devices.module.css`). Se convirtieron a unidades relativas y la tapa del MacBook se separó para animar su apertura.
+- Marcos de iPhone 14 Pro y MacBook Pro: adaptados de [devices.css](https://github.com/picturepan2/devices.css) de Yan Zhu (licencia MIT; aviso incluido en `src/components/Devices.module.css`). Se convirtieron a unidades relativas.
+- Videos de presentación: generados con [HyperFrames](https://github.com/heygen-com/hyperframes) a partir de los datos y capturas de cada proyecto.
 - Pantallas de appTareas: exportadas del archivo de Figma enlazado en su README; son diseños, no capturas de la app compilada.
 - Logos de los conectores: los `icon.svg` de cada repositorio; los que faltaban proceden de [Devicon](https://devicon.dev) (MIT) y [Simple Icons](https://simpleicons.org) (CC0). Intune usa el logotipo de cuatro cuadrados de Microsoft. Todas las marcas pertenecen a sus propietarios y se muestran solo para identificar la integración.
 - Proyecto de Arduino: diseñado y simulado en Tinkercad Circuits; la vista de protoboard y el esquema son capturas del propio diseño.
-- Paleta: base inspirada en las extracciones públicas del sistema visual de Apple y en paletas oscuras para desarrolladores; acento verde propio.
+- Paleta: negro, blanco y amarillo verdoso propio.

@@ -41,9 +41,10 @@ async function alerta(ok: boolean) {
       : 'Hubo un problema al enviar el mensaje. Inténtalo más tarde o escríbeme directamente al correo.',
     icon: ok ? 'success' : 'error',
     confirmButtonText: 'Entendido',
-    confirmButtonColor: '#0a7f52',
-    background: '#0d1117',
-    color: '#f5f5f7',
+    confirmButtonColor: '#c8f031',
+    background: '#0a0a0a',
+    color: '#ffffff',
+    customClass: { confirmButton: 'swal-confirm' },
     // Sin esto, SweetAlert2 fija la altura del body y la página salta al inicio mientras la alerta está abierta.
     heightAuto: false,
   })

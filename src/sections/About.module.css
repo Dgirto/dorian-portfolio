@@ -6,7 +6,7 @@
   display: grid;
   grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
   gap: clamp(32px, 6vw, 96px);
-  align-items: center;
+  align-items: start;
   width: var(--page);
   margin-inline: auto;
 }
@@ -17,6 +17,9 @@
   background: var(--surface-2);
   aspect-ratio: 3 / 4;
   max-width: 420px;
+  position: sticky;
+  top: 88px;
+  box-shadow: var(--shadow-lg);
 }
 
 .photo {
@@ -43,28 +46,15 @@
   max-width: 60ch;
 }
 
-.facts {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 16px;
-  margin-top: 8px;
+.journey {
+  margin-top: 16px;
+  padding-top: 32px;
+  border-top: 1px solid var(--ink);
 }
 
-.facts div {
-  padding: 18px 20px;
-  border-radius: var(--radius-sm);
-  background: var(--surface);
-}
-
-.facts dt {
-  font-size: var(--fs-small);
-  color: var(--muted);
-}
-
-.facts dd {
-  margin-top: 4px;
-  font-weight: 600;
-  letter-spacing: -0.01em;
+.journeyTitle {
+  margin-bottom: 28px;
+  font-size: var(--fs-h3);
 }
 
 @media (max-width: 860px) {
@@ -73,10 +63,7 @@
   }
 
   .photoWrap {
+    position: static;
     max-width: 320px;
-  }
-
-  .facts {
-    grid-template-columns: 1fr;
   }
 }

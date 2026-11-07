@@ -1,8 +1,53 @@
 import type { Certification } from '../types'
 
-// Fuente: LinkedIn → Licencias y certificaciones (verificado el 2026-10-19).
-// Para añadir una: copia un objeto y completa los campos; `expires: null` si no vence o no consta.
+// Fuente: LinkedIn → Licencias y certificaciones (verificado el 2026-11-06).
+// Para añadir una: copia un objeto y completa los campos; `null` si un dato no vence o no consta.
 export const certifications: Certification[] = [
+  {
+    name: 'Database Design',
+    issuer: 'Oracle Academy',
+    issued: '2026-10',
+    expires: null,
+    credentialId: null,
+    verifyUrl: null,
+    image: { src: '/certificados/oracle-database-design', width: 1500, height: 1068 },
+  },
+  {
+    name: 'Database Programming with SQL',
+    issuer: 'Oracle Academy',
+    issued: '2026-10',
+    expires: null,
+    credentialId: null,
+    verifyUrl: null,
+    image: { src: '/certificados/oracle-database-sql', width: 1500, height: 1092 },
+  },
+  {
+    name: 'Java Foundations',
+    issuer: 'Oracle Academy',
+    issued: '2026-10',
+    expires: null,
+    credentialId: null,
+    verifyUrl: null,
+    image: { src: '/certificados/oracle-java-foundations', width: 1500, height: 1066 },
+  },
+  {
+    name: 'Java Fundamentals',
+    issuer: 'Oracle Academy',
+    issued: '2026-10',
+    expires: null,
+    credentialId: null,
+    verifyUrl: null,
+    image: { src: '/certificados/oracle-java-fundamentals', width: 1500, height: 1068 },
+  },
+  {
+    name: 'Scrum Fundamentals Certified',
+    issuer: 'SCRUMstudy',
+    issued: '2025-11',
+    expires: null,
+    credentialId: '1124218',
+    verifyUrl: null,
+    image: { src: '/certificados/scrum-fundamentals', width: 1500, height: 1160 },
+  },
   {
     name: 'Introducción a la Ciencia de Datos',
     issuer: 'Cisco Networking Academy',
@@ -10,6 +55,7 @@ export const certifications: Certification[] = [
     expires: null,
     credentialId: 'ad4ad76e-adef-49e0-bc55-9bc43dda8274',
     verifyUrl: 'https://www.netacad.com/recognitions/verify/ad4ad76e-adef-49e0-bc55-9bc43dda8274',
+    image: { src: '/certificados/cisco-data-science', width: 1500, height: 1017 },
   },
   {
     name: 'Conceptos básicos de redes',
@@ -18,6 +64,7 @@ export const certifications: Certification[] = [
     expires: null,
     credentialId: 'b7ee1bbf-0370-4b11-a712-80c779391e7c',
     verifyUrl: 'https://www.netacad.com/recognitions/verify/b7ee1bbf-0370-4b11-a712-80c779391e7c',
+    image: { src: '/certificados/cisco-networking', width: 1500, height: 1017 },
   },
   {
     name: 'Conceptos Básicos de Hardware de Computadora',
@@ -26,6 +73,7 @@ export const certifications: Certification[] = [
     expires: null,
     credentialId: '5ebb44bc-a0a6-4562-8e07-f91d5a3dc273',
     verifyUrl: 'https://www.netacad.com/recognitions/verify/5ebb44bc-a0a6-4562-8e07-f91d5a3dc273',
+    image: { src: '/certificados/cisco-hardware', width: 1500, height: 1017 },
   },
   {
     name: 'Introducción a la Ciberseguridad',
@@ -34,6 +82,7 @@ export const certifications: Certification[] = [
     expires: null,
     credentialId: '0a665e04-157d-41b7-9622-477b03530043',
     verifyUrl: 'https://www.netacad.com/recognitions/verify/0a665e04-157d-41b7-9622-477b03530043',
+    image: { src: '/certificados/cisco-cybersecurity', width: 1500, height: 1017 },
   },
   {
     name: 'Introducción al Internet de las Cosas y Transformación Digital',
@@ -42,5 +91,6 @@ export const certifications: Certification[] = [
     expires: null,
     credentialId: '20201fa8-876e-4f68-93f8-87f4cf9420f5',
     verifyUrl: 'https://www.netacad.com/recognitions/verify/20201fa8-876e-4f68-93f8-87f4cf9420f5',
+    image: { src: '/certificados/cisco-iot', width: 1500, height: 1017 },
   },
 ]

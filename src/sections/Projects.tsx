@@ -1,11 +1,13 @@
 import { useEffect, useRef, useState } from 'react'
-import { ArrowUpRight, Plus, X } from 'lucide-react'
+import { ArrowRight, ArrowUpRight, Plus, X } from 'lucide-react'
+import { useReducedMotion } from 'motion/react'
 import { projects } from '../data/projects'
 import { connectors } from '../data/connectors'
 import { splitName } from '../utils/connectors'
 import { Laptop, Phone } from '../components/Devices'
 import { CodeWindow } from '../components/CodeWindow'
 import { LogoTile } from '../components/LogoTile'
+import { LogoMarquee } from '../components/LogoMarquee'
 import { ExternalLink } from '../components/ExternalLink'
 import { Reveal } from '../components/Reveal'
 import type { Project, Slide } from '../types'
@@ -66,7 +68,7 @@ function Cover({ project }: { project: Project }) {
     case 'logos':
       return (
         <div className={styles.cloudCover}>
-          <LogoCloud count={15} />
+          <LogoMarquee />
         </div>
       )
     case 'code': {
@@ -105,8 +107,9 @@ function GallerySlide({ slide }: { slide: Slide }) {
   )
 }
 
-function ProjectDialog({ project, onClose }: { project: Project | null; onClose: () => void }) {
+export function ProjectDialog({ project, onClose }: { project: Project | null; onClose: () => void }) {
   const ref = useRef<HTMLDialogElement>(null)
+  const reduce = useReducedMotion()
 
   useEffect(() => {
     const dialog = ref.current
@@ -136,6 +139,21 @@ function ProjectDialog({ project, onClose }: { project: Project | null; onClose:
           </h2>
           <p className={styles.dialogThesis}>{project.thesis}</p>
 
+          <video
+            className={styles.video}
+            src={`/videos/${project.slug}.mp4`}
+            poster={`/videos/${project.slug}.webp`}
+            aria-label={`Video de presentación de ${project.name}`}
+            width={1280}
+            height={720}
+            controls
+            muted
+            playsInline
+            loop
+            autoPlay={!reduce}
+            preload="metadata"
+          />
+
           <div className={styles.gallery} tabIndex={0} role="region" aria-label="Galería del proyecto">
             {project.slides.map((s, i) => (
               <GallerySlide key={i} slide={s} />
@@ -164,16 +182,20 @@ function ProjectDialog({ project, onClose }: { project: Project | null; onClose:
           </ul>
           {project.status && <p className={styles.status}>{project.status}</p>}
 
-          <p className={styles.links}>
-            <ExternalLink className="btn" href={project.repo}>
-              Ver código <ArrowUpRight size={18} aria-hidden="true" />
-            </ExternalLink>
-            {project.demo && (
-              <ExternalLink className="btn btn-ghost" href={project.demo}>
-                Abrir demo <ArrowUpRight size={18} aria-hidden="true" />
-              </ExternalLink>
-            )}
-          </p>
+          {(project.repo || project.demo) && (
+            <p className={styles.links}>
+              {project.repo && (
+                <ExternalLink className="btn" href={project.repo}>
+                  Ver código <ArrowUpRight size={18} aria-hidden="true" />
+                </ExternalLink>
+              )}
+              {project.demo && (
+                <ExternalLink className="btn btn-ghost" href={project.demo}>
+                  Abrir demo <ArrowUpRight size={18} aria-hidden="true" />
+                </ExternalLink>
+              )}
+            </p>
+          )}
         </div>
       )}
     </dialog>
@@ -182,6 +204,7 @@ function ProjectDialog({ project, onClose }: { project: Project | null; onClose:
 
 export function Projects() {
   const [open, setOpen] = useState<Project | null>(null)
+  const selection = projects.filter((p) => !p.listOnly)
 
   return (
     <section id="proyectos" className={`${styles.section} defer`} aria-labelledby="proyectos-title">
@@ -193,13 +216,13 @@ export function Projects() {
         </Reveal>
         <Reveal delay={0.1}>
           <p className="section-lead">
-            Trabajo real, con código público. Abre cualquiera para ver el problema, la solución y mi aporte.
+            Una selección de mi trabajo. Abre cualquiera para ver el problema, la solución y mi aporte.
           </p>
         </Reveal>
       </div>
 
       <ul className={styles.grid}>
-        {projects.map((p, i) => (
+        {selection.map((p, i) => (
           <Reveal as="li" key={p.slug} delay={(i % 2) * 0.08} className={p.featured ? styles.featured : undefined}>
             <article className={`${styles.card} ${p.featured ? styles.cardWide : ''}`}>
               <div className={styles.cardText}>
@@ -223,6 +246,12 @@ export function Projects() {
           </Reveal>
         ))}
       </ul>
+
+      <div className={styles.seeAll}>
+        <a className="btn btn-ghost" href="/proyectos">
+          Ver todos los proyectos <ArrowRight size={18} aria-hidden="true" />
+        </a>
+      </div>
 
       <ProjectDialog project={open} onClose={() => setOpen(null)} />
     </section>

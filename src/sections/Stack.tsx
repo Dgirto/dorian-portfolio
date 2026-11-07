@@ -5,8 +5,6 @@ import type { StackItem } from '../types'
 import styles from './Stack.module.css'
 
 // Tamaño de cada baldosa del mosaico, en el orden de src/data/stack.ts.
-const spans = ['wide', 'normal', 'normal', 'normal', 'normal', 'normal', 'wide']
-
 function Evidence({ item }: { item: StackItem }) {
   if (!item.href) return <span className={styles.evidence}>{item.evidence}</span>
   if (item.href.startsWith('#'))
@@ -40,7 +38,7 @@ export function Stack() {
 
       <ul className={styles.bento}>
         {stack.map((group, i) => (
-          <Reveal as="li" key={group.name} delay={(i % 3) * 0.08} className={`${styles.tile} ${styles[spans[i] ?? 'normal']}`}>
+          <Reveal as="li" key={group.name} delay={(i % 3) * 0.08} className={styles.tile}>
             <h3 className={styles.tileTitle}>{group.name}</h3>
             <ul className={styles.items}>
               {group.items.map((item) => (

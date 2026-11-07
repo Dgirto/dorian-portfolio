@@ -5,6 +5,7 @@ import styles from './CodeWindow.module.css'
 const KEYWORDS: Record<CodeLanguage, string[]> = {
   python: ['from', 'import', 'def', 'return', 'raise', 'if', 'not', 'and', 'or', 'in', 'for', 'try', 'except', 'with', 'as', 'class', 'None', 'True', 'False', 'self', 'is'],
   java: ['final', 'class', 'static', 'int', 'switch', 'case', 'return', 'default', 'private', 'public', 'void', 'new'],
+  javascript: ['const', 'let', 'await', 'async', 'return', 'if', 'else', 'new', 'throw', 'function'],
   bash: ['git', 'cd'],
   json: ['true', 'false', 'null'],
   cpp: ['if', 'else', 'return', 'for', 'while', 'void', 'byte', 'int', 'float', 'char', 'const', 'volatile', 'unsigned', 'long'],
