@@ -148,7 +148,7 @@ El formulario envía el mensaje con [EmailJS](https://www.emailjs.com) y muestra
 
 ## Despliegue en Vercel
 
-El sitio está publicado en **[dorian-portafolio.vercel.app](https://dorian-portafolio.vercel.app/)**. Vercel detecta Vite automáticamente; `vercel.json` solo dirige la ruta `/proyectos` a `index.html`.
+El sitio está publicado en **[dorian-portafolio.vercel.app](https://dorian-portafolio.vercel.app/)**. Vercel detecta Vite automáticamente; `vercel.json` solo quita la barra final de las URL. El build genera un HTML por página (`seo.ts`): inicio, `/proyectos` y `/proyectos/<slug>`, con su título, datos estructurados y mapa del sitio.
 
 1. Entra en [vercel.com/new](https://vercel.com/new) e importa el repositorio `Dgirto/dorian-portfolio`.
 2. Framework: **Vite** · Build command: `npm run build` · Output directory: `dist`.

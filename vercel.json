@@ -1,9 +1,3 @@
 {
-  "trailingSlash": false,
-  "rewrites": [
-    {
-      "source": "/proyectos",
-      "destination": "/index.html"
-    }
-  ]
+  "trailingSlash": false
 }

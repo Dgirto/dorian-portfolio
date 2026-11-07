@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState, type MouseEvent } from 'react'
 import { ArrowLeft, Plus } from 'lucide-react'
 import { projects } from '../data/projects'
 import { profile } from '../data/profile'
@@ -6,25 +6,38 @@ import type { Project } from '../types'
 import { ProjectDialog } from './Projects'
 import styles from './Projects.module.css'
 
-const META = {
-  title: `Proyectos · ${profile.name}`,
-  description: 'Todos los proyectos de software de Dorian Girón Prato: integraciones, apps web y móviles, visión por computadora e IoT.',
+const LISTA = '/proyectos'
+
+function proyectoDeLaRuta() {
+  const slug = window.location.pathname.replace(/\/$/, '').split('/')[2]
+  return projects.find((p) => p.slug === slug) ?? null
 }
 
-function fijarMeta(selector: string, atributo: string, valor: string) {
-  document.querySelector(selector)?.setAttribute(atributo, valor)
-}
-
-/** Página /proyectos: índice completo; cada fila abre el mismo detalle que la portada. */
+/** Página /proyectos: cada proyecto tiene su URL y abre el mismo detalle que la portada. */
 export function AllProjects() {
-  const [open, setOpen] = useState<Project | null>(null)
+  const [open, setOpen] = useState<Project | null>(proyectoDeLaRuta)
 
   useEffect(() => {
-    const url = `${profile.siteUrl.replace(/\/$/, '')}/proyectos`
-    document.title = META.title
-    fijarMeta('meta[name="description"]', 'content', META.description)
-    fijarMeta('link[rel="canonical"]', 'href', url)
-    fijarMeta('meta[property="og:url"]', 'content', url)
+    const alVolver = () => setOpen(proyectoDeLaRuta())
+    window.addEventListener('popstate', alVolver)
+    return () => window.removeEventListener('popstate', alVolver)
+  }, [])
+
+  // La navegación interna no recarga la página, así que el título se actualiza aquí.
+  useEffect(() => {
+    document.title = open ? `${open.name} · Proyecto de ${profile.shortName}` : `Proyectos · ${profile.name}`
+  }, [open])
+
+  const abrir = (e: MouseEvent<HTMLAnchorElement>, p: Project) => {
+    if (e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return
+    e.preventDefault()
+    window.history.pushState(null, '', `${LISTA}/${p.slug}`)
+    setOpen(p)
+  }
+
+  const cerrar = useCallback(() => {
+    setOpen(null)
+    if (window.location.pathname !== LISTA) window.history.pushState(null, '', LISTA)
   }, [])
 
   return (
@@ -41,7 +54,7 @@ export function AllProjects() {
       <ol className={styles.list}>
         {projects.map((p, i) => (
           <li key={p.slug}>
-            <button type="button" className={styles.row} onClick={() => setOpen(p)} aria-haspopup="dialog">
+            <a className={styles.row} href={`${LISTA}/${p.slug}`} onClick={(e) => abrir(e, p)} aria-haspopup="dialog">
               <span className={styles.rowIndex} aria-hidden="true">
                 {String(i + 1).padStart(2, '0')}
               </span>
@@ -51,11 +64,11 @@ export function AllProjects() {
                 {p.kind} · {p.year}
               </span>
               <Plus className={styles.rowIcon} size={18} aria-hidden="true" />
-            </button>
+            </a>
           </li>
         ))}
       </ol>
-      <ProjectDialog project={open} onClose={() => setOpen(null)} />
+      <ProjectDialog project={open} onClose={cerrar} />
     </section>
   )
 }

@@ -13,7 +13,7 @@ import { Contact } from './sections/Contact'
 import { Footer } from './sections/Footer'
 
 export default function App() {
-  const esProyectos = window.location.pathname.replace(/\/$/, '') === '/proyectos'
+  const esProyectos = /^\/proyectos(\/|$)/.test(window.location.pathname)
 
   // Al llegar con un ancla, la sección aún no existía cuando el navegador intentó ir a ella.
   useEffect(() => {
