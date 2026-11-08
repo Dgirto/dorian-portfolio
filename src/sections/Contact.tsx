@@ -38,9 +38,6 @@ export function Contact() {
         <Reveal delay={0.25}>
           <ContactForm to={profile.email} />
         </Reveal>
-        <p className={styles.where}>
-          {profile.location} · {profile.workMode}
-        </p>
       </div>
     </section>
   )

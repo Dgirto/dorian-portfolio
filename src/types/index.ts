@@ -126,7 +126,6 @@ export interface Profile {
   role: string
   studies: string
   location: string
-  workMode: string
   intro: string
   about: string
   aboutMore: string

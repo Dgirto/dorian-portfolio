@@ -9,7 +9,6 @@ export const profile: Profile = {
   role: 'Ingeniero de Software',
   studies: 'Estudiante de 5.º ciclo de Ingeniería de Software con IA en SENATI',
   location: 'Lima, Perú',
-  workMode: 'Trabajo en remoto',
   intro:
     'Estudio el 5.º ciclo de Ingeniería de Software con IA en SENATI. Trabajo con Python, TypeScript y React, y construyo conectores que llevan agentes de IA a sistemas reales.',
   about:
