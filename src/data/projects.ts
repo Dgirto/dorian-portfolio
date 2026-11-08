@@ -171,7 +171,7 @@ conn = psycopg.connect(
     contribution:
       'Implementé el diseño de Figma del equipo en React: maquetación de las páginas, componentes y estilos, fiel al diseño y adaptado a escritorio y móvil.',
     team: 'Proyecto grupal',
-    stack: ['React 18', 'React Router', 'Vite', 'CSS', 'Supabase', 'Mercado Pago', 'Figma'],
+    stack: ['React 18', 'React Router', 'Vite', 'CSS', 'Supabase', 'Vercel Functions', 'Mercado Pago', 'EmailJS', 'Figma'],
     repo: 'https://github.com/Dgirto/ProyectoTuerka',
     demo: 'https://proyecto-tuerka.vercel.app',
     cover: {
@@ -230,9 +230,9 @@ conn = psycopg.connect(
     solution:
       'Sitio público con carta, eventos y reservas; cuentas de cliente con cupón de café gratis; reservas de mesa con depósito opcional por Yape o Plin; cotizaciones de eventos y un panel por roles para caja y administración.',
     contribution:
-      'Frontend sin framework, API en Cloudflare Pages Functions, base de datos D1 con migraciones, acceso con contraseña o Google, protección con Turnstile y límites de peticiones.',
+      'Frontend sin framework, API en Cloudflare Pages Functions, base de datos D1 con migraciones, cuentas con correo y contraseña, protección con Turnstile y límites de peticiones.',
     team: 'Cafetería en Lima',
-    stack: ['JavaScript', 'HTML', 'CSS', 'Cloudflare Pages', 'Cloudflare D1', 'SQL', 'Google OAuth', 'Turnstile'],
+    stack: ['JavaScript', 'HTML', 'CSS', 'Cloudflare Pages', 'Cloudflare D1', 'SQL', 'Turnstile'],
     cover: {
       kind: 'laptop',
       src: '/work/selah-inicio.webp',
@@ -279,10 +279,10 @@ conn = psycopg.connect(
     thesis: 'Gestor de tareas para Android que funciona sin conexión.',
     problem: 'Organizar las tareas de un equipo con estados, fechas límite y responsables, incluso sin internet.',
     solution:
-      'Tres estados de tarea con filtros y búsqueda, base de datos SQLite local, registro propio y acceso con Google mediante Firebase o como invitado.',
+      'Tres estados de tarea con filtros y búsqueda, base de datos SQLite local, registro propio y acceso con Google o como invitado.',
     contribution: 'Toda la capa de interfaz (pantallas, listas, tema y navegación) y el módulo de autenticación.',
     team: 'SENATI · equipo de 5',
-    stack: ['Java', 'Android SDK 35', 'SQLite', 'Firebase Auth', 'Figma'],
+    stack: ['Java', 'Android SDK 35', 'SQLite', 'Google Sign-In', 'Figma'],
     repo: 'https://github.com/Dgirto/appTareas',
     cover: {
       kind: 'phones',
@@ -512,7 +512,7 @@ id = db.insert(TABLE_ALUMNOS, null, values);`,
       'Un Arduino lee cada medio segundo un sensor de inclinación, uno de temperatura TMP36 y uno de gas, muestra los valores en una pantalla LCD y envía el tipo de alerta por I2C. El segundo Arduino abre la puerta de emergencia con un servo, enciende un anillo NeoPixel con luces que corren hacia la salida (un color por evento) y hace sonar una sirena distinta en cada caso. La alarma se desactiva con una clave en un teclado 4×4.',
     contribution: 'Diseño del circuito y programación de los dos microcontroladores, simulados en Tinkercad Circuits.',
     team: 'Simulación en Tinkercad',
-    stack: ['Arduino (C++)', 'I2C (Wire)', 'Tinkercad Circuits', 'NeoPixel', 'Keypad', 'LCD I2C'],
+    stack: ['Arduino (C++)', 'I2C (Wire)', 'Tinkercad Circuits', 'NeoPixel', 'Servo', 'Keypad', 'LCD I2C'],
     repo: 'https://github.com/Dgirto/dorian-portfolio/tree/main/iot/alerta-sismica',
     cover: {
       kind: 'plain',
