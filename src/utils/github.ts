@@ -39,7 +39,7 @@ export class GithubError extends Error {
 
 export function summarize(user: GithubUser, repos: GithubRepo[], recentCount = 6): GithubSummary {
   const own = repos.filter((r) => !r.fork && !r.archived)
-  const byPush = [...own].sort((a, b) => Date.parse(b.pushed_at) - Date.parse(a.pushed_at))
+  const byPush = own.toSorted((a, b) => Date.parse(b.pushed_at) - Date.parse(a.pushed_at))
   const counts = new Map<string, number>()
   for (const r of own) if (r.language) counts.set(r.language, (counts.get(r.language) ?? 0) + 1)
   let topLanguage: string | null = null

@@ -46,7 +46,7 @@ function CertViewer({ cert, onClose }: { cert: Certification | null; onClose: ()
 }
 
 // Primero las verificables: la cuadrícula llena por columnas y quedan a la izquierda.
-const ordenadas = [...certifications].sort((a, b) => Number(!a.verifyUrl) - Number(!b.verifyUrl))
+const ordenadas = certifications.toSorted((a, b) => Number(!a.verifyUrl) - Number(!b.verifyUrl))
 const FILAS = Math.ceil(ordenadas.length / 2)
 
 const ANCHO_COMPACTO = '(max-width: 1100px)'
