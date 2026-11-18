@@ -19,6 +19,7 @@ export function Philosophy() {
       <h2 id="filosofia-title" className={styles.line}>
         {words.join(' ')} <span>{last}</span>
       </h2>
+      <p className={styles.note}>{profile.philosophyNote}</p>
       <svg className={styles.chart} viewBox="0 0 1200 240" preserveAspectRatio="none" aria-hidden="true">
         <path className={styles.ghost} d={STEPS} vectorEffect="non-scaling-stroke" />
         <m.path

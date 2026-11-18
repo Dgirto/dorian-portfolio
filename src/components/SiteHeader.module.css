@@ -62,10 +62,6 @@
   text-decoration: none;
 }
 
-.index {
-  color: var(--muted);
-}
-
 /* Trazo amarillo verdoso bajo el enlace activo o señalado */
 .links a::after {
   content: '';

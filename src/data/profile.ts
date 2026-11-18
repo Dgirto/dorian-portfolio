@@ -10,12 +10,13 @@ export const profile: Profile = {
   studies: 'Estudiante de 5.º ciclo de Ingeniería de Software con IA en SENATI',
   location: 'Lima, Perú',
   intro:
-    'Estudio el 5.º ciclo de Ingeniería de Software con IA en SENATI. Trabajo con Python, TypeScript y React, y construyo conectores que llevan agentes de IA a sistemas reales.',
+    'Desarrollo soluciones de software e IA. Trabajo con Python, TypeScript y React, y construyo conectores que integran agentes de IA con sistemas reales.',
   about:
-    'Curso el 5.º ciclo de Ingeniería de Software con Inteligencia Artificial en SENATI y, desde marzo de 2026, hago mis prácticas como ingeniero de software júnior. Mi trabajo va del frontend web a los servicios del backend: construyo en Python los conectores que permiten a un agente de IA consultar bases de datos, leer correo u operar servicios en la nube, y los pruebo antes de cada entrega.',
+    'Me desarrollo profesionalmente en el área de ingeniería de software, con experiencia práctica desde marzo de 2026 en desarrollo frontend y backend. Trabajo con Python en la creación y validación de conectores que integran agentes de IA con bases de datos, correo electrónico y servicios en la nube.',
   aboutMore:
-    'Me interesa entender cómo funciona el código por dentro y convertir procesos manuales en flujos automáticos. Fuera del trabajo sigo construyendo: aplicaciones web y móviles, herramientas de monitoreo y prototipos IoT simulados en Tinkercad.',
+    'Me enfoco en comprender la lógica del software y automatizar procesos. Complemento mi experiencia con proyectos de desarrollo web y móvil, herramientas de monitoreo y prototipos IoT simulados en Tinkercad.',
   philosophy: 'Crecer con estrategia.',
+  philosophyNote: 'Del código a soluciones que generan valor.',
   email: 'gironpratodorian@gmail.com',
   links: {
     github: { label: 'GitHub', href: 'https://github.com/Dgirto', handle: 'Dgirto' },

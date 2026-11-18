@@ -131,6 +131,8 @@ export interface Profile {
   aboutMore: string
   /** Filosofía en una línea; la última palabra se resalta. */
   philosophy: string
+  /** Frase breve bajo la filosofía. */
+  philosophyNote: string
   email: string
   links: { github: ProfileLink; linkedin: ProfileLink }
   portrait: { src: string; alt: string; width: number; height: number }

@@ -31,7 +31,7 @@ export function Stack() {
         </Reveal>
         <Reveal delay={0.1}>
           <p className="section-lead">
-            Sin porcentajes inventados: cada herramienta indica dónde puedes verla en uso.
+            Cada herramienta indica dónde puedes verla en uso.
           </p>
         </Reveal>
       </div>

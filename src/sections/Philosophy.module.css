@@ -19,6 +19,14 @@
   color: var(--accent);
 }
 
+.note {
+  width: var(--page);
+  margin: clamp(16px, 2vw, 24px) auto 0;
+  font-size: var(--fs-lead);
+  line-height: 1.4;
+  color: var(--on-night-muted);
+}
+
 .chart {
   display: block;
   width: 100%;

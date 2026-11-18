@@ -5,8 +5,8 @@ export const timeline: TimelineEntry[] = [
   {
     kind: 'experiencia',
     title: 'Ingeniero de software júnior',
-    organization: 'Prácticas profesionales',
-    type: 'En remoto',
+    organization: 'Ruvic AI',
+    type: 'Prácticas profesionales · En remoto',
     start: '2026-03',
     end: null,
     description:
@@ -14,7 +14,7 @@ export const timeline: TimelineEntry[] = [
   },
   {
     kind: 'formacion',
-    title: 'Profesional Técnico, Ingeniería de Software con Inteligencia Artificial',
+    title: 'Ingeniería de Software con Inteligencia Artificial',
     organization: 'SENATI',
     type: 'Formación académica · cursando el 5.º ciclo',
     start: '2024-09',

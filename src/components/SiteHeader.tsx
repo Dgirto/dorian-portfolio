@@ -44,16 +44,13 @@ export function SiteHeader() {
         </a>
         <nav aria-label="Principal" className={styles.nav}>
           <ul id={menuId} className={`${styles.links} ${open ? styles.open : ''}`}>
-            {navItems.map((item, i) => (
+            {navItems.map((item) => (
               <li key={item.href}>
                 <a
                   href={item.href}
                   aria-current={active === item.href ? 'true' : undefined}
                   onClick={() => setOpen(false)}
                 >
-                  <span className={styles.index} aria-hidden="true">
-                    {String(i + 1).padStart(2, '0')}
-                  </span>
                   {item.label}
                 </a>
               </li>

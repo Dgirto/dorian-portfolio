@@ -29,9 +29,6 @@ export function GitHubLive() {
             GitHub, en vivo.
           </h2>
         </Reveal>
-        <Reveal delay={0.1}>
-          <p className="section-lead">Datos leídos ahora mismo de la API pública de GitHub.</p>
-        </Reveal>
 
         <dl className={styles.stats} aria-busy={state.status === 'loading'}>
           <Reveal className={styles.stat}>
