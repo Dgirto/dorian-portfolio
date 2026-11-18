@@ -7,24 +7,15 @@
 .line {
   width: var(--page);
   margin-inline: auto;
-  font-size: clamp(1.75rem, 8.2vw, 7rem);
+  font-size: clamp(2.25rem, 6.4vw, 6rem);
   font-weight: 700;
   letter-spacing: -0.045em;
-  line-height: 1;
-  white-space: nowrap;
-  text-wrap: nowrap;
+  line-height: 1.02;
+  text-wrap: balance;
 }
 
 .line span {
   color: var(--accent);
-}
-
-.note {
-  width: var(--page);
-  margin: clamp(16px, 2vw, 24px) auto 0;
-  font-size: var(--fs-lead);
-  line-height: 1.4;
-  color: var(--on-night-muted);
 }
 
 .chart {

@@ -15,8 +15,7 @@ export const profile: Profile = {
     'Me desarrollo profesionalmente en el área de ingeniería de software, con experiencia práctica desde marzo de 2026 en desarrollo frontend y backend. Trabajo con Python en la creación y validación de conectores que integran agentes de IA con bases de datos, correo electrónico y servicios en la nube.',
   aboutMore:
     'Me enfoco en comprender la lógica del software y automatizar procesos. Complemento mi experiencia con proyectos de desarrollo web y móvil, herramientas de monitoreo y prototipos IoT simulados en Tinkercad.',
-  philosophy: 'Crecer con estrategia.',
-  philosophyNote: 'Del código a soluciones que generan valor.',
+  philosophy: 'Del código a soluciones que generan valor.',
   email: 'gironpratodorian@gmail.com',
   links: {
     github: { label: 'GitHub', href: 'https://github.com/Dgirto', handle: 'Dgirto' },
